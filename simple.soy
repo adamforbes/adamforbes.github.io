@@ -1,0 +1,89 @@
+{namespace example.simple}
+
+/**
+ * Create the navBar
+ */
+{template .navBar}
+  <div class="nav-bar">
+    <div class="nav-title-name">Adam<br>Forbes</div>
+    <div class="nav-links">
+      <a>Projects</a>
+      <br>
+      <a>Resume</a>
+    </div>
+  </div>
+{/template}
+
+/**
+ * Generates the main page with a list of topics
+ * @param topics a list of topics to generate
+ */
+{template .mainPage}
+  <div class="main-page">
+    {foreach $topic in $topics}
+      {call .topic data="$topic" /}
+    {/foreach}
+  </div>
+{/template}
+
+/**
+  designing the topic section of a page.
+  They will always have a Title, a Contents, and an optional link
+  The title could be...
+    - an image logo
+    - a text title
+
+  The contents could be...
+    - text
+    - a set of images
+      - this could be a single image, two images, three images
+    - a set of images and text
+
+  The link is optional
+ */
+
+/**
+ * Generates a topic within the main page
+ * @param type the type of content. Would be an enum if that was supported
+ * @param title a single topic
+ * @param? content the contents of this topic
+ */
+{template .topic}
+  <div class="topic-container"> 
+    <div class="topic-title">
+      {$title}
+    </div>
+    <div class="topic-contents topic-contents-text">
+      {$content}
+    </div>
+  </div>
+{/template}
+
+/**
+ * Generates a topic within the main page
+ * @param type the type of content. Would be an enum if that was supported
+ * @param title a single topic
+ * @param? content the contents of this topic
+ */
+{template .topic}
+  <div class="topic-container"> 
+    <div class="topic-title">
+      {$title}
+    </div>
+    <div class="topic-contents topic-contents-text">
+      {$content}
+    </div>
+  </div>
+{/template}
+
+/**
+ * Generates the title of a topic
+ * @param type the type of content. Would be an enum if that was supported
+ * @param title a single topic
+ * @param? content the contents of this topic
+ */
+{template .topicTitle}
+{/template}
+
+{template .topicContents}
+{/template}
