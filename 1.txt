@@ -1,0 +1,30 @@
+  Entries <
+    Scope <
+      GaiaId: 0x3c3a549309 [lucas.dussurget@valiantys.com]
+    >
+    Role: 3 [WRITER]
+  >
+  Entries <
+    Scope <
+      GaiaId: 0x4a58326b72 []
+    >
+    Role: 3 [WRITER]
+  >
+  Entries <
+    Scope <
+      GaiaId: 0xde2bcbb6b8 []
+    >
+    Role: 4 [OWNER]
+  >
+  Entries <
+    Scope <
+      GaiaId: 0xeb569d0a1d []
+    >
+    Role: 3 [WRITER]
+  >
+  Entries <
+    Scope <
+      GaiaId: 0xeec445ae3d []
+    >
+    Role: 3 [WRITER]
+  >

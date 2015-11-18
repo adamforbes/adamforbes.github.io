@@ -41,28 +41,59 @@
 		<!-- Add your site or application content here -->
 		<script type="text/javascript">
 			document.write(example.simple.navBar());
-			document.write(example.simple.mainPage(
-				{topics:  
-					[{type: 'text',
-						title: 'about me', 
-					 	content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-					 {type: 'text',
-					 	title: 'about me', 
-					 	content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
-					 {type: 'text',
-					 	title: 'the next thing', 
-						content: 'again'},
-					 {type: 'text',
-					 	title: 'the next thing', 
-						content: 'again'},
-					 {type: 'text',
-					 	title: 'the next thing', 
-						content: 'again'}]
-				}));
+			// document.write(example.simple.mainPage(
+			// 	{topics: 
+			// 		[{type: 'text',
+			// 			title: 'about me', 
+			// 		 	content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
+			// 		 {type: 'text',
+			// 		 	title: 'about me', 
+			// 		 	content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'},
+			// 		 {type: 'text',
+			// 		 	title: 'the next thing', 
+			// 			content: 'again'},
+			// 		 {type: 'text',
+			// 		 	title: 'the next thing', 
+			// 			content: 'again'},
+			// 		 {type: 'text',
+			// 		 	title: 'the next thing', 
+			// 			content: 'again'}]
+			// 	}));
+
+			// document.write(example.simple.mainPage(  
+			// 	{topics: [
+			//     {title: {text: 'about me'},
+			//      contents: [
+			//         {text: 'blah blah blah blah my life is boring'}, 
+			//         {image: 'myFace.jpg'},
+			//         {moreLink: {text: 'more information about my face', link: 'ace.jpg'}}
+			//       ]}, 
+			//     {title: {img: 'image.jpg'},
+			//      contents: [
+			//         {tripleImage: ['image1.png', 'image2.png', 'image3.png']},
+			//         {moreLink: {text: 'more cool stuff', link: 'moreCoolStuff.com'}}
+			//       ]}
+			//   ]}));
+
+			document.write(example.simple.mainPage(  
+				{topics: [
+					{title: {text: 'about me'},
+			     	contents: [
+			        {text: 'blah blah blah blah my life is boring'},
+			        {text: 'okidokiblalalala'}
+			      ]
+			    },
+					{title: {image: 'the-argus-mag-logo.png'},
+			     	contents: [
+			        {text: 'blah blah blah blah my life is boring'}
+			      ]
+			    },
+			  ]}));
+
 		</script>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/{{JQUERY_VERSION}}/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/vendor/jquery-{{JQUERY_VERSION}}.min.js"><\/script>')</script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
 		<script src="js/plugins.js"></script>
 		<script src="js/main.js"></script>
 

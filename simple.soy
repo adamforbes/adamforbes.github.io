@@ -4,25 +4,13 @@
  * Create the navBar
  */
 {template .navBar}
-  <div class="nav-bar">
-    <div class="nav-title-name">Adam<br>Forbes</div>
-    <div class="nav-links">
+  <div class='nav-bar'>
+    <div class='nav-title-name'>Adam<br>Forbes</div>
+    <div class='nav-links'>
       <a>Projects</a>
       <br>
       <a>Resume</a>
     </div>
-  </div>
-{/template}
-
-/**
- * Generates the main page with a list of topics
- * @param topics a list of topics to generate
- */
-{template .mainPage}
-  <div class="main-page">
-    {foreach $topic in $topics}
-      {call .topic data="$topic" /}
-    {/foreach}
   </div>
 {/template}
 
@@ -40,50 +28,89 @@
     - a set of images and text
 
   The link is optional
+
+  Because all data in javascript is a map already, we can easily 
+  create objects with variable contents
+
+  {topics: [
+    {title: {text: 'about me'},
+     contents: [
+        {text: 'blah blah blah blah my life is boring'}, 
+        {image: 'myFace'},
+        {moreLink: {text: 'more information about my face', link: 'ace.jpg'}
+      ]}, 
+    {title: {img: 'image.jpg'},
+     contents: [
+        {tripleImage: 'myFace'},
+        {moreLink: {text: 'more cool stuff', link: 'moreCoolStuff.com'}
+      ]}
+  ]}
+ */
+
+ /*
+ * talked to david dapenda shortly regarding how to 
+ check for a key. If the value is a string or I don't
+ expect it to ever be null, you can do {if isNonNull(object.key)}
+ however, if you are looking for an object, then if object.key is 
+ the way to go.
  */
 
 /**
- * Generates a topic within the main page
- * @param type the type of content. Would be an enum if that was supported
- * @param title a single topic
- * @param? content the contents of this topic
+ * Generates the main page with a list of topics
+ * @param topics a list of topics to generate
  */
-{template .topic}
-  <div class="topic-container"> 
-    <div class="topic-title">
-      {$title}
-    </div>
-    <div class="topic-contents topic-contents-text">
-      {$content}
-    </div>
+{template .mainPage}
+  <div class='main-page'>
+    {foreach $topic in $topics}
+      {call .topic data="$topic" /}
+    {/foreach}
   </div>
 {/template}
 
 /**
  * Generates a topic within the main page
- * @param type the type of content. Would be an enum if that was supported
- * @param title a single topic
- * @param? content the contents of this topic
+ * @param title the title of the topic
+ * @param contents the contents of this topic
  */
 {template .topic}
-  <div class="topic-container"> 
-    <div class="topic-title">
-      {$title}
-    </div>
-    <div class="topic-contents topic-contents-text">
-      {$content}
+  <div class='topic-container'> 
+    {if $title.text}
+      <div class='topic-title'>
+        {$title.text}
+      </div>
+    {elseif $title.image}
+      <div class='topic-title'>
+        <img src='img/{$title.image}' alt='{$title.image}'>
+      </div>
+    {/if}
+    //Generate the content of the topic
+    {foreach $content in $contents}
+      {call .content}
+        {param content: $content /}
+      {/call}
+    {/foreach}
     </div>
   </div>
 {/template}
 
 /**
- * Generates the title of a topic
- * @param type the type of content. Would be an enum if that was supported
- * @param title a single topic
- * @param? content the contents of this topic
+ * Generates a single piece of content for a topic
+ * @param content the piece of content to render on the page
  */
-{template .topicTitle}
+{template .content}
+  {if $content.text}
+    <div class='topic-contents topic-contents-text'>
+      {$content.text}
+    </div>
+  {elseif $content.image}
+    <div>WHAT</div>
+    <img src='img/{$content.image}' alt='{$content.image}'>
+  {elseif $content.tripleImage}
+    <div class="topic-gallery-sampling topic-gallery-sampling-triple clearfix">
+      {foreach $image in content.tripleImage}
+        <img src="img/$image.jpg" alt="$image">
+      {/foreach}
+    </div>
+  {/if}
 {/template}
 
-{template .topicContents}
-{/template}
