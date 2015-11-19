@@ -10,7 +10,7 @@ if (typeof example.simple == 'undefined') { example.simple = {}; }
 
 
 example.simple.navBar = function(opt_data, opt_ignored) {
-  return '<div class=\'nav-bar\'><div class=\'nav-title-name\'>Adam<br>Forbes</div><div class=\'nav-links\'><a>Projects</a><br><a>Resume</a></div></div>';
+  return '<div class=\'nav-bar\'><div class=\'nav-title-name clickable\'>Adam<br>Forbes</div><div class=\'nav-links\'><a class=\'clickable\'>Projects</a><br><a class=\'clickable\'>Resume</a></div></div>';
 };
 if (goog.DEBUG) {
   example.simple.navBar.soyTemplateName = 'example.simple.navBar';
@@ -34,7 +34,7 @@ if (goog.DEBUG) {
 
 
 example.simple.topic = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' + ((opt_data.title == '_imageOverride') ? '<img class=\'topic-title-image\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' : '<div class=\'topic-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  var output = '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' + ((opt_data.title == '_imageOverride') ? '<img class=\'topic-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' : '<div class=\'topic-title clickable\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
   var contentList29 = opt_data.contents;
   var contentListLen29 = contentList29.length;
   for (var contentIndex29 = 0; contentIndex29 < contentListLen29; contentIndex29++) {
@@ -61,7 +61,7 @@ example.simple.content = function(opt_data, opt_ignored) {
     var imageListLen54 = imageList54.length;
     for (var imageIndex54 = 0; imageIndex54 < imageListLen54; imageIndex54++) {
       var imageData54 = imageList54[imageIndex54];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '.jpg\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\'>';
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '.jpg\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\' class= \'clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\'>';
     }
     output += '</div>';
   }
@@ -74,7 +74,7 @@ if (goog.DEBUG) {
 
 
 example.simple.footer = function(opt_data, opt_ignored) {
-  return '<div class=\'topic-footer clearfix\'>' + ((opt_data.footer.moreLink) ? '<div class=\'topic-footer-more-link\'><a href=\'\'>' + soy.$$escapeHtml(opt_data.footer.moreLink) + '</a></div>' : '') + ((opt_data.footer.date) ? '<div class=\'topic-footer-date\'>' + soy.$$escapeHtml(opt_data.footer.date) + '</div>' : '') + '</div>';
+  return '<div class=\'topic-footer clearfix\'>' + ((opt_data.footer.moreLink) ? '<div class=\'topic-footer-more-link\'><a href=\'#\' class=\'clickable\'>More...</a></div>' : '') + ((opt_data.footer.date) ? '<div class=\'topic-footer-date\'>' + soy.$$escapeHtml(opt_data.footer.date) + '</div>' : '') + '</div>';
 };
 if (goog.DEBUG) {
   example.simple.footer.soyTemplateName = 'example.simple.footer';

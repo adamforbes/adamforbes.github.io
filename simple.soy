@@ -5,47 +5,14 @@
  */
 {template .navBar}
   <div class='nav-bar'>
-    <div class='nav-title-name'>Adam<br>Forbes</div>
+    <div class='nav-title-name clickable'>Adam<br>Forbes</div>
     <div class='nav-links'>
-      <a>Projects</a>
+      <a class='clickable'>Projects</a>
       <br>
-      <a>Resume</a>
+      <a class='clickable'>Resume</a>
     </div>
   </div>
 {/template}
-
-/**
-  designing the topic section of a page.
-  They will always have a Title, a Contents, and an optional link
-  The title could be...
-    - an image logo
-    - a text title
-
-  The contents could be...
-    - text
-    - a set of images
-      - this could be a single image, two images, three images
-    - a set of images and text
-
-  The link is optional
-
-  Because all data in javascript is a map already, we can easily 
-  create objects with variable contents
-
-  {topics: [
-    {title: {text: 'about me'},
-     contents: [
-        {text: 'blah blah blah blah my life is boring'}, 
-        {image: 'myFace'},
-        {moreLink: {text: 'more information about my face', link: 'ace.jpg'}
-      ]}, 
-    {title: {img: 'image.jpg'},
-     contents: [
-        {tripleImage: 'myFace'},
-        {moreLink: {text: 'more cool stuff', link: 'moreCoolStuff.com'}
-      ]}
-  ]}
- */
 
  /*
  * talked to david dapenda shortly regarding how to 
@@ -77,10 +44,10 @@
 {template .topic}
   <div class='topic-container' id='{$topicId}'> 
     {if $title == '_imageOverride'}
-      <img class='topic-title-image' id='{$topicId}-title' 
+      <img class='topic-title-image clickable' id='{$topicId}-title' 
           src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
     {else}
-      <div class='topic-title'>
+      <div class='topic-title clickable'>
         {$title}
       </div>
     {/if}
@@ -117,7 +84,8 @@
           topic-content-gallery-sampling-triple clearfix'>
         {foreach $image in $content.tripleImage}
           <img src='img/{$topicId}/{$topicId}-{$image}.jpg' 
-              alt='{$topicId}-{$image}' id='{$topicId}-{$image}'>
+              alt='{$topicId}-{$image}' class= 'clickable' 
+              id='{$topicId}-{$image}'>
         {/foreach}
       </div>
     {/if}
@@ -132,7 +100,7 @@
   <div class='topic-footer clearfix'>
     {if $footer.moreLink}
       <div class='topic-footer-more-link'>
-        <a href=''>{$footer.moreLink}</a>
+        <a href='#' class='clickable'>More...</a>
       </div>
     {/if}
     {if $footer.date}

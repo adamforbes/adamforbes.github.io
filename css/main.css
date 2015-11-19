@@ -167,7 +167,17 @@ textarea {
 }
 
 .topic-footer-more-link {
+  color: pink;
   float: left;
+}
+
+.topic-footer-more-link a {
+  color: #777;
+  text-decoration: none;
+}
+
+.topic-footer-more-link a:visited {
+  text-decoration: none;
 }
 
 .topic-footer-date {
@@ -187,9 +197,17 @@ textarea {
 
 }
 
+.clickable {
+  -webkit-transition: opacity 200ms ease;
+  -moz-transition: opacity 200ms ease;
+  -o-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+  opacity: 1.0;
+}
 
-
-
+.clickable:hover {
+  opacity: .4;
+}
 
 
 
