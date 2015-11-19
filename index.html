@@ -40,7 +40,25 @@
 
 		<!-- Add your site or application content here -->
 		<script type="text/javascript">
+
 			document.write(example.simple.navBar());
+			document.write(example.simple.mainPage(
+				{topics: [
+					{topicId: 'about-me', 
+						title: 'about me',
+			     	contents: [
+			        {text: 'blah blah blah blah my life is boring'},
+			        {text: 'okidokiblalalala'}
+			      ]
+			    },
+					{topicId: 'the-argus-mag', 
+						title: 'imageOverride',
+			     	contents: [
+			        {text: 'blah blah blah blah my life is boring'}
+			      ]
+			    },
+			  ]}));
+
 			// document.write(example.simple.mainPage(
 			// 	{topics: 
 			// 		[{type: 'text',
@@ -74,22 +92,6 @@
 			//         {moreLink: {text: 'more cool stuff', link: 'moreCoolStuff.com'}}
 			//       ]}
 			//   ]}));
-
-			document.write(example.simple.mainPage(  
-				{topics: [
-					{title: {text: 'about me'},
-			     	contents: [
-			        {text: 'blah blah blah blah my life is boring'},
-			        {text: 'okidokiblalalala'}
-			      ]
-			    },
-					{title: {image: 'the-argus-mag-logo.png'},
-			     	contents: [
-			        {text: 'blah blah blah blah my life is boring'}
-			      ]
-			    },
-			  ]}));
-
 		</script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

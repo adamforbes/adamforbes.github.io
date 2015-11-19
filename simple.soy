@@ -69,18 +69,19 @@
 
 /**
  * Generates a topic within the main page
+ * @param topicId a unique Id for each topic, to be used in naming and style override
  * @param title the title of the topic
  * @param contents the contents of this topic
  */
 {template .topic}
-  <div class='topic-container'> 
-    {if $title.text}
+  <div class='topic-container' id='{$topicId}'> 
+    {if $title == 'imageOverride'}
       <div class='topic-title'>
-        {$title.text}
+        <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
       </div>
-    {elseif $title.image}
+    {else}
       <div class='topic-title'>
-        <img src='img/{$title.image}' alt='{$title.image}'>
+        {$title}
       </div>
     {/if}
     //Generate the content of the topic
@@ -89,7 +90,6 @@
         {param content: $content /}
       {/call}
     {/foreach}
-    </div>
   </div>
 {/template}
 
@@ -112,5 +112,40 @@
       {/foreach}
     </div>
   {/if}
+{/template}
+
+/**
+ * testing!
+ * @param data testing
+ */
+{template .nest1}
+  <div class='nest1'>
+    inside nest1
+    {for $i in range(0, 4)}
+      {call .nest2 data="all" /}
+    {/for}
+  </div>
+{/template}
+
+/**
+ * testing!
+ * @param data testing
+ */
+{template .nest2}
+  <div class='nest2'>
+    inside nest2
+    {call .nest3 data="all" /}
+  </div>
+{/template}
+
+/**
+ * testing!
+ * @param data testing
+ */
+{template .nest3}
+  <div class='nest3'>
+    inside nest3 
+    {$data}!
+  </div>
 {/template}
 

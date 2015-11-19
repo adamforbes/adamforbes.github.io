@@ -34,14 +34,14 @@ if (goog.DEBUG) {
 
 
 example.simple.topic = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-container\'>' + ((opt_data.title.text) ? '<div class=\'topic-title\'>' + soy.$$escapeHtml(opt_data.title.text) + '</div>' : (opt_data.title.image) ? '<div class=\'topic-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.title.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.title.image) + '\'></div>' : '');
-  var contentList23 = opt_data.contents;
-  var contentListLen23 = contentList23.length;
-  for (var contentIndex23 = 0; contentIndex23 < contentListLen23; contentIndex23++) {
-    var contentData23 = contentList23[contentIndex23];
-    output += example.simple.content({content: contentData23});
+  var output = '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' + ((opt_data.title == 'imageOverride') ? '<div class=\'topic-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'></div>' : '<div class=\'topic-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  var contentList27 = opt_data.contents;
+  var contentListLen27 = contentList27.length;
+  for (var contentIndex27 = 0; contentIndex27 < contentListLen27; contentIndex27++) {
+    var contentData27 = contentList27[contentIndex27];
+    output += example.simple.content({content: contentData27});
   }
-  output += '</div></div>';
+  output += '</div>';
   return output;
 };
 if (goog.DEBUG) {
@@ -57,10 +57,10 @@ example.simple.content = function(opt_data, opt_ignored) {
     output += '<div>WHAT</div><img src=\'img/' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class="topic-gallery-sampling topic-gallery-sampling-triple clearfix">';
-    var imageList42 = content.tripleImage;
-    var imageListLen42 = imageList42.length;
-    for (var imageIndex42 = 0; imageIndex42 < imageListLen42; imageIndex42++) {
-      var imageData42 = imageList42[imageIndex42];
+    var imageList46 = content.tripleImage;
+    var imageListLen46 = imageList46.length;
+    for (var imageIndex46 = 0; imageIndex46 < imageListLen46; imageIndex46++) {
+      var imageData46 = imageList46[imageIndex46];
       output += '<img src="img/$image.jpg" alt="$image">';
     }
     output += '</div>';
@@ -69,4 +69,33 @@ example.simple.content = function(opt_data, opt_ignored) {
 };
 if (goog.DEBUG) {
   example.simple.content.soyTemplateName = 'example.simple.content';
+}
+
+
+example.simple.nest1 = function(opt_data, opt_ignored) {
+  var output = '<div class=\'nest1\'>inside nest1';
+  for (var i52 = 0; i52 < 4; i52++) {
+    output += example.simple.nest2(opt_data);
+  }
+  output += '</div>';
+  return output;
+};
+if (goog.DEBUG) {
+  example.simple.nest1.soyTemplateName = 'example.simple.nest1';
+}
+
+
+example.simple.nest2 = function(opt_data, opt_ignored) {
+  return '<div class=\'nest2\'>inside nest2' + example.simple.nest3(opt_data) + '</div>';
+};
+if (goog.DEBUG) {
+  example.simple.nest2.soyTemplateName = 'example.simple.nest2';
+}
+
+
+example.simple.nest3 = function(opt_data, opt_ignored) {
+  return '<div class=\'nest3\'>inside nest3' + soy.$$escapeHtml(opt_data.data) + '!</div>';
+};
+if (goog.DEBUG) {
+  example.simple.nest3.soyTemplateName = 'example.simple.nest3';
 }
