@@ -72,13 +72,13 @@
  * @param topicId a unique Id for each topic, to be used in naming and style override
  * @param title the title of the topic
  * @param contents the contents of this topic
+ * @param? footer optional footer to add to a topic
  */
 {template .topic}
   <div class='topic-container' id='{$topicId}'> 
-    {if $title == 'imageOverride'}
-      <div class='topic-title'>
-        <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
-      </div>
+    {if $title == '_imageOverride'}
+      <img class='topic-title-image' id='{$topicId}-title' 
+          src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
     {else}
       <div class='topic-title'>
         {$title}
@@ -87,65 +87,59 @@
     //Generate the content of the topic
     {foreach $content in $contents}
       {call .content}
+        {param topicId: $topicId /}
         {param content: $content /}
       {/call}
     {/foreach}
+    {if $footer}
+      {call .footer}
+        {param footer: $footer /}
+      {/call}
+    {/if}
   </div>
 {/template}
 
 /**
  * Generates a single piece of content for a topic
+ * @param topicId a unique Id for each topic, to be used in naming and style override
  * @param content the piece of content to render on the page
  */
 {template .content}
-  {if $content.text}
-    <div class='topic-contents topic-contents-text'>
-      {$content.text}
-    </div>
-  {elseif $content.image}
-    <div>WHAT</div>
-    <img src='img/{$content.image}' alt='{$content.image}'>
-  {elseif $content.tripleImage}
-    <div class="topic-gallery-sampling topic-gallery-sampling-triple clearfix">
-      {foreach $image in content.tripleImage}
-        <img src="img/$image.jpg" alt="$image">
-      {/foreach}
-    </div>
-  {/if}
-{/template}
-
-/**
- * testing!
- * @param data testing
- */
-{template .nest1}
-  <div class='nest1'>
-    inside nest1
-    {for $i in range(0, 4)}
-      {call .nest2 data="all" /}
-    {/for}
+  <div class='topic-content'>
+    {if $content.text}
+      <div class='topic-content-text'>
+        {$content.text}
+      </div>
+    {elseif $content.image}
+      <img src='img/{$content.image}' alt='{$content.image}'>
+    {elseif $content.tripleImage}
+      <div class='topic-content-gallery-sampling 
+          topic-content-gallery-sampling-triple clearfix'>
+        {foreach $image in $content.tripleImage}
+          <img src='img/{$topicId}/{$topicId}-{$image}.jpg' 
+              alt='{$topicId}-{$image}' id='{$topicId}-{$image}'>
+        {/foreach}
+      </div>
+    {/if}
   </div>
 {/template}
 
 /**
- * testing!
- * @param data testing
+ * Generates a single piece of content for a topic
+ * @param footer the contents of the footer.
  */
-{template .nest2}
-  <div class='nest2'>
-    inside nest2
-    {call .nest3 data="all" /}
-  </div>
-{/template}
-
-/**
- * testing!
- * @param data testing
- */
-{template .nest3}
-  <div class='nest3'>
-    inside nest3 
-    {$data}!
+{template .footer}
+  <div class='topic-footer clearfix'>
+    {if $footer.moreLink}
+      <div class='topic-footer-more-link'>
+        <a href=''>{$footer.moreLink}</a>
+      </div>
+    {/if}
+    {if $footer.date}
+      <div class='topic-footer-date'>
+        {$footer.date}
+      </div>
+    {/if}
   </div>
 {/template}
 

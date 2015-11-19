@@ -34,14 +34,14 @@ if (goog.DEBUG) {
 
 
 example.simple.topic = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' + ((opt_data.title == 'imageOverride') ? '<div class=\'topic-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'></div>' : '<div class=\'topic-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
-  var contentList27 = opt_data.contents;
-  var contentListLen27 = contentList27.length;
-  for (var contentIndex27 = 0; contentIndex27 < contentListLen27; contentIndex27++) {
-    var contentData27 = contentList27[contentIndex27];
-    output += example.simple.content({content: contentData27});
+  var output = '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' + ((opt_data.title == '_imageOverride') ? '<img class=\'topic-title-image\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' : '<div class=\'topic-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  var contentList29 = opt_data.contents;
+  var contentListLen29 = contentList29.length;
+  for (var contentIndex29 = 0; contentIndex29 < contentListLen29; contentIndex29++) {
+    var contentData29 = contentList29[contentIndex29];
+    output += example.simple.content({topicId: opt_data.topicId, content: contentData29});
   }
-  output += '</div>';
+  output += ((opt_data.footer) ? example.simple.footer(opt_data) : '') + '</div>';
   return output;
 };
 if (goog.DEBUG) {
@@ -50,21 +50,22 @@ if (goog.DEBUG) {
 
 
 example.simple.content = function(opt_data, opt_ignored) {
-  var output = '';
+  var output = '<div class=\'topic-content\'>';
   if (opt_data.content.text) {
-    output += '<div class=\'topic-contents topic-contents-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
+    output += '<div class=\'topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
   } else if (opt_data.content.image) {
-    output += '<div>WHAT</div><img src=\'img/' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'>';
+    output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'>';
   } else if (opt_data.content.tripleImage) {
-    output += '<div class="topic-gallery-sampling topic-gallery-sampling-triple clearfix">';
-    var imageList46 = content.tripleImage;
-    var imageListLen46 = imageList46.length;
-    for (var imageIndex46 = 0; imageIndex46 < imageListLen46; imageIndex46++) {
-      var imageData46 = imageList46[imageIndex46];
-      output += '<img src="img/$image.jpg" alt="$image">';
+    output += '<div class=\'topic-content-gallery-sampling topic-content-gallery-sampling-triple clearfix\'>';
+    var imageList54 = opt_data.content.tripleImage;
+    var imageListLen54 = imageList54.length;
+    for (var imageIndex54 = 0; imageIndex54 < imageListLen54; imageIndex54++) {
+      var imageData54 = imageList54[imageIndex54];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '.jpg\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\'>';
     }
     output += '</div>';
   }
+  output += '</div>';
   return output;
 };
 if (goog.DEBUG) {
@@ -72,30 +73,9 @@ if (goog.DEBUG) {
 }
 
 
-example.simple.nest1 = function(opt_data, opt_ignored) {
-  var output = '<div class=\'nest1\'>inside nest1';
-  for (var i52 = 0; i52 < 4; i52++) {
-    output += example.simple.nest2(opt_data);
-  }
-  output += '</div>';
-  return output;
+example.simple.footer = function(opt_data, opt_ignored) {
+  return '<div class=\'topic-footer clearfix\'>' + ((opt_data.footer.moreLink) ? '<div class=\'topic-footer-more-link\'><a href=\'\'>' + soy.$$escapeHtml(opt_data.footer.moreLink) + '</a></div>' : '') + ((opt_data.footer.date) ? '<div class=\'topic-footer-date\'>' + soy.$$escapeHtml(opt_data.footer.date) + '</div>' : '') + '</div>';
 };
 if (goog.DEBUG) {
-  example.simple.nest1.soyTemplateName = 'example.simple.nest1';
-}
-
-
-example.simple.nest2 = function(opt_data, opt_ignored) {
-  return '<div class=\'nest2\'>inside nest2' + example.simple.nest3(opt_data) + '</div>';
-};
-if (goog.DEBUG) {
-  example.simple.nest2.soyTemplateName = 'example.simple.nest2';
-}
-
-
-example.simple.nest3 = function(opt_data, opt_ignored) {
-  return '<div class=\'nest3\'>inside nest3' + soy.$$escapeHtml(opt_data.data) + '!</div>';
-};
-if (goog.DEBUG) {
-  example.simple.nest3.soyTemplateName = 'example.simple.nest3';
+  example.simple.footer.soyTemplateName = 'example.simple.footer';
 }
