@@ -30,8 +30,13 @@
 		<link rel="stylesheet" href="css/main.css">
 		<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 		<script type="text/javascript" src="soyutils.js"></script>
-  	<script type="text/javascript" src="simple.js"></script>
-
+  	<script type="text/javascript" src="adamforbes.js"></script>
+  	<!-- Breaking from convention here. This entire site is loaded through JS and therefore we need these in the head rather
+  		than placing these just before </body> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+		<script src="js/plugins.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<!--[if lt IE 8]>
@@ -40,35 +45,8 @@
 
 		<!-- Add your site or application content here -->
 		<script type="text/javascript">
-			document.write(example.simple.navBar());
-			document.write(example.simple.mainPage(
-				{topics: [
-					{topicId: 'about-me', 
-						title: 'about me',
-			     	contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
-			    },
-					{topicId: 'the-argus-mag', 
-						title: '_imageOverride',
-			     	contents: [{tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}],
-			      footer: {moreLink: 'Click here for more...', date: 'Created in 2013'}
-			    },
-			    {topicId: 'the-argus-mag', 
-						title: '_imageOverride',
-			     	contents: [{tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}],
-			      footer: {moreLink: true, date: 'Created in 2013'}
-			    }, 
-			    {topicId: 'zapdos', 
-						title: 'Zapdos!',
-			     	contents: [{image: 'zapdos.png'}],
-			      footer: {moreLink: true, date: 'Created in 2013'}
-			    }
-			  ]}));
+			loadDefault();
 		</script>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
-		<script src="js/plugins.js"></script>
-		<script src="js/main.js"></script>
 
 		<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 		<script>

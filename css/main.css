@@ -110,7 +110,7 @@ textarea {
   color: #FFFFFF;
   font-family: "Roboto", sans-serif;
   font-size: 1em;
-  line-height: 1.667;
+  line-height: 2em;
   position: absolute;
   text-align: left;
   margin-left: 30px;
@@ -128,7 +128,7 @@ textarea {
   margin-top: 70px;
 }
 
-.topic-title {
+.topic-title-text {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 2em;
 }
@@ -151,23 +151,24 @@ textarea {
   width: 100%;
 }
 
-.topic-content-gallery-sampling {
+.topic-content-gallery {
   margin-top: 40px;
 }
 
-.topic-content-gallery-sampling img {
+.topic-content-gallery img {
   float: left;
 }
 
-.topic-content-gallery-sampling-triple img {
+.topic-content-gallery-triple img {
   width: calc(100% / 3 - 20px / 3); /* width = (total / numImages) - (total margin / numImages)*/
 }
 
-.topic-content-gallery-sampling-triple img:not(:first-child) {
+.topic-content-gallery-triple img:not(:first-child) {
   margin-left: 10px;
 }
 
 .topic-footer {
+  margin-top: 10px;
 }
 
 .topic-footer-more-link {
@@ -188,6 +189,13 @@ textarea {
   float: right;
 }
 
+.topic-page {
+
+}
+
+.topic-page-content-text {
+
+}
 
 @media (min-width: 750px) {
   /* min-width = maxWidth(the-argus-mag-logo) + .main-page.left + .main-page.padding */
@@ -207,27 +215,12 @@ textarea {
   -o-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
   opacity: 1.0;
+  display: inline-block; /* This will fit the size of this div to its contents, so the hit box is always the same as the contents */
 }
 
 .clickable:hover {
+  cursor: pointer;
   opacity: .4;
-}
-
-.up-down {
-    overflow:hidden;
-    height:100%;
-}
-
-.slide {
-}
-
-.default {
-    background-color:pink;
-}
-
-.onhover {
-    background-color:blue;
-    
 }
 
 

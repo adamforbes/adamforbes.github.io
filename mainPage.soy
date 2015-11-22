@@ -1,0 +1,177 @@
+{namespace adamforbes.mainPage}
+
+/**
+ * Create the navBar
+ */
+{template .navBar}
+  <div class='nav-bar'>
+    <div class='nav-title-name clickable'>Adam<br>Forbes</div>
+    <div class='nav-links'>
+      <div class='nav-link clickable' id='nav-bar-projects-button'>
+        Projects
+      </div>
+      <br>
+      <div class='nav-link clickable'  id='nav-bar-resume-button'>
+        Resume
+      </div>
+    </div>
+  </div>
+{/template}
+
+ /*
+ * talked to david dapenda shortly regarding how to 
+ check for a key. If the value is a string or I don't
+ expect it to ever be null, you can do {if isNonNull(object.key)}
+ however, if you are looking for an object, then if object.key is 
+ the way to go.
+ */
+
+/**
+ * Generates the main page with a list of topics
+ * @param topics a list of topics to generate
+ */
+{template .mainPage}
+  <div class='main-page'>
+    {call .loadTopics data="all" /}
+  </div>
+{/template}
+
+/**
+ * Helper class for loading the topics
+ * @param topics a list of topics to generate
+ */
+{template .loadTopics}
+  {foreach $topic in $topics}
+    <div class='topic-container' id='{$topic.topicId}'>
+      {call .topic data="$topic" /}
+    </div>
+  {/foreach}
+{/template}
+
+/**
+ * Generates a topic within the main page
+ * @param topicId a unique Id for each topic, to be used in naming and style override
+ * @param title the title of the topic
+ * @param contents the contents of this topic
+ * @param? footer optional footer to add to a topic
+ */
+{template .topic}
+  {if $title == '_imageOverride'}
+    <img class='topic-title topic-title-image clickable' id='{$topicId}-title' 
+        src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+  {else}
+    <div class='topic-title topic-title-text clickable' id='{$topicId}-title'>
+      {$title}
+    </div>
+  {/if}
+  //Generate the content of the topic
+  {foreach $content in $contents}
+    <div class='topic-content'>
+      {call .content}
+        {param topicId: $topicId /}
+        {param content: $content /}
+      {/call}
+    </div>
+  {/foreach}
+  {if $footer}
+    <div class='topic-footer clearfix'>
+      {call .footer}
+        {param footer: $footer /}
+      {/call}
+    </div>
+  {/if}
+{/template}
+
+/**
+ * Generates a single piece of content for a topic
+ * @param topicId a unique Id for each topic, to be used in naming and style override
+ * @param content the piece of content to render on the page
+ */
+{template .content}
+  {if $content.text}
+    <div class='topic-content-text'>
+      {$content.text}
+    </div>
+  {elseif $content.image}
+    <div class='topic-content-image'>
+      <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
+    </div>
+  {elseif $content.tripleImage}
+    <div class='topic-content-gallery 
+        topic-content-gallery-triple clearfix'>
+      {foreach $image in $content.tripleImage}
+        <img src='img/{$topicId}/{$topicId}-{$image}' 
+            alt='{$topicId}-{$image}'  id='{$topicId}-{$image}'>
+      {/foreach}
+    </div>
+  {/if}
+{/template}
+
+/**
+ * Generates a single piece of content for a topic
+ * @param footer the contents of the footer.
+ */
+{template .footer}
+  {if $footer.moreLink}
+    <div class='topic-footer-more-link'>
+      <a href='#' class='clickable'>More...</a>
+    </div>
+  {/if}
+  {if $footer.date}
+    <div class='topic-footer-date'>
+      {$footer.date}
+    </div>
+  {/if}
+{/template}
+
+/**
+ * Generates the full topic page of a specific topic
+ * @param topicId a unique Id for each topic, to be used in naming and style override
+ * @param title the title of the topic
+ * @param contents the contents of this topic
+ */
+{template .loadTopicPage}
+  <div class='topic-page'>
+    {if $title == '_imageOverride'}
+      <img class='topic-page-title-image clickable' id='{$topicId}-title' 
+          src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+    {else}
+      <div class='topic-page-title clickable'>
+        {$title}
+      </div>
+    {/if}
+    {foreach $content in $contents}
+      <div class='topic-page-content-container' id='{$content.topicId}'>
+        {call .topicPageContent}
+          {param topicId: $topicId /}
+          {param content: $content /}
+        {/call}
+      </div>
+    {/foreach}
+  </div>
+{/template}
+
+/**
+ * Generates a single piece of content for a topic
+ * @param topicId a unique Id for each topic, to be used in naming and style override
+ * @param content the piece of content to render on the page
+ */
+{template .topicPageContent}
+  {if $content.text}
+    <div class='topic-page-content-text'>
+      {$content.text}
+    </div>
+  {elseif $content.image}
+    <div class='topic-page-content-image'>
+      <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
+    </div>
+  {elseif $content.tripleImage}
+    <div class='topic-page-content-gallery 
+        topic-page-content-gallery-triple clearfix'>
+      {foreach $image in $content.tripleImage}
+        <img src='img/{$topicId}/{$topicId}-{$image}' 
+            alt='{$topicId}-{$image}'  id='{$topicId}-{$image}'>
+      {/foreach}
+    </div>
+  {/if} 
+{/template}

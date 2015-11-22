@@ -1,4 +1,4 @@
-{namespace example.simple}
+{namespace adamforbes.main}
 
 /**
  * Create the navBar
@@ -78,10 +78,8 @@
         {$content.text}
       </div>
     {elseif $content.image}
-      <div class='topic-content-image up-down'>
-        <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'
-            class='slide default'>
-        <div class='slide onhover'>test</div>
+      <div class='topic-content-image'>
+        <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
       </div>
     {elseif $content.tripleImage}
       <div class='topic-content-gallery-sampling 
