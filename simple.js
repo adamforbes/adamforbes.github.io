@@ -54,14 +54,14 @@ example.simple.content = function(opt_data, opt_ignored) {
   if (opt_data.content.text) {
     output += '<div class=\'topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
   } else if (opt_data.content.image) {
-    output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'>';
+    output += '<div class=\'topic-content-image up-down\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\' class=\'slide default\'><div class=\'slide onhover\'>test</div></div>';
   } else if (opt_data.content.tripleImage) {
-    output += '<div class=\'topic-content-gallery-sampling topic-content-gallery-sampling-triple clearfix\'>';
-    var imageList54 = opt_data.content.tripleImage;
-    var imageListLen54 = imageList54.length;
-    for (var imageIndex54 = 0; imageIndex54 < imageListLen54; imageIndex54++) {
-      var imageData54 = imageList54[imageIndex54];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '.jpg\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\' class= \'clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData54) + '\'>';
+    output += '<div class=\'topic-content-gallery-sampling topic-content-gallery-sampling-triple contentlearfix\'>';
+    var imageList58 = opt_data.content.tripleImage;
+    var imageListLen58 = imageList58.length;
+    for (var imageIndex58 = 0; imageIndex58 < imageListLen58; imageIndex58++) {
+      var imageData58 = imageList58[imageIndex58];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData58) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData58) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData58) + '\'>';
     }
     output += '</div>';
   }

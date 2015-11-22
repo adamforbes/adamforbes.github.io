@@ -147,6 +147,10 @@ textarea {
   width: 100%;
 }
 
+.topic-content-image img {
+  width: 100%;
+}
+
 .topic-content-gallery-sampling {
   margin-top: 40px;
 }
@@ -208,6 +212,24 @@ textarea {
 .clickable:hover {
   opacity: .4;
 }
+
+.up-down {
+    overflow:hidden;
+    height:100%;
+}
+
+.slide {
+}
+
+.default {
+    background-color:pink;
+}
+
+.onhover {
+    background-color:blue;
+    
+}
+
 
 
 

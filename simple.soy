@@ -78,14 +78,17 @@
         {$content.text}
       </div>
     {elseif $content.image}
-      <img src='img/{$content.image}' alt='{$content.image}'>
+      <div class='topic-content-image up-down'>
+        <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'
+            class='slide default'>
+        <div class='slide onhover'>test</div>
+      </div>
     {elseif $content.tripleImage}
       <div class='topic-content-gallery-sampling 
-          topic-content-gallery-sampling-triple clearfix'>
+          topic-content-gallery-sampling-triple contentlearfix'>
         {foreach $image in $content.tripleImage}
-          <img src='img/{$topicId}/{$topicId}-{$image}.jpg' 
-              alt='{$topicId}-{$image}' class= 'clickable' 
-              id='{$topicId}-{$image}'>
+          <img src='img/{$topicId}/{$topicId}-{$image}' 
+              alt='{$topicId}-{$image}'  id='{$topicId}-{$image}'>
         {/foreach}
       </div>
     {/if}
