@@ -23,15 +23,16 @@ var resumeContent = {topics: [
       }
     ]};
 
-var topicPages = [
-    {topicId: 'the-argus-mag', 
+//NOT a list of topicPages, but rather, a MAP
+var topicPages = {theArgusMag: {
       title: '_imageOverride',
       contents: [{text: 'Between 2011 and 2013 I acted as the Artistic Director of the Argus Magazine. In this role, I made a bunch of cool illustrations, sourced art, and did the layout of the whole magazine! It was a ton of fun. Wahoooo test test test'}, 
         {image: 'cover-spring-2014.jpg'}]
-    }];
+    }};
 
 function loadDefault() {
   $('body').append(adamforbes.mainPage.navBar());
+  $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
 
   // Adding the click events
   $('.nav-title-name').click(function() {
@@ -45,23 +46,33 @@ function loadDefault() {
     $(this).animate({
           marginLeft: '10px'
     }, 100);
-  });
+  })
 
-  //THIS DOENS"T WORK. For some reason the selector i'm using doesn't work properly. I need to figurethis out.
-  for (var i = 0; i < topicPages.length; i++) {
-    alert('#' + topicPages[i].topicId + '-title');
-    $('#' + topicPages[i].topicId + '-title').click(function() {
-      alert(topicPages[i].topicId);
+//JUST GOT THIS WORKING
+//NEXT steps are to massage the soy file so that it can work with the new object i've created
+//That is the object topicPages which is a mapping between camel case pieces of content. Currently I don't
+//think this really works well with the implentation in soy. 
+
+  for (var i = 0; i < Object.keys(topicPages).length; i++) {
+  for (key in topicPages)
+    alert('#' + camelToHyphen(key) + '-title');
+    $('#' + camelToHyphen(key) + '-title').click(function() {
       $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[i]));
+      $('.main-page').append(adamforbes.mainPage.loadTopicPage(getTopicPage(this.attr('id'))));
     });
   }
-
-  loadDefaultMainPage();
 }
 
-function loadDefaultMainPage() {
-  $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
+function getTopicPage(topicId) {
+  return topicPages[hyphenToCamel(topicId)];
+}
+
+function hyphenToCamel(hyphenString) {
+  return hyphenString.replace(/-([a-z])/g, function (a) { return a[1].toUpperCase(); });
+}
+
+function camelToHyphen(camelString) {
+  return camelString.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
 function resetNavLinkPosition() {

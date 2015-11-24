@@ -159,14 +159,6 @@ textarea {
   float: left;
 }
 
-.topic-content-gallery-triple img {
-  width: calc(100% / 3 - 20px / 3); /* width = (total / numImages) - (total margin / numImages)*/
-}
-
-.topic-content-gallery-triple img:not(:first-child) {
-  margin-left: 10px;
-}
-
 .topic-footer {
   margin-top: 10px;
 }
@@ -197,14 +189,33 @@ textarea {
 
 }
 
+@media (max-width: 750px) {
+  .main-page {
+    left: 0;
+    width: calc(100% - 10px - 10px); /* width = total - .main-page.left - leftPadding - rightPadding */
+  } 
+
+  .topic-content-gallery-triple img {
+    width: calc(100% + 20px) /* width = max-width:n - total margin */
+  }
+}
+
 @media (min-width: 750px) {
-  /* min-width = maxWidth(the-argus-mag-logo) + .main-page.left + .main-page.padding */
-  #the-argus-mag-title {
+  /* min-width = maxWidth(the-argus-mag-title) + .main-page.left + .main-page.padding */
+  #the-argus-mag-title img{
     width: 500px;
   }
   
   .topic-content-text {
     width: 500px;
+  }
+
+  .topic-content-gallery-triple img {
+    width: calc(100% / 3 - 20px / 3); /* width = (total / numImages) - (total margin / numImages)*/
+  }
+
+  .topic-content-gallery-triple img:not(:first-child) {
+    margin-left: 10px;
   }
 
 }

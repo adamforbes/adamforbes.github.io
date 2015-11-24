@@ -57,8 +57,9 @@
  */
 {template .topic}
   {if $title == '_imageOverride'}
-    <img class='topic-title topic-title-image clickable' id='{$topicId}-title' 
-        src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+    <div class='topic-title topic-title-image clickable' id='{$topicId}-title'>
+      <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+    </div>
   {else}
     <div class='topic-title topic-title-text clickable' id='{$topicId}-title'>
       {$title}
