@@ -88,7 +88,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-page\'>' + ((opt_data.title == '_imageOverride') ? '<img class=\'topic-page-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' : '<div class=\'topic-page-title clickable\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  var output = '<div class=\'topic-page\'>' + ((opt_data.title == '_imageOverride') ? '<img class=\'topic-page-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' : '<div class=\'ts-h1 topic-page-title clickable\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
   var contentList109 = opt_data.contents;
   var contentListLen109 = contentList109.length;
   for (var contentIndex109 = 0; contentIndex109 < contentListLen109; contentIndex109++) {
@@ -106,7 +106,7 @@ if (goog.DEBUG) {
 adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
   var output = '';
   if (opt_data.content.text) {
-    output += '<div class=\'topic-page-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
+    output += '<div class=\'ts-body topic-page-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
   } else if (opt_data.content.image) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
