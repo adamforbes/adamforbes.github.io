@@ -61,7 +61,7 @@
       <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
     </div>
   {else}
-    <div class='topic-title topic-title-text clickable' id='{$topicId}-title'>
+    <div class='ts-h1 topic-title topic-title-text clickable' id='{$topicId}-title'>
       {$title}
     </div>
   {/if}
@@ -90,7 +90,7 @@
  */
 {template .content}
   {if $content.text}
-    <div class='topic-content-text'>
+    <div class='ts-body topic-content-text'>
       {$content.text}
     </div>
   {elseif $content.image}
@@ -137,7 +137,7 @@
       <img class='topic-page-title-image clickable' id='{$topicId}-title' 
           src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
     {else}
-      <div class='topic-page-title clickable'>
+      <div class='ts-h1 topic-page-title clickable'>
         {$title}
       </div>
     {/if}
@@ -159,7 +159,7 @@
  */
 {template .topicPageContent}
   {if $content.text}
-    <div class='topic-page-content-text'>
+    <div class='ts-body topic-page-content-text'>
       {$content.text}
     </div>
   {elseif $content.image}
