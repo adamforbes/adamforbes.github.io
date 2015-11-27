@@ -10,7 +10,7 @@ if (typeof adamforbes.mainPage == 'undefined') { adamforbes.mainPage = {}; }
 
 
 adamforbes.mainPage.navBar = function(opt_data, opt_ignored) {
-  return '<div class=\'nav-bar\'><div class=\'nav-title-name clickable\'>Adam<br>Forbes</div><div class=\'nav-links\'><div class=\'nav-link clickable\' id=\'nav-bar-projects-button\'>Projects</div><br><div class=\'nav-link clickable\'  id=\'nav-bar-resume-button\'>Resume</div></div></div>';
+  return '<div class=\'nav-bar\'><div class=\'nav-title-name clickable\'>Adam<br>Forbes</div><div class=\'nav-links\'><div class=\'nav-link clickable\' id=\'nav-bar-projects-button\'>Projects</div><br><div class=\'nav-link clickable\'  id=\'nav-bar-resume-button\'>Resume</div><br><div class=\'nav-link clickable\'  id=\'nav-bar-colophon-button\'>Colophon</div></div></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.navBar.soyTemplateName = 'adamforbes.mainPage.navBar';
@@ -88,12 +88,12 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-page\'>' + ((opt_data.title == '_imageOverride') ? '<img class=\'topic-page-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' : '<div class=\'ts-h1 topic-page-title clickable\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
-  var contentList109 = opt_data.contents;
-  var contentListLen109 = contentList109.length;
-  for (var contentIndex109 = 0; contentIndex109 < contentListLen109; contentIndex109++) {
-    var contentData109 = contentList109[contentIndex109];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData109.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData109}) + '</div>';
+  var output = '<div class=\'topic-page\'>' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-title topic-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'></div>' : '<div class=\'ts-h1 topic-title topic-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  var contentList111 = opt_data.contents;
+  var contentListLen111 = contentList111.length;
+  for (var contentIndex111 = 0; contentIndex111 < contentListLen111; contentIndex111++) {
+    var contentData111 = contentList111[contentIndex111];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData111.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData111}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -111,11 +111,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList137 = opt_data.content.tripleImage;
-    var imageListLen137 = imageList137.length;
-    for (var imageIndex137 = 0; imageIndex137 < imageListLen137; imageIndex137++) {
-      var imageData137 = imageList137[imageIndex137];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData137) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData137) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData137) + '\'>';
+    var imageList139 = opt_data.content.tripleImage;
+    var imageListLen139 = imageList139.length;
+    for (var imageIndex139 = 0; imageIndex139 < imageListLen139; imageIndex139++) {
+      var imageData139 = imageList139[imageIndex139];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData139) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData139) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData139) + '\'>';
     }
     output += '</div>';
   }

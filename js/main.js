@@ -13,11 +13,15 @@ var mainPageContent = {topics: [
         title: 'Zapdos!',
         contents: [{image: 'zapdos.png'}],
         footer: {moreLink: true, date: 'Created in 2013'}
-      }
+      },
+      {topicId: 'red-chamber',
+        title: 'The Dream of the Red Chamber by Cao XueQin',
+        contents: [{text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'}, 
+          {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}]}
     ]};
 
 var resumeContent = {topics: [
-      {topicId: 'resume', 
+      {topicId: 'info', 
         title: 'info',
         contents: [{text: 'this is my resume! Awesome'}]
       }
@@ -33,12 +37,12 @@ var topicPages = {theArgusMag: {
 
 function loadDefault() {
   $('body').append(adamforbes.mainPage.navBar());
-  loadMainPageDefaults();
+  loadMainPageDefaults(true);
 
   // Adding the click events
   $('.nav-title-name').click(function() {
     $('.main-page').empty();
-    loadMainPageDefaults();
+    loadMainPageDefaults(false);
     resetNavLinkPosition();
   });
   $('#nav-bar-resume-button').click(function() {
@@ -50,18 +54,19 @@ function loadDefault() {
   })
 }
 
-function loadMainPageDefaults() {
-  $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
+function loadMainPageDefaults(firstLoad) {
+  $('.main-page').empty();
+  if (firstLoad) {
+    $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
+  } else {
+    $('.main-page').append(adamforbes.mainPage.loadTopics(mainPageContent));
+  }
   for (key in topicPages) {
     $('#' + topicPages[key].topicId + '-title').click(function() {
       $('.main-page').empty();
       $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
     });
   }
-}
-
-function getTopicPage(topicId) {
-  return topicPages[hyphenToCamel(topicId)];
 }
 
 function hyphenToCamel(hyphenString) {

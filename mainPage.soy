@@ -14,6 +14,10 @@
       <div class='nav-link clickable'  id='nav-bar-resume-button'>
         Resume
       </div>
+      <br>
+      <div class='nav-link clickable'  id='nav-bar-colophon-button'>
+        Colophon
+      </div>
     </div>
   </div>
 {/template}
@@ -134,10 +138,11 @@
 {template .loadTopicPage}
   <div class='topic-page'>
     {if $title == '_imageOverride'}
-      <img class='topic-page-title-image clickable' id='{$topicId}-title' 
-          src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+      <div class='topic-title topic-title-image clickable' id='{$topicId}-title'>
+        <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+      </div>
     {else}
-      <div class='ts-h1 topic-page-title clickable'>
+      <div class='ts-h1 topic-title topic-title-text clickable' id='{$topicId}-title'>
         {$title}
       </div>
     {/if}
