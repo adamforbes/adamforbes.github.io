@@ -1,28 +1,26 @@
 var mainPageContent = {topics: [
       {topicId: 'about-me', 
-        title: 'about me',
+        header: {title: 'about me', chronology: 'april 12, 2014'},
         contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
       },
       {topicId: 'the-argus-mag', 
-        title: '_imageOverride',
+        header: {title: '_imageOverride', chronology: 'created in 2013'},
         contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
-          {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}],
-        footer: {moreLink: true, date: 'Created in 2013'}
+          {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}]
       },
       {topicId: 'zapdos', 
-        title: 'Zapdos!',
-        contents: [{image: 'zapdos.png'}],
-        footer: {moreLink: true, date: 'Created in 2013'}
+        header: {title: 'Zapdos!'},
+        contents: [{image: 'zapdos.png'}]
       },
       {topicId: 'red-chamber',
-        title: 'The Dream of the Red Chamber by Cao XueQin',
+        header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
         contents: [{text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'}, 
           {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}]}
     ]};
 
 var resumeContent = {topics: [
       {topicId: 'info', 
-        title: 'info',
+        header: {title: 'info'},
         contents: [{text: 'this is my resume! Awesome'}]
       }
     ]};
@@ -30,7 +28,7 @@ var resumeContent = {topics: [
 //NOT a list of topicPages, but rather, a MAP
 var topicPages = {theArgusMag: {
       topicId: 'the-argus-mag',
-      title: '_imageOverride',
+      header: '_imageOverride',
       contents: [{text: 'Between 2011 and 2013 I acted as the Artistic Director of the Argus Magazine. In this role, I made a bunch of cool illustrations, sourced art, and did the layout of the whole magazine! It was a ton of fun. Wahoooo test test test'}, 
         {image: 'cover-spring-2014.jpg'}]
     }};

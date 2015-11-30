@@ -1,5 +1,13 @@
 {namespace adamforbes.mainPage}
 
+ /*
+ * talked to david dapenda shortly regarding how to 
+ check for a key. If the value is a string or I don't
+ expect it to ever be null, you can do {if isNonNull(object.key)}
+ however, if you are looking for an object, then if object.key is 
+ the way to go.
+ */
+
 /**
  * Create the navBar
  */
@@ -21,14 +29,6 @@
     </div>
   </div>
 {/template}
-
- /*
- * talked to david dapenda shortly regarding how to 
- check for a key. If the value is a string or I don't
- expect it to ever be null, you can do {if isNonNull(object.key)}
- however, if you are looking for an object, then if object.key is 
- the way to go.
- */
 
 /**
  * Generates the main page with a list of topics
@@ -55,21 +55,16 @@
 /**
  * Generates a topic within the main page
  * @param topicId a unique Id for each topic, to be used in naming and style override
- * @param title the title of the topic
  * @param contents the contents of this topic
- * @param? footer optional footer to add to a topic
+ * @param header the header of the topic.
  */
 {template .topic}
-  {if $title == '_imageOverride'}
-    <div class='topic-title topic-title-image clickable' id='{$topicId}-title'>
-      <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
-    </div>
-  {else}
-    <div class='ts-h1 topic-title topic-title-text clickable' id='{$topicId}-title'>
-      {$title}
-    </div>
-  {/if}
-  //Generate the content of the topic
+  <div class='topic-header clearfix'>
+    {call .header}
+      {param topicId: $topicId /}
+      {param header: $header /}
+    {/call}
+  </div>
   {foreach $content in $contents}
     <div class='topic-content'>
       {call .content}
@@ -78,13 +73,53 @@
       {/call}
     </div>
   {/foreach}
-  {if $footer}
-    <div class='topic-footer clearfix'>
-      {call .footer}
-        {param footer: $footer /}
+{/template}
+
+/**
+ * Generates the header div of a topic
+ * @param topicId a unique Id for each topic, to be used in naming and style override
+ * @param header the header of the topic
+ */
+{template .header}
+  <div class='topic-header-title float-left'>
+    {call .title}
+      {param topicId: $topicId /}
+      {param title: $header.title /}
+    {/call}
+  </div>
+  {if $header.chronology}
+    <div class='ts-h2 topic-header-chronology float-right'>
+      {call .chronology}
+        {param chronology: $header.chronology /}
       {/call}
     </div>
   {/if}
+{/template}
+
+/**
+ * Generates the title for the topic. Varying depending on if we want to pass an image
+ * @param topicId a unique Id for each topic, to be used in naming and style override
+ * @param title the title of the topic
+ */
+{template .title}
+  {if $title == '_imageOverride'}
+    <div class='topic-header-title-image clickable' id='{$topicId}-title'>
+      <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+    </div>
+  {else}
+    <div class='ts-h1 topic-header-title-text clickable' id='{$topicId}-title'>
+      {$title}
+    </div>
+  {/if}
+{/template}
+
+/**
+ * Generates the chronology for the topic
+ * @param chronology the chronology of when the topic was posted or content created
+ */
+{template .chronology}
+  {$chronology}
+  //Probably want to expand this at some point later. Not sure, but can do if needed
 {/template}
 
 /**
@@ -105,7 +140,7 @@
     <div class='topic-content-gallery 
         topic-content-gallery-triple clearfix'>
       {foreach $image in $content.tripleImage}
-        <img src='img/{$topicId}/{$topicId}-{$image}' 
+        <img class='float-left' src='img/{$topicId}/{$topicId}-{$image}' 
             alt='{$topicId}-{$image}'  id='{$topicId}-{$image}'>
       {/foreach}
     </div>
@@ -113,39 +148,19 @@
 {/template}
 
 /**
- * Generates a single piece of content for a topic
- * @param footer the contents of the footer.
- */
-{template .footer}
-  {if $footer.moreLink}
-    <div class='topic-footer-more-link'>
-      <a href='#' class='clickable'>More...</a>
-    </div>
-  {/if}
-  {if $footer.date}
-    <div class='topic-footer-date'>
-      {$footer.date}
-    </div>
-  {/if}
-{/template}
-
-/**
  * Generates the full topic page of a specific topic
  * @param topicId a unique Id for each topic, to be used in naming and style override
- * @param title the title of the topic
+ * @param header the header of the topic
  * @param contents the contents of this topic
  */
 {template .loadTopicPage}
   <div class='topic-page'>
-    {if $title == '_imageOverride'}
-      <div class='topic-title topic-title-image clickable' id='{$topicId}-title'>
-        <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
-      </div>
-    {else}
-      <div class='ts-h1 topic-title topic-title-text clickable' id='{$topicId}-title'>
-        {$title}
-      </div>
-    {/if}
+    <div class='topic-header'>
+      {call .header}
+        {param topicId: $topicId /}
+        {param header: $header /}
+      {/call}
+    </div>
     {foreach $content in $contents}
       <div class='topic-page-content-container' id='{$content.topicId}'>
         {call .topicPageContent}

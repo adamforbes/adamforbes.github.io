@@ -41,18 +41,41 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
-  var output = '' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-title topic-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'></div>' : '<div class=\'ts-h1 topic-title topic-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
-  var contentList34 = opt_data.contents;
-  var contentListLen34 = contentList34.length;
-  for (var contentIndex34 = 0; contentIndex34 < contentListLen34; contentIndex34++) {
-    var contentData34 = contentList34[contentIndex34];
-    output += '<div class=\'topic-content\'>' + adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData34}) + '</div>';
+  var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
+  var contentList22 = opt_data.contents;
+  var contentListLen22 = contentList22.length;
+  for (var contentIndex22 = 0; contentIndex22 < contentListLen22; contentIndex22++) {
+    var contentData22 = contentList22[contentIndex22];
+    output += '<div class=\'topic-content\'>' + adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData22}) + '</div>';
   }
-  output += (opt_data.footer) ? '<div class=\'topic-footer clearfix\'>' + adamforbes.mainPage.footer(opt_data) + '</div>' : '';
   return output;
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.topic.soyTemplateName = 'adamforbes.mainPage.topic';
+}
+
+
+adamforbes.mainPage.header = function(opt_data, opt_ignored) {
+  return '<div class=\'topic-header-title float-left\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'ts-h2 topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.header.soyTemplateName = 'adamforbes.mainPage.header';
+}
+
+
+adamforbes.mainPage.title = function(opt_data, opt_ignored) {
+  return '' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-header-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'></div>' : '<div class=\'ts-h1 topic-header-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.title.soyTemplateName = 'adamforbes.mainPage.title';
+}
+
+
+adamforbes.mainPage.chronology = function(opt_data, opt_ignored) {
+  return '' + soy.$$escapeHtml(opt_data.chronology);
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.chronology.soyTemplateName = 'adamforbes.mainPage.chronology';
 }
 
 
@@ -64,11 +87,11 @@ adamforbes.mainPage.content = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-content-gallery topic-content-gallery-triple clearfix\'>';
-    var imageList65 = opt_data.content.tripleImage;
-    var imageListLen65 = imageList65.length;
-    for (var imageIndex65 = 0; imageIndex65 < imageListLen65; imageIndex65++) {
-      var imageData65 = imageList65[imageIndex65];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData65) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData65) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData65) + '\'>';
+    var imageList79 = opt_data.content.tripleImage;
+    var imageListLen79 = imageList79.length;
+    for (var imageIndex79 = 0; imageIndex79 < imageListLen79; imageIndex79++) {
+      var imageData79 = imageList79[imageIndex79];
+      output += '<img class=\'float-left\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData79) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData79) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData79) + '\'>';
     }
     output += '</div>';
   }
@@ -79,21 +102,13 @@ if (goog.DEBUG) {
 }
 
 
-adamforbes.mainPage.footer = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.footer.moreLink) ? '<div class=\'topic-footer-more-link\'><a href=\'#\' class=\'clickable\'>More...</a></div>' : '') + ((opt_data.footer.date) ? '<div class=\'topic-footer-date\'>' + soy.$$escapeHtml(opt_data.footer.date) + '</div>' : '');
-};
-if (goog.DEBUG) {
-  adamforbes.mainPage.footer.soyTemplateName = 'adamforbes.mainPage.footer';
-}
-
-
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-page\'>' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-title topic-title-image clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'></div>' : '<div class=\'ts-h1 topic-title topic-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
-  var contentList111 = opt_data.contents;
-  var contentListLen111 = contentList111.length;
-  for (var contentIndex111 = 0; contentIndex111 < contentListLen111; contentIndex111++) {
-    var contentData111 = contentList111[contentIndex111];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData111.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData111}) + '</div>';
+  var output = '<div class=\'topic-page\'><div class=\'topic-header\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
+  var contentList103 = opt_data.contents;
+  var contentListLen103 = contentList103.length;
+  for (var contentIndex103 = 0; contentIndex103 < contentListLen103; contentIndex103++) {
+    var contentData103 = contentList103[contentIndex103];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData103.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData103}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -111,11 +126,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList139 = opt_data.content.tripleImage;
-    var imageListLen139 = imageList139.length;
-    for (var imageIndex139 = 0; imageIndex139 < imageListLen139; imageIndex139++) {
-      var imageData139 = imageList139[imageIndex139];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData139) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData139) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData139) + '\'>';
+    var imageList131 = opt_data.content.tripleImage;
+    var imageListLen131 = imageList131.length;
+    for (var imageIndex131 = 0; imageIndex131 < imageListLen131; imageIndex131++) {
+      var imageData131 = imageList131[imageIndex131];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData131) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData131) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData131) + '\'>';
     }
     output += '</div>';
   }

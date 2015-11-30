@@ -101,17 +101,17 @@ textarea {
 
 .main-page {
   left: 230px;
-  padding: 30px 10px 10px 40px;
+  padding: 30px 40px 10px 40px;
   position: absolute;
   width: calc(100% - $nav-bar-width - $main-page-padding-left - $main-page-padding-right); }
 
 .topic-container:not(:first-child) {
   margin-top: 70px; }
 
-.topic-title-text {
+.topic-header-title-text {
   padding-bottom: 20px; }
 
-.topic-title-image {
+.topic-header-title-image {
   padding-bottom: 20px;
   width: 100%; }
 
@@ -125,15 +125,8 @@ textarea {
 .topic-content-gallery {
   margin-top: 40px; }
 
-.topic-content-gallery img {
-  float: left; }
-
 .topic-footer {
   margin-top: 10px; }
-
-.topic-footer-more-link {
-  color: pink;
-  float: left; }
 
 .topic-footer-more-link a {
   color: #777;
@@ -141,9 +134,6 @@ textarea {
 
 .topic-footer-more-link a:visited {
   text-decoration: none; }
-
-.topic-footer-date {
-  float: right; }
 
 @media (max-width: 600px) {
   .main-page {
@@ -170,7 +160,7 @@ textarea {
     width: 500px; }
 
   .topic-content-gallery-triple img {
-    width: calc(100% / 3 - 50px / 3);
+    width: calc(100% / 3 - 80px / 3);
     /* width = (total / numImages) - (total margin / numImages)*/ }
 
   .topic-content-gallery-triple img:not(:first-child) {
@@ -205,6 +195,11 @@ textarea {
 .ts-h1 {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 2.2em; }
+
+.ts-h2 {
+  color: #DDD;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1.6em; }
 
 /* ==========================================================================
    Helper classes
@@ -269,6 +264,12 @@ textarea {
 
 .clearfix:after {
   clear: both; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
