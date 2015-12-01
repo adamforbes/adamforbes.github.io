@@ -101,7 +101,7 @@ textarea {
 
 .main-page {
   left: 230px;
-  padding: 30px 40px 10px 40px;
+  margin: 30px 40px 10px 40px;
   position: absolute;
   width: calc(100% - $nav-bar-width - $main-page-padding-left - $main-page-padding-right); }
 
@@ -109,14 +109,17 @@ textarea {
   margin-top: 70px; }
 
 .topic-header-title-text {
-  padding-bottom: 20px; }
+  margin-bottom: 20px; }
 
 .topic-header-title-image {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   width: 100%; }
 
+.topic-header-chronology {
+  margin-bottom: 20px; }
+
 .topic-content-text {
-  padding-left: 20px;
+  margin-left: 20px;
   width: 100%; }
 
 .topic-content-image img {
@@ -125,31 +128,21 @@ textarea {
 .topic-content-gallery {
   margin-top: 40px; }
 
-.topic-footer {
-  margin-top: 10px; }
-
-.topic-footer-more-link a {
-  color: #777;
-  text-decoration: none; }
-
-.topic-footer-more-link a:visited {
-  text-decoration: none; }
-
 .topic-page-content-image img {
   max-width: 100%; }
 
 @media (max-width: 600px) {
   .main-page {
     left: 0;
-    padding: 30px 0px 0px 0px;
+    margin: 30px 0px 0px 0px;
     position: absolute;
     width: 100%; }
 
   /* THIS IS NOT THE BEST WAY TO DO THIS. I need to figure out a method of giving the text a padding but not images because 
      we want these to be flush when in mobile view */
   .main-page :not(img) {
-    padding-left: 10px;
-    padding-right: 10px; }
+    margin-left: 10px;
+    margin-right: 10px; }
 
   .topic-content-gallery-triple img {
     width: calc(100% + 20px); } }

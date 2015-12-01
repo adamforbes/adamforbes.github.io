@@ -123,12 +123,12 @@ $accent1: #eb1d5d;
   margin-top: 30px;
 }
 
-$main-page-padding-left: 40px;
-$main-page-padding-right: 40px;
+$main-page-margin-left: 40px;
+$main-page-margin-right: 40px;
 
 .main-page {
   left: $nav-bar-width;
-  padding: 30px $main-page-padding-right 10px $main-page-padding-left;
+  margin: 30px $main-page-margin-right 10px $main-page-margin-left;
   position: absolute;
   width: calc(100% - $nav-bar-width - $main-page-padding-left - $main-page-padding-right);
 } 
@@ -138,16 +138,21 @@ $main-page-padding-right: 40px;
 }
 
 .topic-header-title-text {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .topic-header-title-image {
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   width: 100%;
+} 
+
+.topic-header-chronology {
+  margin-bottom: 20px;
 }
 
 .topic-content-text {
-  padding-left: 20px;
+  margin-left: 20px;
+
   width: 100%;
 }
 
@@ -157,19 +162,6 @@ $main-page-padding-right: 40px;
 
 .topic-content-gallery {
   margin-top: 40px;
-}
-
-.topic-footer {
-  margin-top: 10px;
-}
-
-.topic-footer-more-link a {
-  color: #777;
-  text-decoration: none;
-}
-
-.topic-footer-more-link a:visited {
-  text-decoration: none;
 }
 
 .topic-page {
@@ -187,7 +179,7 @@ $main-page-padding-right: 40px;
 @media (max-width: 600px) {
   .main-page {
     left: 0;
-    padding: 30px 0px 0px 0px;
+    margin: 30px 0px 0px 0px;
     position: absolute;
     width: 100%;
   } 
@@ -195,8 +187,8 @@ $main-page-padding-right: 40px;
   /* THIS IS NOT THE BEST WAY TO DO THIS. I need to figure out a method of giving the text a padding but not images because 
      we want these to be flush when in mobile view */
   .main-page :not(img) {
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .topic-content-gallery-triple img {
