@@ -28,7 +28,7 @@ var resumeContent = {topics: [
 //NOT a list of topicPages, but rather, a MAP
 var topicPages = {theArgusMag: {
       topicId: 'the-argus-mag',
-      header: '_imageOverride',
+      header: {title: '_imageOverride'},
       contents: [{text: 'Between 2011 and 2013 I acted as the Artistic Director of the Argus Magazine. In this role, I made a bunch of cool illustrations, sourced art, and did the layout of the whole magazine! It was a ton of fun. Wahoooo test test test'}, 
         {image: 'cover-spring-2014.jpg'}]
     }};
@@ -39,30 +39,38 @@ function loadDefault() {
 
   // Adding the click events
   $('.nav-title-name').click(function() {
-    $('.main-page').empty();
     loadMainPageDefaults(false);
     resetNavLinkPosition();
   });
   $('#nav-bar-resume-button').click(function() {
-    $('.main-page').empty();
-    $('.main-page').append(adamforbes.mainPage.loadTopics(resumeContent));
+    animatedLoad(function() {
+      $('.main-page').empty();
+      $('.main-page').append(adamforbes.mainPage.loadTopics(resumeContent));
+    });
     $(this).animate({
-          marginLeft: '10px'
+      marginLeft: '10px'
     }, 100);
   })
 }
 
 function loadMainPageDefaults(firstLoad) {
-  $('.main-page').empty();
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
   } else {
-    $('.main-page').append(adamforbes.mainPage.loadTopics(mainPageContent));
+    animatedLoad(function() {
+      $('.main-page').empty();
+      $('.main-page').append(adamforbes.mainPage.loadTopics(mainPageContent));
+    });
   }
+
+  //INTRODUCED A BUG where the click events aren't working the second time
+  //around... not sure why. To troubleshoot tomorrow. 
   for (key in topicPages) {
     $('#' + topicPages[key].topicId + '-title').click(function() {
-      $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+      animatedLoad(function() {
+        $('.main-page').empty();
+        $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+      });
     });
   }
 }
@@ -79,6 +87,20 @@ function resetNavLinkPosition() {
   $('.nav-link').animate({
     marginLeft: '0px'
   }, 100);  
+}
+
+//Animation that will draw the passed in function midway
+//through the animation
+function animatedLoad(functionToRunWhileHidden) {
+  $('.animation-overlay').animate({
+    width: '100%'
+  }, 400, 'swing', function() {
+    functionToRunWhileHidden();
+    $('.animation-overlay').addClass('.float-right');
+    $('.animation-overlay').animate({
+      width:'0%'
+    }, 300, 'swing');
+  });
 }
 
 function set_body_height() { // set body height = window height

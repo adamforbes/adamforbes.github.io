@@ -135,6 +135,9 @@ textarea {
 .topic-footer-more-link a:visited {
   text-decoration: none; }
 
+.topic-page-content-image img {
+  max-width: 100%; }
+
 @media (max-width: 600px) {
   .main-page {
     left: 0;
@@ -177,6 +180,17 @@ textarea {
 .clickable:hover {
   cursor: pointer;
   opacity: .4; }
+
+.animation-overlay {
+  background-color: #eb1d5d;
+  height: 100%;
+  left: 230px;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 0%;
+  z-index: 10; }
 
 /* ==========================================================================
    Type Styles designed by Adam

@@ -35,6 +35,8 @@
  * @param topics a list of topics to generate
  */
 {template .mainPage}
+  <div class='animation-overlay'>
+  </div>
   <div class='main-page'>
     {call .loadTopics data="all" /}
   </div>
@@ -155,7 +157,7 @@
  */
 {template .loadTopicPage}
   <div class='topic-page'>
-    <div class='topic-header'>
+    <div class='topic-header clearfix'>
       {call .header}
         {param topicId: $topicId /}
         {param header: $header /}

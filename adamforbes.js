@@ -18,7 +18,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.mainPage = function(opt_data, opt_ignored) {
-  return '<div class=\'main-page\'>' + adamforbes.mainPage.loadTopics(opt_data) + '</div>';
+  return '<div class=\'animation-overlay\'></div><div class=\'main-page\'>' + adamforbes.mainPage.loadTopics(opt_data) + '</div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.mainPage.soyTemplateName = 'adamforbes.mainPage.mainPage';
@@ -103,7 +103,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-page\'><div class=\'topic-header\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
+  var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
   var contentList103 = opt_data.contents;
   var contentListLen103 = contentList103.length;
   for (var contentIndex103 = 0; contentIndex103 < contentListLen103; contentIndex103++) {

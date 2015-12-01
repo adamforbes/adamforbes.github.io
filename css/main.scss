@@ -127,7 +127,7 @@ $main-page-padding-left: 40px;
 $main-page-padding-right: 40px;
 
 .main-page {
-  left: 230px;
+  left: $nav-bar-width;
   padding: 30px $main-page-padding-right 10px $main-page-padding-left;
   position: absolute;
   width: calc(100% - $nav-bar-width - $main-page-padding-left - $main-page-padding-right);
@@ -178,6 +178,10 @@ $main-page-padding-right: 40px;
 
 .topic-page-content-text {
 
+}
+
+.topic-page-content-image img{
+  max-width: 100%;
 }
 
 @media (max-width: 600px) {
@@ -232,6 +236,19 @@ $main-page-padding-right: 40px;
 .clickable:hover {
   cursor: pointer;
   opacity: .4;
+}
+
+.animation-overlay {
+  background-color: $accent1;
+  height: 100%;
+  left: $nav-bar-width;
+  margin: 0;
+  padding: 0;
+  // pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 0%;
+  z-index: 10;
 }
 
 /* ==========================================================================
