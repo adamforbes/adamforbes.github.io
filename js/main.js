@@ -25,6 +25,21 @@ var resumeContent = {topics: [
       }
     ]};
 
+var colophonContent = {topics: [
+      {topicId: 'code', 
+        header: {title: 'code'},
+        contents: [{text: 'code used to build the site'}]
+      },
+      {topicId: 'font', 
+        header: {title: 'font'},
+        contents: [{text: 'Roboto babay'}]
+      },
+      {topicId: 'design', 
+        header: {title: 'design'},
+        contents: [{text: 'pretty cool eh?'}]
+      }
+    ]};
+
 //NOT a list of topicPages, but rather, a MAP
 var topicPages = {theArgusMag: {
       topicId: 'the-argus-mag',
@@ -43,6 +58,7 @@ function loadDefault() {
     resetNavLinkPosition();
   });
   $('#nav-bar-resume-button').click(function() {
+    resetNavLinkPosition();
     animatedLoad(function() {
       $('.main-page').empty();
       $('.main-page').append(adamforbes.mainPage.loadTopics(resumeContent));
@@ -50,7 +66,17 @@ function loadDefault() {
     $(this).animate({
       marginLeft: '10px'
     }, 100);
-  })
+  });
+  $('#nav-bar-colophon-button').click(function() {
+    resetNavLinkPosition();
+    animatedLoad(function() {
+      $('.main-page').empty();
+      $('.main-page').append(adamforbes.mainPage.loadTopics(colophonContent));
+    });
+    $(this).animate({
+      marginLeft: '10px'
+    }, 100);
+  });
 }
 
 function loadMainPageDefaults(firstLoad) {
