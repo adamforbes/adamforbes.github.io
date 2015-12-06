@@ -18,7 +18,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.mainPage = function(opt_data, opt_ignored) {
-  return '<div class=\'animation-overlay\'></div><div class=\'main-page\'>' + adamforbes.mainPage.loadTopics(opt_data) + '</div>';
+  return '<div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay ts-h2\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'main-page\'>' + adamforbes.mainPage.loadTopics(opt_data) + '</div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.mainPage.soyTemplateName = 'adamforbes.mainPage.mainPage';

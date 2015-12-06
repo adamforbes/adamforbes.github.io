@@ -23,6 +23,9 @@ Home Page
 //Trying to igure out a way of sorting out the pages of the website
 var currLocation = '';
 
+//My attempt to include a list of locations fo where one could be in my site...
+//not sure if this is a good idea. Ideally it would be procedurally generated from
+//the content, however, I am not sure atm how to do so.
 var locations = {
   mainPage: 0,
   projects: 1,
@@ -37,12 +40,13 @@ var mainPageContent = {topics: [
       },
       {topicId: 'the-argus-mag', 
         header: {title: '_imageOverride', chronology: 'created in 2013'},
-        contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
-          {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}]
+        contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}/*
+        , 
+          {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}*/]
       },
       {topicId: 'zapdos', 
         header: {title: 'Zapdos!'},
-        contents: [{image: 'zapdos.png'}]
+        contents: [/*{image: 'zapdos.png'}*/]
       },
       {topicId: 'red-chamber',
         header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
@@ -101,7 +105,7 @@ var colophonContent = {topics: [
       }
     ]};
 
-// NOT a list of topicPages, but rather, a MAP
+// NOT a list of topicPages, but rather, a map
 // Mapping because order doesn't matter and we will be accessing this by key, not
 // iterrating through it. 
 var topicPages = {theArgusMag: {
@@ -182,7 +186,7 @@ function getKeyFromTitleId(titleId) {
 function resetNavLinkPosition() {
   $('.nav-link').animate({
     marginLeft: '0px'
-  }, 100);  
+  }, 100);
 }
 
 //Animation that will draw the passed in function midway
@@ -207,4 +211,11 @@ function set_body_height() { // set body height = window height
 $(document).ready(function() {
   $(window).bind('resize', set_body_height);
   set_body_height();
+  // Troubleshooting-button code
+  $('#troubleshooting-button').click(function() {
+    console.log('sliding');
+    $('.nav-bar').toggleClass('.nav-bar-open');
+  });
 });
+
+

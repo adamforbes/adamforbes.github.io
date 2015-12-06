@@ -12,6 +12,13 @@
  * Create the navBar
  */
 {template .navBar}
+  /* Test button to attach troubleshooting click events 
+  <button class='float-right' 
+      id='troubleshooting-button'>
+    TEST
+  </button>*/
+  //Inspiration for the ideal nav-bar menu: 
+  //http://tympanus.net/codrops/2015/11/17/multi-level-menu/
   <div class='nav-bar'>
     <div class='nav-title-name clickable'>Adam<br>Forbes</div>
     <div class='nav-links'>
@@ -42,7 +49,11 @@
  * @param topics a list of topics to generate
  */
 {template .mainPage}
-  <div class='animation-overlay'>
+  <div class='animation-overlay'></div>
+  <div class='page-too-small-overlay ts-h2'>
+    <div class='page-too-small-overlay-content'>
+      ¯\_(ツ)_/¯
+    </div>
   </div>
   <div class='main-page'>
     {call .loadTopics data="all" /}

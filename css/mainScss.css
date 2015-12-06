@@ -78,6 +78,15 @@ textarea {
   height: 100%;
   position: fixed;
   width: 230px; }
+  @media (min-width: 0px) and (max-width: 480px) {
+    .nav-bar {
+      left: -230px; } }
+  @media (min-width: 480px) and (max-width: 840px) {
+    .nav-bar {
+      left: -230px; } }
+  @media (min-width: 840px) {
+    .nav-bar {
+      left: 0px; } }
 
 .nav-title-name {
   color: #FFFFFF;
@@ -100,30 +109,70 @@ textarea {
   margin-top: 30px; }
 
 .main-page {
-  left: 230px;
-  margin: 30px 40px 10px 40px;
-  position: absolute;
-  width: calc(100% - $nav-bar-width - $main-page-padding-left - $main-page-padding-right); }
+  position: absolute; }
+  @media (min-width: 0px) and (max-width: 480px) {
+    .main-page {
+      margin-top: 30px;
+      width: auto; } }
+  @media (min-width: 480px) and (max-width: 840px) {
+    .main-page {
+      left: 0;
+      margin: 30px 0px 0px 0px;
+      width: 100%; } }
+  @media (min-width: 840px) {
+    .main-page {
+      left: 230px;
+      margin: 30px 40px 10px 40px; } }
 
 .topic-container:not(:first-child) {
   margin-top: 70px; }
 
 .topic-header-title-text {
   margin-bottom: 20px; }
+  @media (min-width: 0px) and (max-width: 480px) {
+    .topic-header-title-text {
+      margin-left: 20px; } }
+  @media (min-width: 480px) and (max-width: 840px) {
+    .topic-header-title-text {
+      margin-left: 20px; } }
 
 .topic-header-title-image {
   margin-bottom: 20px;
   width: 100%; }
+  @media (min-width: 0px) and (max-width: 480px) {
+    .topic-header-title-image {
+      width: auto; } }
+  @media (min-width: 480px) and (max-width: 840px) {
+    .topic-header-title-image {
+      margin-left: 20px;
+      margin-right: 20px;
+      width: 480px; } }
+  @media (min-width: 840px) {
+    .topic-header-title-image {
+      width: 480px; } }
+  @media (min-width: 480px) and (max-width: 840px) {
+    .topic-header-title-image #the-argus-mag-title img {
+      width: 500px; } }
+  @media (min-width: 840px) {
+    .topic-header-title-image #the-argus-mag-title img {
+      width: 500px; } }
 
 .topic-header-chronology {
   margin-bottom: 20px; }
 
 .topic-content-text {
   margin-left: 20px;
-  width: 100%; }
-
-.topic-content-image img {
-  width: 100%; }
+  margin-right: 20px;
+  background-color: pink; }
+  @media (min-width: 0px) and (max-width: 480px) {
+    .topic-content-text {
+      width: auto; } }
+  @media (min-width: 480px) and (max-width: 840px) {
+    .topic-content-text {
+      width: 480px; } }
+  @media (min-width: 840px) {
+    .topic-content-text {
+      width: 480px; } }
 
 .topic-content-gallery {
   margin-top: 40px; }
@@ -131,30 +180,11 @@ textarea {
 .topic-page-content-image img {
   max-width: 100%; }
 
-@media (max-width: 600px) {
-  .main-page {
-    left: 0;
-    margin: 30px 0px 0px 0px;
-    position: absolute;
-    width: 100%; }
-
-  /* THIS IS NOT THE BEST WAY TO DO THIS. I need to figure out a method of giving the text a padding but not images because 
-     we want these to be flush when in mobile view */
-  .main-page :not(img) {
-    margin-left: 10px;
-    margin-right: 10px; }
-
+@media (min-width: 480px) and (max-width: 840px) {
   .topic-content-gallery-triple img {
     width: calc(100% + 20px); } }
-/* AKA when the screen is wider than 750px */
-@media (min-width: 750px) {
-  /* min-width = maxWidth(the-argus-mag-title) + .main-page.left + .main-page.padding */
-  #the-argus-mag-title img {
-    width: 500px; }
-
-  .topic-content-text {
-    width: 500px; }
-
+/* Min-width means it'll be applied to anything > than the value */
+@media (min-width: 840px) {
   .topic-content-gallery-triple img {
     width: calc(100% / 3 - 80px / 3);
     /* width = (total / numImages) - (total margin / numImages)*/ }
@@ -169,10 +199,9 @@ textarea {
   opacity: 1.0;
   display: inline-block;
   /* This will fit the size of this div to its contents, so the hit box is always the same as the contents */ }
-
-.clickable:hover {
-  cursor: pointer;
-  opacity: .4; }
+  .clickable:hover {
+    cursor: pointer;
+    opacity: .4; }
 
 .animation-overlay {
   background-color: #eb1d5d;
@@ -184,6 +213,35 @@ textarea {
   top: 0;
   width: 0%;
   z-index: 10; }
+
+.page-too-small-overlay {
+  font-family: 'Roboto';
+  text-align: center; }
+  @media (max-width: 250px) {
+    .page-too-small-overlay {
+      background-color: #eb1d5d;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 10; } }
+  @media (min-width: 250px) {
+    .page-too-small-overlay {
+      display: none !important; } }
+  .page-too-small-overlay .page-too-small-overlay-content {
+    margin: 90px auto;
+    width: 50%; }
+
+/* ==========================================================================
+   Unique Id styles
+   ========================================================================== */
+#the-argus-mag-title img {
+  width: 100%; }
+  @media (min-width: 840px) {
+    #the-argus-mag-title img {
+      width: 500px; } }
 
 /* ==========================================================================
    Type Styles designed by Adam
