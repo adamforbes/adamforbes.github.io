@@ -102,7 +102,8 @@ var colophonContent = {topics: [
     ]};
 
 // NOT a list of topicPages, but rather, a MAP
-// Mapping because order doesn't matter
+// Mapping because order doesn't matter and we will be accessing this by key, not
+// iterrating through it. 
 var topicPages = {theArgusMag: {
       topicId: 'the-argus-mag',
       header: {title: '_imageOverride'},
@@ -145,19 +146,8 @@ function loadDefault() {
 function loadMainPageDefaults(firstLoad) {
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
-    console.log('First Load!');
   } else {
-    console.log('!First Load, going to enter animation...');
-
-    //This works/?????
-    // $('.main-page').empty();
-    // $('.main-page').append(adamforbes.mainPage.loadTopics(mainPageContent));
-    // console.log('this happens');
-
-    //Animated load is broken :O why... it breaks the event handlers
-
     animatedLoad(function() {
-      console.log('function to run inside of animation is being run');
       $('.main-page').empty();
       $('.main-page').append(adamforbes.mainPage.loadTopics(mainPageContent));
     });
@@ -167,25 +157,12 @@ function loadMainPageDefaults(firstLoad) {
   //Event delegation on the .clickable objects
   $('.main-page').on('click', '.topic-header-title-image', function(e) {
     var elem = $(this);
-    console.log(elem.attr('id'));
+    animatedLoad(function() {
+      var key = getKeyFromTitleId(elem.attr('id'));
+      $('.main-page').empty();
+      $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+    });
   });
-
-  //INTRODUCED A BUG where the click events aren't working the second time
-  //around... not sure why. To troubleshoot tomorrow. 
-
-  //I think i know what's up. We should be using event delegation for these
-  // keeping this code because it's fancy. 
-  // for (key in topicPages) {
-  //   console.log(key);
-  //   $('#' + topicPages[key].topicId + '-title').click(function() {
-  //     console.log('no animation :(');
-  //     animatedLoad(function() {
-  //       console.log("clicked this thing");
-  //       $('.main-page').empty();
-  //       $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
-  //     });
-  //   });
-  // }
 }
 
 function hyphenToCamel(hyphenString) {
@@ -194,6 +171,12 @@ function hyphenToCamel(hyphenString) {
 
 function camelToHyphen(camelString) {
   return camelString.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
+
+function getKeyFromTitleId(titleId) {
+  console.log("in function, titleId: " + titleId);
+  console.log(titleId.length - "-title".length);
+  return hyphenToCamel(titleId.substring(0, titleId.length - "-title".length));
 }
 
 function resetNavLinkPosition() {
@@ -205,16 +188,15 @@ function resetNavLinkPosition() {
 //Animation that will draw the passed in function midway
 //through the animation
 function animatedLoad(functionToRunWhileHidden) {
-  console.log('Inside animatedlaod! Wahoo');
   $('.animation-overlay').animate({
     width: '100%'
   }, 400, 'swing', function() {
+    //it could be really cool to also show/hide a spinner here while we wait
+    //for the functionToRunWhileHidden AKA what content to load
     functionToRunWhileHidden();
-    console.log('whutttt inside animation');
-    $('.animation-overlay').addClass('.float-right');
     $('.animation-overlay').animate({
       width:'0%'
-    }, 300, 'swing', console.log('done with animation'));
+    }, 300, 'swing');
   });
 }
 
