@@ -155,26 +155,7 @@ function loadDefault() {
     }, 100);
   });
   $('.menu-button').click(function() {
-    var navBar = $('.nav-bar');
-    var layeringShadowOverlay = $('.layering-shadow-overlay');
-
-    // True when the nav bar is slide off
-    if (navBar.position().left == 0) {          //Close
-      var leftValue = '-' + navBar.width();
-      navBar.animate({
-        left: leftValue
-      }, 300, 'swing');
-      layeringShadowOverlay.animate({
-        opacity: '0'
-      }, 300, 'swing')
-    } else {                                    // Open
-      navBar.animate({
-        left: '0px'
-      }, 300, 'swing'); 
-      layeringShadowOverlay.animate({
-        opacity: '.7'
-      }, 300, 'swing')
-    }
+    toggleNavBar();
   });
 }
 
@@ -219,6 +200,35 @@ function resetNavLinkPosition() {
   $('.nav-link').animate({
     marginLeft: '0px'
   }, 100);
+}
+
+function toggleNavBar() {
+  // True when the nav bar is slide off
+  if ($('.nav-bar').position().left == 0) {
+    closeNavBar();
+  } else {
+    openNavBar();
+  }
+}
+
+function closeNavBar() {
+  var navBar = $('.nav-bar');
+  var leftValue = '-' + navBar.width();
+  navBar.animate({
+    left: leftValue
+  }, 300, 'swing');
+  $('.layering-shadow-overlay').animate({
+    opacity: '0'
+  }, 300, 'swing')
+}
+
+function openNavBar() {
+  $('.nav-bar').animate({
+    left: '0px'
+  }, 300, 'swing'); 
+  $('.layering-shadow-overlay').animate({
+    opacity: '.7'
+  }, 300, 'swing');
 }
 
 //Animation that will draw the passed in function midway

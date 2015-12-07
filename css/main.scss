@@ -289,6 +289,8 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
     display: none !important;
   }
   @media (min-width: $page-width-threshold) and (max-width: $break-max) {
+    left: $break-min-margin;
+    top: $break-min-margin/2;
     position: fixed;
     z-index: 11;
   }
@@ -300,14 +302,21 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 .animation-overlay {
   background-color: $accent1;
   height: 100%;
-  left: $nav-bar-width;
   margin: 0;
   padding: 0;
-  // pointer-events: none;
   position: fixed;
   top: 0;
   width: 0%;
-  z-index: 10;
+  z-index: 9;
+  @media (min-width: 0px) and (max-width: $page-width-threshold) {
+    display: none !important;
+  }
+  @media (min-width: $page-width-threshold) and (max-width: $break-max) {
+    left: 0;
+  }
+  @media (min-width: $break-max) {
+    left: $nav-bar-width;
+  }
 }
 
 .page-too-small-overlay {
@@ -345,7 +354,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9;
+  z-index: 8;
   pointer-events: none;
 }
 
