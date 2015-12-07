@@ -41,7 +41,9 @@ var mainPageContent = {topics: [
       {topicId: 'the-argus-mag', 
         header: {title: '_imageOverride', chronology: 'created in 2013'},
         contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}/*
-        , 
+        , I have taken out the images from the content here so 
+          we can troubleshoot an issue with page width. Basically, I'm
+          not sure why the mainPage class has a set width. 
           {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}*/]
       },
       {topicId: 'zapdos', 
@@ -116,8 +118,13 @@ var topicPages = {theArgusMag: {
     }};
 
 function loadDefault() {
-  $('body').append(adamforbes.mainPage.navBar());
+  var body = $('body');
+  var mainPage = $('.main-page');
+  body.append(adamforbes.mainPage.navBar());
+  body.append(adamforbes.mainPage.overlays());
   loadMainPageDefaults(true /* firstLoad */);
+
+  //WIP
   currLocation = 'mainPage';
 
   // Adding the click events
@@ -125,11 +132,13 @@ function loadDefault() {
     loadMainPageDefaults(false /* !firstLoad */);
     resetNavLinkPosition();
   });
+
+  //TODO(adamforbes): do this using event delegation
   $('#nav-bar-resume-button').click(function() {
     resetNavLinkPosition();
     animatedLoad(function() {
-      $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopics(resumeContent));
+      mainPage.empty();
+      mainPage.append(adamforbes.mainPage.loadTopics(resumeContent));
     });
     $(this).animate({
       marginLeft: '10px'
@@ -138,33 +147,56 @@ function loadDefault() {
   $('#nav-bar-colophon-button').click(function() {
     resetNavLinkPosition();
     animatedLoad(function() {
-      $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopics(colophonContent));
+      mainPage.empty();
+      mainPage.append(adamforbes.mainPage.loadTopics(colophonContent));
     });
     $(this).animate({
       marginLeft: '10px'
     }, 100);
   });
+  $('.menu-button').click(function() {
+    var navBar = $('.nav-bar');
+    var layeringShadowOverlay = $('.layering-shadow-overlay');
+
+    // True when the nav bar is slide off
+    if (navBar.position().left == 0) {          //Close
+      var leftValue = '-' + navBar.width();
+      navBar.animate({
+        left: leftValue
+      }, 300, 'swing');
+      layeringShadowOverlay.animate({
+        opacity: '0'
+      }, 300, 'swing')
+    } else {                                    // Open
+      navBar.animate({
+        left: '0px'
+      }, 300, 'swing'); 
+      layeringShadowOverlay.animate({
+        opacity: '.7'
+      }, 300, 'swing')
+    }
+  });
 }
 
 function loadMainPageDefaults(firstLoad) {
+  var mainPage = $('.main-page');
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
   } else {
     animatedLoad(function() {
-      $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopics(mainPageContent));
+      mainPage.empty();
+      mainPage.append(adamforbes.mainPage.loadTopics(mainPageContent));
     });
   }
 
   //This just doesn't work after I empty and then re-append the list.... no clue why
   //Event delegation on the .clickable objects
-  $('.main-page').on('click', '.topic-header-title-image', function(e) {
+  mainPage.on('click', '.topic-header-title-image', function(e) {
     var elem = $(this);
     animatedLoad(function() {
       var key = getKeyFromTitleId(elem.attr('id'));
-      $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+      mainPage.empty();
+      mainPage.append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
     });
   });
 }
@@ -211,11 +243,5 @@ function set_body_height() { // set body height = window height
 $(document).ready(function() {
   $(window).bind('resize', set_body_height);
   set_body_height();
-  // Troubleshooting-button code
-  $('#troubleshooting-button').click(function() {
-    console.log('sliding');
-    $('.nav-bar').toggleClass('.nav-bar-open');
-  });
 });
-
 

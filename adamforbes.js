@@ -17,8 +17,16 @@ if (goog.DEBUG) {
 }
 
 
+adamforbes.mainPage.overlays = function(opt_data, opt_ignored) {
+  return '<button class=\'menu-button float-right\'>TEST</button><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay ts-h2\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.overlays.soyTemplateName = 'adamforbes.mainPage.overlays';
+}
+
+
 adamforbes.mainPage.mainPage = function(opt_data, opt_ignored) {
-  return '<div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay ts-h2\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'main-page\'>' + adamforbes.mainPage.loadTopics(opt_data) + '</div>';
+  return '<div class=\'main-page\'>' + adamforbes.mainPage.loadTopics(opt_data) + '</div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.mainPage.soyTemplateName = 'adamforbes.mainPage.mainPage';
@@ -27,11 +35,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopics = function(opt_data, opt_ignored) {
   var output = '';
-  var topicList9 = opt_data.topics;
-  var topicListLen9 = topicList9.length;
-  for (var topicIndex9 = 0; topicIndex9 < topicListLen9; topicIndex9++) {
-    var topicData9 = topicList9[topicIndex9];
-    output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData9.topicId) + '\'>' + adamforbes.mainPage.topic(topicData9) + '</div>';
+  var topicList11 = opt_data.topics;
+  var topicListLen11 = topicList11.length;
+  for (var topicIndex11 = 0; topicIndex11 < topicListLen11; topicIndex11++) {
+    var topicData11 = topicList11[topicIndex11];
+    output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData11.topicId) + '\'>' + adamforbes.mainPage.topic(topicData11) + '</div>';
   }
   return output;
 };
@@ -42,11 +50,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList22 = opt_data.contents;
-  var contentListLen22 = contentList22.length;
-  for (var contentIndex22 = 0; contentIndex22 < contentListLen22; contentIndex22++) {
-    var contentData22 = contentList22[contentIndex22];
-    output += '<div class=\'topic-content\'>' + adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData22}) + '</div>';
+  var contentList24 = opt_data.contents;
+  var contentListLen24 = contentList24.length;
+  for (var contentIndex24 = 0; contentIndex24 < contentListLen24; contentIndex24++) {
+    var contentData24 = contentList24[contentIndex24];
+    output += '<div class=\'topic-content\'>' + adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData24}) + '</div>';
   }
   return output;
 };
@@ -87,11 +95,11 @@ adamforbes.mainPage.content = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-content-gallery topic-content-gallery-triple clearfix\'>';
-    var imageList79 = opt_data.content.tripleImage;
-    var imageListLen79 = imageList79.length;
-    for (var imageIndex79 = 0; imageIndex79 < imageListLen79; imageIndex79++) {
-      var imageData79 = imageList79[imageIndex79];
-      output += '<img class=\'float-left\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData79) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData79) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData79) + '\'>';
+    var imageList81 = opt_data.content.tripleImage;
+    var imageListLen81 = imageList81.length;
+    for (var imageIndex81 = 0; imageIndex81 < imageListLen81; imageIndex81++) {
+      var imageData81 = imageList81[imageIndex81];
+      output += '<img class=\'float-left\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData81) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData81) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData81) + '\'>';
     }
     output += '</div>';
   }
@@ -104,11 +112,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList103 = opt_data.contents;
-  var contentListLen103 = contentList103.length;
-  for (var contentIndex103 = 0; contentIndex103 < contentListLen103; contentIndex103++) {
-    var contentData103 = contentList103[contentIndex103];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData103.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData103}) + '</div>';
+  var contentList105 = opt_data.contents;
+  var contentListLen105 = contentList105.length;
+  for (var contentIndex105 = 0; contentIndex105 < contentListLen105; contentIndex105++) {
+    var contentData105 = contentList105[contentIndex105];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData105.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData105}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -126,11 +134,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList131 = opt_data.content.tripleImage;
-    var imageListLen131 = imageList131.length;
-    for (var imageIndex131 = 0; imageIndex131 < imageListLen131; imageIndex131++) {
-      var imageData131 = imageList131[imageIndex131];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData131) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData131) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData131) + '\'>';
+    var imageList133 = opt_data.content.tripleImage;
+    var imageListLen133 = imageList133.length;
+    for (var imageIndex133 = 0; imageIndex133 < imageListLen133; imageIndex133++) {
+      var imageData133 = imageList133[imageIndex133];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData133) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData133) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData133) + '\'>';
     }
     output += '</div>';
   }

@@ -12,11 +12,7 @@
  * Create the navBar
  */
 {template .navBar}
-  /* Test button to attach troubleshooting click events 
-  <button class='float-right' 
-      id='troubleshooting-button'>
-    TEST
-  </button>*/
+
   //Inspiration for the ideal nav-bar menu: 
   //http://tympanus.net/codrops/2015/11/17/multi-level-menu/
   <div class='nav-bar'>
@@ -45,16 +41,27 @@
 {/template}
 
 /**
- * Generates the main page with a list of topics
- * @param topics a list of topics to generate
+ * Create the overlays
  */
-{template .mainPage}
+{template .overlays}   
+  /* Test button to attach troubleshooting click events  */
+  <button class='menu-button float-right'>
+    MENU
+  </button>
   <div class='animation-overlay'></div>
   <div class='page-too-small-overlay ts-h2'>
     <div class='page-too-small-overlay-content'>
       ¯\_(ツ)_/¯
     </div>
   </div>
+  <div class='layering-shadow-overlay'></div>
+{/template}
+
+/**
+ * Generates the main page with a list of topics
+ * @param topics a list of topics to generate
+ */
+{template .mainPage}
   <div class='main-page'>
     {call .loadTopics data="all" /}
   </div>

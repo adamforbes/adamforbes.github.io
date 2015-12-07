@@ -77,16 +77,20 @@ textarea {
   background-color: #eb1d5d;
   height: 100%;
   position: fixed;
-  width: 230px; }
-  @media (min-width: 0px) and (max-width: 480px) {
+  width: 230px;
+  z-index: 10; }
+  @media (min-width: 0px) and (max-width: 520px) {
     .nav-bar {
       left: -230px; } }
-  @media (min-width: 480px) and (max-width: 840px) {
+  @media (min-width: 520px) and (max-width: 840px) {
     .nav-bar {
       left: -230px; } }
   @media (min-width: 840px) {
     .nav-bar {
       left: 0px; } }
+
+.nav-bar-open {
+  left: -230px; }
 
 .nav-title-name {
   color: #FFFFFF;
@@ -110,11 +114,11 @@ textarea {
 
 .main-page {
   position: absolute; }
-  @media (min-width: 0px) and (max-width: 480px) {
+  @media (min-width: 0px) and (max-width: 520px) {
     .main-page {
       margin-top: 30px;
       width: auto; } }
-  @media (min-width: 480px) and (max-width: 840px) {
+  @media (min-width: 520px) and (max-width: 840px) {
     .main-page {
       left: 0;
       margin: 30px 0px 0px 0px;
@@ -127,47 +131,47 @@ textarea {
 .topic-container:not(:first-child) {
   margin-top: 70px; }
 
-.topic-header-title-text {
+.topic-header {
   margin-bottom: 20px; }
-  @media (min-width: 0px) and (max-width: 480px) {
-    .topic-header-title-text {
-      margin-left: 20px; } }
-  @media (min-width: 480px) and (max-width: 840px) {
-    .topic-header-title-text {
-      margin-left: 20px; } }
-
-.topic-header-title-image {
-  margin-bottom: 20px;
-  width: 100%; }
-  @media (min-width: 0px) and (max-width: 480px) {
-    .topic-header-title-image {
-      width: auto; } }
-  @media (min-width: 480px) and (max-width: 840px) {
-    .topic-header-title-image {
+  @media (min-width: 0px) and (max-width: 520px) {
+    .topic-header {
+      width: auto;
       margin-left: 20px;
-      margin-right: 20px;
-      width: 480px; } }
-  @media (min-width: 840px) {
-    .topic-header-title-image {
-      width: 480px; } }
-  @media (min-width: 480px) and (max-width: 840px) {
-    .topic-header-title-image #the-argus-mag-title img {
-      width: 500px; } }
-  @media (min-width: 840px) {
-    .topic-header-title-image #the-argus-mag-title img {
-      width: 500px; } }
+      margin-right: 20px; } }
+  @media (min-width: 520px) and (max-width: 840px) {
+    .topic-header {
+      margin-left: 20px;
+      margin-right: 20px; } }
+
+.topic-header-title {
+  margin-bottom: 10px; }
+
+@media (min-width: 0px) and (max-width: 520px) {
+  .topic-header-title-image {
+    width: auto; } }
+@media (min-width: 520px) and (max-width: 840px) {
+  .topic-header-title-image {
+    width: 480px; } }
+@media (min-width: 840px) {
+  .topic-header-title-image {
+    width: 480px; } }
+@media (min-width: 520px) and (max-width: 840px) {
+  .topic-header-title-image #the-argus-mag-title img {
+    width: 500px; } }
+@media (min-width: 840px) {
+  .topic-header-title-image #the-argus-mag-title img {
+    width: 500px; } }
 
 .topic-header-chronology {
   margin-bottom: 20px; }
 
 .topic-content-text {
   margin-left: 20px;
-  margin-right: 20px;
-  background-color: pink; }
-  @media (min-width: 0px) and (max-width: 480px) {
+  margin-right: 20px; }
+  @media (min-width: 0px) and (max-width: 520px) {
     .topic-content-text {
       width: auto; } }
-  @media (min-width: 480px) and (max-width: 840px) {
+  @media (min-width: 520px) and (max-width: 840px) {
     .topic-content-text {
       width: 480px; } }
   @media (min-width: 840px) {
@@ -180,7 +184,7 @@ textarea {
 .topic-page-content-image img {
   max-width: 100%; }
 
-@media (min-width: 480px) and (max-width: 840px) {
+@media (min-width: 520px) and (max-width: 840px) {
   .topic-content-gallery-triple img {
     width: calc(100% + 20px); } }
 /* Min-width means it'll be applied to anything > than the value */
@@ -203,6 +207,20 @@ textarea {
     cursor: pointer;
     opacity: .4; }
 
+/* ==========================================================================
+   Overlays
+   ========================================================================== */
+@media (min-width: 0px) and (max-width: 230px) {
+  .menu-button {
+    display: none !important; } }
+@media (min-width: 230px) and (max-width: 840px) {
+  .menu-button {
+    position: fixed;
+    z-index: 11; } }
+@media (min-width: 840px) {
+  .menu-button {
+    display: none !important; } }
+
 .animation-overlay {
   background-color: #eb1d5d;
   height: 100%;
@@ -217,22 +235,34 @@ textarea {
 .page-too-small-overlay {
   font-family: 'Roboto';
   text-align: center; }
-  @media (max-width: 250px) {
+  @media (max-width: 230px) {
     .page-too-small-overlay {
       background-color: #eb1d5d;
       height: 100%;
       margin: 0;
       padding: 0;
-      width: 100%;
       position: fixed;
       top: 0;
+      width: 100%;
       z-index: 10; } }
-  @media (min-width: 250px) {
+  @media (min-width: 230px) {
     .page-too-small-overlay {
       display: none !important; } }
   .page-too-small-overlay .page-too-small-overlay-content {
     margin: 90px auto;
     width: 50%; }
+
+.layering-shadow-overlay {
+  background-color: #CE6887;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  pointer-events: none; }
 
 /* ==========================================================================
    Unique Id styles
@@ -259,7 +289,8 @@ textarea {
 
 .ts-h1 {
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 2.2em; }
+  font-size: 2.2em;
+  line-height: 1.4em; }
 
 .ts-h2 {
   color: #DDD;

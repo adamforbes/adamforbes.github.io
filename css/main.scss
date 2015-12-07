@@ -95,16 +95,18 @@ $main-condensed-font: 'Roboto Condensed';
 $accent1: #eb1d5d;
 $accent2: #18E7F1;
 $break-max: 840px; // Chosen arbitrarily from the design. Mainly from the width topic-content-text
-$break-min: 480px; // Chosen from the smallest of Chrome's present phone sizes
+$break-min: 520px; // Chosen from the smallest of Chrome's present phone sizes
 $break-min-margin: 20px;
+$page-width-threshold: 230px; // The threshold set for minimum styling width. 
 
 .nav-bar {
   background-color: $accent1;
   height: 100%;
   position: fixed;
   width: $nav-bar-width;
+  z-index: 10;
   @media (min-width: 0px) and (max-width: $break-min) {
-    left: -$nav-bar-width;;
+    left: -$nav-bar-width;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
     left: -$nav-bar-width;
@@ -115,7 +117,7 @@ $break-min-margin: 20px;
 }
 
 .nav-bar-open {
-
+  left: -$nav-bar-width;
 }
 
 .nav-title-name {
@@ -140,24 +142,23 @@ $break-min-margin: 20px;
   margin-top: 30px;
 }
 
-$main-page-margin-left: 40px;
-$main-page-margin-right: 40px;
-$main-page-margin-top: 30px;
-
 .main-page {
+  $margin-left: 40px;
+  $margin-right: 40px;
+  $margin-top: 30px;
   position: absolute;
   @media (min-width: 0px) and (max-width: $break-min) {
-    margin-top: $main-page-margin-top;
+    margin-top: $margin-top;
     width: auto;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
     left: 0;
-    margin: $main-page-margin-top 0px 0px 0px;
+    margin: $margin-top 0px 0px 0px;
     width: 100%;
   }
   @media (min-width: $break-max) {
     left: $nav-bar-width;
-    margin: $main-page-margin-top $main-page-margin-right 10px $main-page-margin-left;
+    margin: $margin-top $margin-right 10px $margin-left;
     // width: 100%;
   }
 } 
@@ -166,44 +167,36 @@ $main-page-margin-top: 30px;
   margin-top: 70px;
 }
 
-.topic-header-title-text {
+.topic-header {
   margin-bottom: 20px;
   @media (min-width: 0px) and (max-width: $break-min) {
+    width: auto;
     margin-left: $break-min-margin;
+    margin-right: $break-min-margin;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
     margin-left: $break-min-margin;
+    margin-right: $break-min-margin;
   }
   @media (min-width: $break-max) {
   }
 }
 
-// 844-285-5279 customer service of xpo
-// Etses is the trucking company between ??? to XPO
-// XPO's based in Elizabeth, NJ. This will then go to my apt.
-
-// Ready Date: Wed 12-09-2015
-// - This is when it's supposed to be in Elizabeth, NJ
-// Original Requested Date: Fri 12-04-2015
-// - This is when I supposedly placed the order
-// place holder
-// Scheduled Date: Thu 12-10-2015 (12-3pm)
-// - The date when it's supposed to be delivered 
+.topic-header-title {
+  margin-bottom: 10px;
+}
 
 .topic-header-title-image {
-  margin-bottom: 20px;
-  width: 100%;
+  $w-default: 480px;
 
   @media (min-width: 0px) and (max-width: $break-min) {
     width: auto;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
-    margin-left: $break-min-margin;
-    margin-right: $break-min-margin;
-    width: 480px;
+    width: $w-default;
   }
   @media (min-width: $break-max) {
-    width: 480px; //chosen based on what I think looks good
+    width: $w-default; //chosen based on what I think looks good
   }
 
   #the-argus-mag-title img {
@@ -224,7 +217,6 @@ $main-page-margin-top: 30px;
   $text-width: 480px; //chosen based on what I think looks good
   margin-left: $break-min-margin;
   margin-right: $break-min-margin;
-  background-color: pink;
 
   @media (min-width: 0px) and (max-width: $break-min) {
     width: auto;
@@ -258,13 +250,6 @@ $main-page-margin-top: 30px;
 }
 
 @media (min-width: $break-min) and (max-width: $break-max) {
-  // THIS IS NOT THE BEST WAY TO DO THIS. I need to figure out a method of giving the text a padding but not images because 
-  //    we want these to be flush when in mobile view
-  // .main-page :not(img) {
-  //   margin-left: 10px;
-  //   margin-right: 10px;
-  // }
-
   .topic-content-gallery-triple img {
     width: calc(100% + 20px) /* width = max-width:n - total margin */
   }
@@ -295,6 +280,23 @@ $main-page-margin-top: 30px;
   }
 }
 
+/* ==========================================================================
+   Overlays
+   ========================================================================== */
+
+.menu-button {
+  @media (min-width: 0px) and (max-width: $page-width-threshold) {
+    display: none !important;
+  }
+  @media (min-width: $page-width-threshold) and (max-width: $break-max) {
+    position: fixed;
+    z-index: 11;
+  }
+  @media (min-width: $break-max) {
+    display: none !important;
+  }
+}
+
 .animation-overlay {
   background-color: $accent1;
   height: 100%;
@@ -309,21 +311,20 @@ $main-page-margin-top: 30px;
 }
 
 .page-too-small-overlay {
-  $w-threshold: 250px; // The threshold set for minimum styling width. 
   font-family: 'Roboto';
   text-align: center;
 
-  @media (max-width: $w-threshold) {
+  @media (max-width: $page-width-threshold) {
     background-color: $accent1;
     height: 100%;
     margin: 0;
     padding: 0;
-    width: 100%;
     position: fixed;
     top: 0;
+    width: 100%;
     z-index: 10;
   }
-  @media (min-width: $w-threshold) {
+  @media (min-width: $page-width-threshold) {
     display: none !important;
   }
 
@@ -333,9 +334,25 @@ $main-page-margin-top: 30px;
   }
 }
 
+// Overlay to be applied when the navBar is open for small screens
+// This will create a sense of depth through shadow
+.layering-shadow-overlay {
+  background-color: #CE6887;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+  pointer-events: none;
+}
+
 /* ==========================================================================
    Unique Id styles
    ========================================================================== */
+
 #the-argus-mag-title img{
   width: 100%;
   @media (min-width: $break-max) {
@@ -362,6 +379,7 @@ $main-page-margin-top: 30px;
 .ts-h1 {
   font-family: $main-condensed-font, sans-serif;
   font-size: 2.2em;
+  line-height: 1.4em;
 }
 
 .ts-h2 {
