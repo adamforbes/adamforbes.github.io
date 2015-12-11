@@ -128,7 +128,7 @@ textarea {
   margin-top: 70px; }
 
 .topic-container:first-child {
-  padding-top: 10px; }
+  padding-top: 20px; }
 
 .topic-header {
   margin-bottom: 20px; }
@@ -175,20 +175,11 @@ textarea {
 .topic-content-gallery {
   margin-top: 40px; }
 
-.topic-page-content-image img {
-  max-width: 100%; }
+.topic-content-image {
+  width: 100%; }
+  .topic-content-image img {
+    max-width: 100%; }
 
-@media (min-width: 520px) and (max-width: 840px) {
-  .topic-content-gallery-triple img {
-    width: calc(100% + 20px); } }
-/* Min-width means it'll be applied to anything > than the value */
-@media (min-width: 840px) {
-  .topic-content-gallery-triple img {
-    width: calc(100% / 3 - 80px / 3);
-    /* width = (total / numImages) - (total margin / numImages)*/ }
-
-  .topic-content-gallery-triple img:not(:first-child) {
-    margin-left: 10px; } }
 .clickable {
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;

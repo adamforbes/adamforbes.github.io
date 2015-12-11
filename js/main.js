@@ -44,7 +44,16 @@ var mainPageContent = {topics: [
         , I have taken out the images from the content here so 
           we can troubleshoot an issue with page width. Basically, I'm
           not sure why the mainPage class has a set width. 
+
+          KILLING the tripleImage. This is stupid. I'm thinking that instead
+          we can use a 'floatingImage' or something, where in we can
+          define an image that will float to the right or tile and doesn't
+          need to be a full page. Otherwise we enforce the max vertical height
           {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}*/]
+      },
+      {topicId: 'zapdos', 
+        header: {title: 'Zapdos!'},
+        contents: [{image: 'zapdos.png'}]
       },
       {topicId: 'zapdos', 
         header: {title: 'Zapdos!'},

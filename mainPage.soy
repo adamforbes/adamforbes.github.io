@@ -163,14 +163,6 @@
     <div class='topic-content-image'>
       <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
     </div>
-  {elseif $content.tripleImage}
-    <div class='topic-content-gallery 
-        topic-content-gallery-triple clearfix'>
-      {foreach $image in $content.tripleImage}
-        <img class='float-left' src='img/{$topicId}/{$topicId}-{$image}' 
-            alt='{$topicId}-{$image}'  id='{$topicId}-{$image}'>
-      {/foreach}
-    </div>
   {/if}
 {/template}
 

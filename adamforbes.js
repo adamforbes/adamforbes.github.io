@@ -88,22 +88,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.content = function(opt_data, opt_ignored) {
-  var output = '';
-  if (opt_data.content.text) {
-    output += '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
-  } else if (opt_data.content.image) {
-    output += '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
-  } else if (opt_data.content.tripleImage) {
-    output += '<div class=\'topic-content-gallery topic-content-gallery-triple clearfix\'>';
-    var imageList81 = opt_data.content.tripleImage;
-    var imageListLen81 = imageList81.length;
-    for (var imageIndex81 = 0; imageIndex81 < imageListLen81; imageIndex81++) {
-      var imageData81 = imageList81[imageIndex81];
-      output += '<img class=\'float-left\' src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData81) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData81) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData81) + '\'>';
-    }
-    output += '</div>';
-  }
-  return output;
+  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.content.soyTemplateName = 'adamforbes.mainPage.content';
@@ -112,11 +97,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList105 = opt_data.contents;
-  var contentListLen105 = contentList105.length;
-  for (var contentIndex105 = 0; contentIndex105 < contentListLen105; contentIndex105++) {
-    var contentData105 = contentList105[contentIndex105];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData105.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData105}) + '</div>';
+  var contentList85 = opt_data.contents;
+  var contentListLen85 = contentList85.length;
+  for (var contentIndex85 = 0; contentIndex85 < contentListLen85; contentIndex85++) {
+    var contentData85 = contentList85[contentIndex85];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData85.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData85}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -134,11 +119,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList133 = opt_data.content.tripleImage;
-    var imageListLen133 = imageList133.length;
-    for (var imageIndex133 = 0; imageIndex133 < imageListLen133; imageIndex133++) {
-      var imageData133 = imageList133[imageIndex133];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData133) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData133) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData133) + '\'>';
+    var imageList113 = opt_data.content.tripleImage;
+    var imageListLen113 = imageList113.length;
+    for (var imageIndex113 = 0; imageIndex113 < imageListLen113; imageIndex113++) {
+      var imageData113 = imageList113[imageIndex113];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData113) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData113) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData113) + '\'>';
     }
     output += '</div>';
   }

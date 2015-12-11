@@ -164,7 +164,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .topic-container:first-child {
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .topic-header {
@@ -232,25 +232,23 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   margin-top: 40px;
 }
 
-.topic-page-content-image img{
-  max-width: 100%;
-}
-
-@media (min-width: $break-min) and (max-width: $break-max) {
-  .topic-content-gallery-triple img {
-    width: calc(100% + 20px) /* width = max-width:n - total margin */
+.topic-content-image {
+  width: 100%;
+  @media (min-width: 0px) and (max-width: $break-min) {
   }
-}
-
-/* Min-width means it'll be applied to anything > than the value */
-@media (min-width: $break-max) {
-
-  .topic-content-gallery-triple img {
-    width: calc(100% / 3 - 80px / 3); /* width = (total / numImages) - (total margin / numImages)*/
+  @media (min-width: $break-min) and (max-width: $break-max) {
+  }
+  @media (min-width: $break-max) {
   }
 
-  .topic-content-gallery-triple img:not(:first-child) {
-    margin-left: 10px;
+  img {
+    max-width: 100%;
+    @media (min-width: 0px) and (max-width: $break-min) {
+    }
+    @media (min-width: $break-min) and (max-width: $break-max) {
+    }
+    @media (min-width: $break-max) {
+    }
   }
 }
 
