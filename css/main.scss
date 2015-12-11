@@ -212,6 +212,10 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   margin-bottom: 20px;
 }
 
+.topic-content > div:not(:first-child) {
+  margin-top: 30px;
+}
+
 .topic-content-text {
   @media (min-width: 0px) and (max-width: $break-min) {
     margin-left: $break-min-margin;
@@ -234,6 +238,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 
 .topic-content-image {
   width: 100%;
+  border-style: solid; //REMOVE THIS LATER
   @media (min-width: 0px) and (max-width: $break-min) {
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
@@ -242,10 +247,13 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   }
 
   img {
+    display:block;
     max-width: 100%;
     @media (min-width: 0px) and (max-width: $break-min) {
+      margin:auto;
     }
     @media (min-width: $break-min) and (max-width: $break-max) {
+      margin:auto;
     }
     @media (min-width: $break-max) {
     }

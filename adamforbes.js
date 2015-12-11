@@ -49,13 +49,14 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
+  var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div><div class=\'topic-content\'>';
   var contentList24 = opt_data.contents;
   var contentListLen24 = contentList24.length;
   for (var contentIndex24 = 0; contentIndex24 < contentListLen24; contentIndex24++) {
     var contentData24 = contentList24[contentIndex24];
-    output += '<div class=\'topic-content\'>' + adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData24}) + '</div>';
+    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData24});
   }
+  output += '</div>';
   return output;
 };
 if (goog.DEBUG) {
@@ -97,11 +98,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList85 = opt_data.contents;
-  var contentListLen85 = contentList85.length;
-  for (var contentIndex85 = 0; contentIndex85 < contentListLen85; contentIndex85++) {
-    var contentData85 = contentList85[contentIndex85];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData85.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData85}) + '</div>';
+  var contentList84 = opt_data.contents;
+  var contentListLen84 = contentList84.length;
+  for (var contentIndex84 = 0; contentIndex84 < contentListLen84; contentIndex84++) {
+    var contentData84 = contentList84[contentIndex84];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData84.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData84}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -119,11 +120,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList113 = opt_data.content.tripleImage;
-    var imageListLen113 = imageList113.length;
-    for (var imageIndex113 = 0; imageIndex113 < imageListLen113; imageIndex113++) {
-      var imageData113 = imageList113[imageIndex113];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData113) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData113) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData113) + '\'>';
+    var imageList112 = opt_data.content.tripleImage;
+    var imageListLen112 = imageList112.length;
+    for (var imageIndex112 = 0; imageIndex112 < imageListLen112; imageIndex112++) {
+      var imageData112 = imageList112[imageIndex112];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData112) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData112) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData112) + '\'>';
     }
     output += '</div>';
   }

@@ -92,14 +92,14 @@
       {param header: $header /}
     {/call}
   </div>
-  {foreach $content in $contents}
-    <div class='topic-content'>
-      {call .content}
-        {param topicId: $topicId /}
-        {param content: $content /}
-      {/call}
-    </div>
-  {/foreach}
+  <div class='topic-content'>
+    {foreach $content in $contents}
+        {call .content}
+          {param topicId: $topicId /}
+          {param content: $content /}
+        {/call}
+    {/foreach}
+  </div>
 {/template}
 
 /**

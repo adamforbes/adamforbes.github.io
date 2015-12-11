@@ -40,7 +40,9 @@ var mainPageContent = {topics: [
       },
       {topicId: 'the-argus-mag', 
         header: {title: '_imageOverride', chronology: 'created in 2013'},
-        contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}/*
+        contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}/*
         , I have taken out the images from the content here so 
           we can troubleshoot an issue with page width. Basically, I'm
           not sure why the mainPage class has a set width. 
@@ -53,11 +55,7 @@ var mainPageContent = {topics: [
       },
       {topicId: 'zapdos', 
         header: {title: 'Zapdos!'},
-        contents: [{image: 'zapdos.png'}]
-      },
-      {topicId: 'zapdos', 
-        header: {title: 'Zapdos!'},
-        contents: [/*{image: 'zapdos.png'}*/]
+        contents: [{image: 'zapdos.png'}, {image: 'large-square.png'}, {image: 'med-square.png'}, {image: 'small-square.png'}, {image: 'tall-skinny.png'}, {image: 'short-fat.png'}, {image: 'short-fat-large.png'}, {image: 'tall-skinny-large.png'}]
       },
       {topicId: 'red-chamber',
         header: {title: 'The Dream of the Red Chamber by Cao XueQin'},

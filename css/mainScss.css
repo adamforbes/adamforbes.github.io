@@ -158,6 +158,9 @@ textarea {
 .topic-header-chronology {
   margin-bottom: 20px; }
 
+.topic-content > div:not(:first-child) {
+  margin-top: 30px; }
+
 @media (min-width: 0px) and (max-width: 520px) {
   .topic-content-text {
     margin-left: 20px;
@@ -176,9 +179,17 @@ textarea {
   margin-top: 40px; }
 
 .topic-content-image {
-  width: 100%; }
+  width: 100%;
+  border-style: solid; }
   .topic-content-image img {
+    display: block;
     max-width: 100%; }
+    @media (min-width: 0px) and (max-width: 520px) {
+      .topic-content-image img {
+        margin: auto; } }
+    @media (min-width: 520px) and (max-width: 840px) {
+      .topic-content-image img {
+        margin: auto; } }
 
 .clickable {
   -webkit-transition: opacity 200ms ease;
