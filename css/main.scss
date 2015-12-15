@@ -249,6 +249,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   img {
     display:block;
     max-width: 100%;
+    max-height: 100vh;
     @media (min-width: 0px) and (max-width: $break-min) {
       margin:auto;
     }
