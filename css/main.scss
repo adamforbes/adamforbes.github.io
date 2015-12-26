@@ -186,7 +186,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   margin-bottom: 10px;
 }
 
-.topic-header-title-image {
+.topic-header-title-image img {
   @media (min-width: 0px) and (max-width: $break-min) {
     width: auto;
   }
@@ -194,7 +194,8 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
     width: $main-column-width;
   }
   @media (min-width: $break-max) {
-    width: $main-column-width; //chosen based on what I think looks good
+    //Adding break-min-margin to account for the indentation of the content text
+    width: $main-column-width + $break-min-margin; 
   }
 
   // /* Custom stylings for unique elements */
@@ -355,12 +356,12 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
    Unique Id styles
    ========================================================================== */
 
-#the-argus-mag-title img{
-  width: 100%;
-  @media (min-width: $break-max) {
-    width: 500px;
-  }
-}
+// #the-argus-mag-title img{
+//   width: 100%;
+//   @media (min-width: $break-max) {
+//     width: 500px;
+//   }
+// }
 
 /* ==========================================================================
    Type Styles designed by Adam

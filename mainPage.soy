@@ -108,7 +108,7 @@
  * @param header the header of the topic
  */
 {template .header}
-  <div class='topic-header-title float-left'>
+  <div class='topic-header-title float-left clickable' id='{$topicId}-title'>
     {call .title}
       {param topicId: $topicId /}
       {param title: $header.title /}
@@ -130,8 +130,8 @@
  */
 {template .title}
   {if $title == '_imageOverride'}
-    <div class='topic-header-title-image clickable' id='{$topicId}-title'>
-      <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}'>
+    <div class='topic-header-title-image clickable'>
+      <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}-title-image'>
     </div>
   {else}
     <div class='ts-h1 topic-header-title-text clickable' id='{$topicId}-title'>

@@ -177,16 +177,57 @@ function loadMainPageDefaults(firstLoad) {
     });
   }
 
-  //This just doesn't work after I empty and then re-append the list.... no clue why
-  //Event delegation on the .clickable objects
-  mainPage.on('click', '.topic-header-title-image', function(e) {
-    var elem = $(this);
-    animatedLoad(function() {
-      var key = getKeyFromTitleId(elem.attr('id'));
-      mainPage.empty();
-      mainPage.append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+  console.log('.topic-header');
+  console.log($('.topic-header'));
+
+  //This is not working... again :(
+  // Event delegation on the .clickable objects
+  // $('.topic-header').on('click', '.topic-header-title', function(e) {
+  //   var elem = $(this);
+  //   console.log('yes?');  
+  //   animatedLoad(function() {
+  //     console.log($(this));
+  //     var key = getKeyFromTitleId($(this).attr('id'));
+  //     console.log(key);
+  //     console.log(topicPages[key]);
+  //     $('.main-page').empty();
+  //     $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+  //   });
+  // });
+  $(document).ready(function() {
+    $('.topic-header').on('click', '.topic-header-title', function(e) {
+      var elem = $(this);
+      console.log('inside click event delegation');
+      console.log(elem);
+      animatedLoad(function() {
+        var key = getKeyFromTitleId(elem.attr('id'));
+        console.log(topicPages[key]); 
+        $('.main-page').empty();
+        $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+      });
     });
   });
+
+  console.log('.topic-header');
+  console.log($('.topic-header'));
+  //This is not working... again :(
+  //Event delegation on the .clickable objects
+  // mainPage.on('click', '.topic-header-title', 
+  //     function(e) {
+  //   var elem = $(this);
+  //   console.log($(this));
+  //   console.log('yes?');
+  //   animatedLoad(function() {
+  //     console.log($(this));
+  //     var key = getKeyFromTitleId($(this).attr('id'));
+  //     console.log(key);
+  //     console.log(topicPages[key]);
+  //     $('.main-page').empty();
+  //     $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+  //   });
+  // });
+
+  //STILL NOT WORKING :(
 }
 
 function hyphenToCamel(hyphenString) {
@@ -252,13 +293,4 @@ function animatedLoad(functionToRunWhileHidden) {
     }, 300, 'swing');
   });
 }
-
-// function set_body_height() { // set body height = window height
-//     $('body').height($(window).height());
-// }
-
-// $(document).ready(function() {
-//   $(window).bind('resize', set_body_height);
-//   set_body_height();
-// });
 

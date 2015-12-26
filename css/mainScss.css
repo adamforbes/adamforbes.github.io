@@ -146,14 +146,14 @@ textarea {
   margin-bottom: 10px; }
 
 @media (min-width: 0px) and (max-width: 520px) {
-  .topic-header-title-image {
+  .topic-header-title-image img {
     width: auto; } }
 @media (min-width: 520px) and (max-width: 840px) {
-  .topic-header-title-image {
+  .topic-header-title-image img {
     width: 480px; } }
 @media (min-width: 840px) {
-  .topic-header-title-image {
-    width: 480px; } }
+  .topic-header-title-image img {
+    width: 500px; } }
 
 .topic-header-chronology {
   margin-bottom: 20px; }
@@ -272,12 +272,6 @@ textarea {
 /* ==========================================================================
    Unique Id styles
    ========================================================================== */
-#the-argus-mag-title img {
-  width: 100%; }
-  @media (min-width: 840px) {
-    #the-argus-mag-title img {
-      width: 500px; } }
-
 /* ==========================================================================
    Type Styles designed by Adam
    ========================================================================== */
