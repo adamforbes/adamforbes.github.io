@@ -10,10 +10,25 @@ if (typeof adamforbes.mainPage == 'undefined') { adamforbes.mainPage = {}; }
 
 
 adamforbes.mainPage.navBar = function(opt_data, opt_ignored) {
-  return '<div class=\'nav-bar\'><div class=\'nav-title-name clickable\'>Adam<br>Forbes</div><div class=\'nav-links\'><div class=\'nav-link clickable\'  id=\'nav-bar-resume-button\'>Resume</div><br><div class=\'nav-link clickable\' id=\'nav-bar-projects-button\'>Projects</div><br><div class=\'nav-link clickable\'  id=\'nav-bar-colophon-button\'>Colophon</div></div></div>';
+  return '<div class=\'nav-bar\'><div class=\'nav-title-name clickable\'>Adam<br>Forbes</div><div class=\'nav-links\'>' + adamforbes.mainPage.loadNavLinks(opt_data) + '</div></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.navBar.soyTemplateName = 'adamforbes.mainPage.navBar';
+}
+
+
+adamforbes.mainPage.loadNavLinks = function(opt_data, opt_ignored) {
+  var output = '';
+  var linkList7 = opt_data.links;
+  var linkListLen7 = linkList7.length;
+  for (var linkIndex7 = 0; linkIndex7 < linkListLen7; linkIndex7++) {
+    var linkData7 = linkList7[linkIndex7];
+    output += '<div class=\'nav-link clickable\' id=\'nav-bar-' + soy.$$escapeHtml(linkData7.navId) + '-button\'>' + soy.$$escapeHtml(linkData7.displayName) + '</div>';
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.loadNavLinks.soyTemplateName = 'adamforbes.mainPage.loadNavLinks';
 }
 
 
@@ -35,11 +50,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopics = function(opt_data, opt_ignored) {
   var output = '';
-  var topicList11 = opt_data.topics;
-  var topicListLen11 = topicList11.length;
-  for (var topicIndex11 = 0; topicIndex11 < topicListLen11; topicIndex11++) {
-    var topicData11 = topicList11[topicIndex11];
-    output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData11.topicId) + '\'>' + adamforbes.mainPage.topic(topicData11) + '</div>';
+  var topicList21 = opt_data.topics;
+  var topicListLen21 = topicList21.length;
+  for (var topicIndex21 = 0; topicIndex21 < topicListLen21; topicIndex21++) {
+    var topicData21 = topicList21[topicIndex21];
+    output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData21.topicId) + '\'>' + adamforbes.mainPage.topic(topicData21) + '</div>';
   }
   return output;
 };
@@ -50,11 +65,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div><div class=\'topic-content\'>';
-  var contentList24 = opt_data.contents;
-  var contentListLen24 = contentList24.length;
-  for (var contentIndex24 = 0; contentIndex24 < contentListLen24; contentIndex24++) {
-    var contentData24 = contentList24[contentIndex24];
-    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData24});
+  var contentList34 = opt_data.contents;
+  var contentListLen34 = contentList34.length;
+  for (var contentIndex34 = 0; contentIndex34 < contentListLen34; contentIndex34++) {
+    var contentData34 = contentList34[contentIndex34];
+    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData34});
   }
   output += '</div>';
   return output;
@@ -98,11 +113,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList84 = opt_data.contents;
-  var contentListLen84 = contentList84.length;
-  for (var contentIndex84 = 0; contentIndex84 < contentListLen84; contentIndex84++) {
-    var contentData84 = contentList84[contentIndex84];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData84.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData84}) + '</div>';
+  var contentList94 = opt_data.contents;
+  var contentListLen94 = contentList94.length;
+  for (var contentIndex94 = 0; contentIndex94 < contentListLen94; contentIndex94++) {
+    var contentData94 = contentList94[contentIndex94];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData94.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData94}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -120,11 +135,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList112 = opt_data.content.tripleImage;
-    var imageListLen112 = imageList112.length;
-    for (var imageIndex112 = 0; imageIndex112 < imageListLen112; imageIndex112++) {
-      var imageData112 = imageList112[imageIndex112];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData112) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData112) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData112) + '\'>';
+    var imageList122 = opt_data.content.tripleImage;
+    var imageListLen122 = imageList122.length;
+    for (var imageIndex122 = 0; imageIndex122 < imageListLen122; imageIndex122++) {
+      var imageData122 = imageList122[imageIndex122];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData122) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData122) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData122) + '\'>';
     }
     output += '</div>';
   }

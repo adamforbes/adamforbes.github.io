@@ -85,6 +85,14 @@ var mainPageContent = {topics: [
 //               {resume: },
 //               {colophon: }]
 
+var navBarContents = {links: [
+    {navId: 'resume', displayName: 'Resume'}, 
+    {navId: 'graphic-design', displayName: 'Graphic Design'},
+    {navId: 'web-design', displayName: 'Web Design'},
+    {navId: 'photography', displayName: 'Photography'},
+    {navId: 'misc', displayName: 'Misc.'},
+    {navId: 'colophon', displayName: 'Colophon'}]};
+
 var projectsContent = {topics: [
       {topicId: 'unsure', 
         header: {title: 'what'},
@@ -125,10 +133,11 @@ var topicPages = {theArgusMag: {
     }};
 
 function loadDefault() {
-  var body = $('body');
-  var mainPage = $('.main-page');
-  body.append(adamforbes.mainPage.navBar());
-  body.append(adamforbes.mainPage.overlays());
+  var $body = $('body');
+  var $mainPage = $('.main-page');
+
+  $body.append(adamforbes.mainPage.overlays());
+  loadNavBar();
   loadMainPageDefaults(true /* firstLoad */);
 
   //WIP
@@ -144,8 +153,8 @@ function loadDefault() {
   $('#nav-bar-resume-button').click(function() {
     resetNavLinkPosition();
     animatedLoad(function() {
-      mainPage.empty();
-      mainPage.append(adamforbes.mainPage.loadTopics(resumeContent));
+      $mainPage.empty();
+      $mainPage.append(adamforbes.mainPage.loadTopics(resumeContent));
     });
     $(this).animate({
       marginLeft: '10px'
@@ -154,26 +163,32 @@ function loadDefault() {
   $('#nav-bar-colophon-button').click(function() {
     resetNavLinkPosition();
     animatedLoad(function() {
-      mainPage.empty();
-      mainPage.append(adamforbes.mainPage.loadTopics(colophonContent));
+      $mainPage.empty();
+      $mainPage.append(adamforbes.mainPage.loadTopics(colophonContent));
     });
     $(this).animate({
       marginLeft: '10px'
     }, 100);
   });
+
   $('.menu-button').click(function() {
     toggleNavBar();
   });
 }
 
+function loadNavBar() {
+  console.log(navBarContents);
+  $('body').append(adamforbes.mainPage.navBar(navBarContents));
+}
+
 function loadMainPageDefaults(firstLoad) {
-  var mainPage = $('.main-page');
+  var $mainPage = $('.main-page');
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(mainPageContent));
   } else {
     animatedLoad(function() {
-      mainPage.empty();
-      mainPage.append(adamforbes.mainPage.loadTopics(mainPageContent));
+      $mainPage.empty();
+      $mainPage.append(adamforbes.mainPage.loadTopics(mainPageContent));
     });
   }
 
@@ -260,9 +275,9 @@ function toggleNavBar() {
 }
 
 function closeNavBar() {
-  var navBar = $('.nav-bar');
+  var $navBar = $('.nav-bar');
   var leftValue = '-' + navBar.width();
-  navBar.animate({
+  $navBar.animate({
     left: leftValue
   }, 300, 'swing');
   $('.layering-shadow-overlay').animate({

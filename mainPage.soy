@@ -1,7 +1,7 @@
 {namespace adamforbes.mainPage}
 
  /*
- * talked to david dapenda shortly regarding how to 
+ * talked to . shortly regarding how to 
  check for a key. If the value is a string or I don't
  expect it to ever be null, you can do {if isNonNull(object.key)}
  however, if you are looking for an object, then if object.key is 
@@ -9,35 +9,30 @@
  */
 
 /**
- * Create the navBar
+ * Generates the navbar with a list of items and title
+ * @param links a list of navBar items to generate
  */
 {template .navBar}
-
   //Inspiration for the ideal nav-bar menu: 
   //http://tympanus.net/codrops/2015/11/17/multi-level-menu/
   <div class='nav-bar'>
     <div class='nav-title-name clickable'>Adam<br>Forbes</div>
     <div class='nav-links'>
-      <div class='nav-link clickable'  id='nav-bar-resume-button'>
-        Resume
-        /* I aim to make this more scalable. I also think it's best
-           to separate the whole thing by areas of focus. Such as 
-             - Graphic Design
-             - Web design
-             - Photography
-             - Misc.
-              */
-      </div>
-      <br>
-      <div class='nav-link clickable' id='nav-bar-projects-button'>
-        Projects
-      </div>
-      <br>
-      <div class='nav-link clickable'  id='nav-bar-colophon-button'>
-        Colophon
-      </div>
+      {call .loadNavLinks data="all" /}
     </div>
   </div>
+{/template}
+
+/**
+ * Loads the navbar with a list of links to include
+ * @param links a list of navBar items to generate
+ */
+{template .loadNavLinks}
+  {foreach $link in $links}
+    <div class='nav-link clickable' id='nav-bar-{$link.navId}-button'>
+      {$link.displayName}
+    </div>
+  {/foreach}
 {/template}
 
 /**

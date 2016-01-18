@@ -89,6 +89,9 @@ textarea {
     .nav-bar {
       left: 0px; } }
 
+.nav-link {
+  margin-bottom: 6px; }
+
 .nav-bar-open {
   left: -230px; }
 

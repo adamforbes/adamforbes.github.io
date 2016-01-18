@@ -118,6 +118,10 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   }
 }
 
+.nav-link {
+  margin-bottom: 6px;
+}
+
 .nav-bar-open {
   left: -$nav-bar-width;
 }
