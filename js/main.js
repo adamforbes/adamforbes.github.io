@@ -123,46 +123,24 @@ function loadNavBar() {
   $('body').append(adamforbes.mainPage.navBar(navBarContents));
 
   $('.nav-bar').on('click', '.nav-link', function(e) {
-    resetNavLinkPosition();
     var $elem = $(this);
     console.log('inside click event delegation');
     console.log($elem);
     animatedLoad(function() {
       var key = getKeyFromTitleId($elem.attr('id'));
       $('.main-page').empty();
+
       //emptying the main-page without adding content screws up the css.
       //need to add dummy content to not mess it up. This is a test anyways...
       $('.main-page').append("<div>To be continued</div>");
       // to be filled in with a page load
       // $('.main-page').append(adamforbes.mainPage.loadTopicPage());
     });
-    $elem.animate({
-      marginLeft: '10px'
-    }, 100);
+      resetNavLinkPosition();
+      $elem.animate({
+        marginLeft: '10px'
+      }, { duration: 100, queue: false });
   });
-
-  //TODO(adamforbes): do this using event delegation
-  // $('#nav-bar-resume-button').click(function() {
-  //   resetNavLinkPosition();
-  //   animatedLoad(function() {
-  //     $mainPage.empty();
-  //     $mainPage.append(adamforbes.mainPage.loadTopics(resumeContent));
-  //   });
-  //   $(this).animate({
-  //     marginLeft: '10px'
-  //   }, 100);
-  // });
-  // $('#nav-bar-colophon-button').click(function() {
-  //   resetNavLinkPosition();
-  //   animatedLoad(function() {
-  //     $mainPage.empty();
-  //     $mainPage.append(adamforbes.mainPage.loadTopics(colophonContent));
-  //   });
-  //   $(this).animate({
-  //     marginLeft: '10px'
-  //   }, 100);
-  // });
-
 }
 
 function loadMainPageDefaults(firstLoad) {
@@ -244,7 +222,7 @@ function getKeyFromTitleId(titleId) {
 function resetNavLinkPosition() {
   $('.nav-link').animate({
     marginLeft: '0px'
-  }, 100);
+  }, { duration: 100, queue: false });
 }
 
 function toggleNavBar() {
