@@ -20,19 +20,6 @@ Home Page
 - Colophon
 */
 
-//Trying to igure out a way of sorting out the pages of the website
-var currLocation = '';
-
-//My attempt to include a list of locations fo where one could be in my site...
-//not sure if this is a good idea. Ideally it would be procedurally generated from
-//the content, however, I am not sure atm how to do so.
-var locations = {
-  mainPage: 0,
-  projects: 1,
-  resume: 2,
-  colophon: 3
-}
-
 var mainPageContent = {topics: [
       {topicId: 'about-me', 
         header: {title: 'about me', chronology: 'april 12, 2014'},
@@ -62,28 +49,6 @@ var mainPageContent = {topics: [
         contents: [{text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'}, 
           {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}]}
     ]};
-
-// Let's sort this out after I figure out exactly 
-// How the pages work, as these will share the same sylings
-// and soy templates
-
-// var navBar = {navBarItems: [
-//       {topicId: 'projects', 
-//         title: 'Projects',
-//         contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
-//       },
-//       {item: 'Projects',
-//         contents: 
-//       },
-//       {item: 'Resume'
-//       },
-//       {item: 'Colophon'
-//       }
-//     ]};
-
-// [{projects: ''},
-//               {resume: },
-//               {colophon: }]
 
 var navBarContents = {links: [
     {navId: 'resume', displayName: 'Resume'}, 
@@ -136,49 +101,68 @@ function loadDefault() {
   var $body = $('body');
   var $mainPage = $('.main-page');
 
+  // Load Overlays
   $body.append(adamforbes.mainPage.overlays());
+
   loadNavBar();
   loadMainPageDefaults(true /* firstLoad */);
 
-  //WIP
-  currLocation = 'mainPage';
-
-  // Adding the click events
+  // Adding the click event to the nav-title-name. Essentially the home button
   $('.nav-title-name').click(function() {
     loadMainPageDefaults(false /* !firstLoad */);
     resetNavLinkPosition();
   });
 
-  //TODO(adamforbes): do this using event delegation
-  $('#nav-bar-resume-button').click(function() {
-    resetNavLinkPosition();
-    animatedLoad(function() {
-      $mainPage.empty();
-      $mainPage.append(adamforbes.mainPage.loadTopics(resumeContent));
-    });
-    $(this).animate({
-      marginLeft: '10px'
-    }, 100);
-  });
-  $('#nav-bar-colophon-button').click(function() {
-    resetNavLinkPosition();
-    animatedLoad(function() {
-      $mainPage.empty();
-      $mainPage.append(adamforbes.mainPage.loadTopics(colophonContent));
-    });
-    $(this).animate({
-      marginLeft: '10px'
-    }, 100);
-  });
-
+  // This toggles the nav bar on and off
   $('.menu-button').click(function() {
     toggleNavBar();
   });
 }
 
 function loadNavBar() {
-  console.log(navBarContents);
   $('body').append(adamforbes.mainPage.navBar(navBarContents));
+
+  $('.nav-bar').on('click', '.nav-link', function(e) {
+    resetNavLinkPosition();
+    var $elem = $(this);
+    console.log('inside click event delegation');
+    console.log($elem);
+    animatedLoad(function() {
+      var key = getKeyFromTitleId($elem.attr('id'));
+      $('.main-page').empty();
+      //emptying the main-page without adding content screws up the css.
+      //need to add dummy content to not mess it up. This is a test anyways...
+      $('.main-page').append("<div>To be continued</div>");
+      // to be filled in with a page load
+      // $('.main-page').append(adamforbes.mainPage.loadTopicPage());
+    });
+    $elem.animate({
+      marginLeft: '10px'
+    }, 100);
+  });
+
+  //TODO(adamforbes): do this using event delegation
+  // $('#nav-bar-resume-button').click(function() {
+  //   resetNavLinkPosition();
+  //   animatedLoad(function() {
+  //     $mainPage.empty();
+  //     $mainPage.append(adamforbes.mainPage.loadTopics(resumeContent));
+  //   });
+  //   $(this).animate({
+  //     marginLeft: '10px'
+  //   }, 100);
+  // });
+  // $('#nav-bar-colophon-button').click(function() {
+  //   resetNavLinkPosition();
+  //   animatedLoad(function() {
+  //     $mainPage.empty();
+  //     $mainPage.append(adamforbes.mainPage.loadTopics(colophonContent));
+  //   });
+  //   $(this).animate({
+  //     marginLeft: '10px'
+  //   }, 100);
+  // });
+
 }
 
 function loadMainPageDefaults(firstLoad) {
@@ -254,8 +238,6 @@ function camelToHyphen(camelString) {
 }
 
 function getKeyFromTitleId(titleId) {
-  console.log("in function, titleId: " + titleId);
-  console.log(titleId.length - "-title".length);
   return hyphenToCamel(titleId.substring(0, titleId.length - "-title".length));
 }
 
@@ -276,7 +258,7 @@ function toggleNavBar() {
 
 function closeNavBar() {
   var $navBar = $('.nav-bar');
-  var leftValue = '-' + navBar.width();
+  var leftValue = '-' + $navBar.width();
   $navBar.animate({
     left: leftValue
   }, 300, 'swing');

@@ -192,7 +192,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 
 .topic-header-title-image img {
   @media (min-width: 0px) and (max-width: $break-min) {
-    width: auto;
+    width: 100%;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
     width: $main-column-width;
@@ -201,16 +201,6 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
     //Adding break-min-margin to account for the indentation of the content text
     width: $main-column-width + $break-min-margin; 
   }
-
-  // /* Custom stylings for unique elements */
-  // #the-argus-mag-title img {
-  //   @media (min-width: $break-min) and (max-width: $break-max) {
-  //     width: 500px;
-  //   }
-  //   @media (min-width: $break-max) {
-  //     width: 500px;
-  //   }
-  // }
 }
 
 .topic-header-chronology {

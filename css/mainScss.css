@@ -150,7 +150,7 @@ textarea {
 
 @media (min-width: 0px) and (max-width: 520px) {
   .topic-header-title-image img {
-    width: auto; } }
+    width: 100%; } }
 @media (min-width: 520px) and (max-width: 840px) {
   .topic-header-title-image img {
     width: 480px; } }
