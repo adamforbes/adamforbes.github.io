@@ -21,33 +21,33 @@ Home Page
 */
 
 var mainPageContent = {topics: [
-      {topicId: 'about-me', 
-        header: {title: 'about me', chronology: 'april 12, 2014'},
-        contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
-      },
-      {topicId: 'the-argus-mag', 
-        header: {title: '_imageOverride', chronology: 'created in 2013'},
-        contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}/*
-        , I have taken out the images from the content here so 
-          we can troubleshoot an issue with page width. Basically, I'm
-          not sure why the mainPage class has a set width. 
+    {topicId: 'about-me', 
+      header: {title: 'about me', chronology: 'april 12, 2014'},
+      contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}]
+    },
+    {topicId: 'the-argus-mag', 
+      header: {title: '_imageOverride', chronology: 'created in 2013'},
+      contents: [{text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+        {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+        {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}/*
+      , I have taken out the images from the content here so 
+        we can troubleshoot an issue with page width. Basically, I'm
+        not sure why the mainPage class has a set width. 
 
-          KILLING the tripleImage. This is stupid. I'm thinking that instead
-          we can use a 'floatingImage' or something, where in we can
-          define an image that will float to the right or tile and doesn't
-          need to be a full page. Otherwise we enforce the max vertical height
-          {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}*/]
-      },
-      {topicId: 'zapdos', 
-        header: {title: 'Zapdos!'},
-        contents: [{image: 'zapdos.png'}, {caption: 'I love Zapdos in the Morning'}, {image: 'large-square.png'}, {image: 'med-square.png'}, {image: 'small-square.png'}, {image: 'tall-skinny.png'}, {image: 'short-fat.png'}, {image: 'short-fat-large.png'}, {image: 'tall-skinny-large.png'}]
-      },
-      {topicId: 'red-chamber',
-        header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
-        contents: [{text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'}, 
-          {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}]}
+        KILLING the tripleImage. This is stupid. I'm thinking that instead
+        we can use a 'floatingImage' or something, where in we can
+        define an image that will float to the right or tile and doesn't
+        need to be a full page. Otherwise we enforce the max vertical height
+        {tripleImage: ['cover-spring-2012.jpg', 'cover-spring-2013.jpg', 'cover-spring-2014.jpg']}*/]
+    },
+    {topicId: 'zapdos', 
+      header: {title: 'Zapdos!'},
+      contents: [{image: 'zapdos.png'}, {caption: 'I love Zapdos in the Morning'}, {image: 'large-square.png'}, {image: 'med-square.png'}, {image: 'small-square.png'}, {image: 'tall-skinny.png'}, {image: 'short-fat.png'}, {image: 'short-fat-large.png'}, {image: 'tall-skinny-large.png'}]
+    },
+    {topicId: 'red-chamber',
+      header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
+      contents: [{text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'}, 
+        {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}]}
     ]};
 
 var navBarContents = {links: [
@@ -59,33 +59,30 @@ var navBarContents = {links: [
     {navId: 'colophon', displayName: 'Colophon'}]};
 
 var projectsContent = {topics: [
-      {topicId: 'unsure', 
-        header: {title: 'what'},
-        contents: [{text: 'this IS for.'}]
-      }
-    ]};
+    {topicId: 'unsure', 
+      header: {title: 'what'},
+      contents: [{text: 'this IS for.'}]
+    }]};
 
 var resumeContent = {topics: [
-      {topicId: 'info', 
-        header: {title: 'info'},
-        contents: [{text: 'this is my resume! Awesome'}]
-      }
-    ]};
+    {topicId: 'info', 
+      header: {title: 'info'},
+      contents: [{text: 'this is my resume! Awesome'}]
+    }]};
 
 var colophonContent = {topics: [
-      {topicId: 'code', 
-        header: {title: 'code'},
-        contents: [{text: 'code used to build the site'}]
-      },
-      {topicId: 'font', 
-        header: {title: 'font'},
-        contents: [{text: 'Roboto babay'}]
-      },
-      {topicId: 'design', 
-        header: {title: 'design'},
-        contents: [{text: 'pretty cool eh?'}]
-      }
-    ]};
+    {topicId: 'code', 
+      header: {title: 'code'},
+      contents: [{text: 'code used to build the site'}]
+    },
+    {topicId: 'font', 
+      header: {title: 'font'},
+      contents: [{text: 'Roboto babay'}]
+    },
+    {topicId: 'design', 
+      header: {title: 'design'},
+      contents: [{text: 'pretty cool eh?'}]
+    }]};
 
 // NOT a list of topicPages, but rather, a map
 // Mapping because order doesn't matter and we will be accessing this by key, not
