@@ -104,7 +104,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.content = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : '');
+  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.content.soyTemplateName = 'adamforbes.mainPage.content';
@@ -113,11 +113,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList94 = opt_data.contents;
-  var contentListLen94 = contentList94.length;
-  for (var contentIndex94 = 0; contentIndex94 < contentListLen94; contentIndex94++) {
-    var contentData94 = contentList94[contentIndex94];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData94.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData94}) + '</div>';
+  var contentList98 = opt_data.contents;
+  var contentListLen98 = contentList98.length;
+  for (var contentIndex98 = 0; contentIndex98 < contentListLen98; contentIndex98++) {
+    var contentData98 = contentList98[contentIndex98];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData98.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData98}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -135,11 +135,11 @@ adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
     output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
   } else if (opt_data.content.tripleImage) {
     output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList122 = opt_data.content.tripleImage;
-    var imageListLen122 = imageList122.length;
-    for (var imageIndex122 = 0; imageIndex122 < imageListLen122; imageIndex122++) {
-      var imageData122 = imageList122[imageIndex122];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData122) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData122) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData122) + '\'>';
+    var imageList126 = opt_data.content.tripleImage;
+    var imageListLen126 = imageList126.length;
+    for (var imageIndex126 = 0; imageIndex126 < imageListLen126; imageIndex126++) {
+      var imageData126 = imageList126[imageIndex126];
+      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData126) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData126) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData126) + '\'>';
     }
     output += '</div>';
   }

@@ -158,6 +158,10 @@
     <div class='topic-content-image'>
       <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
     </div>
+  {elseif $content.caption}
+    <div class='topic-content-caption'>
+      {$content.caption}
+    </div>
   {/if}
 {/template}
 

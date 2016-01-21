@@ -42,7 +42,7 @@ var mainPageContent = {topics: [
       },
       {topicId: 'zapdos', 
         header: {title: 'Zapdos!'},
-        contents: [{image: 'zapdos.png'}, {image: 'large-square.png'}, {image: 'med-square.png'}, {image: 'small-square.png'}, {image: 'tall-skinny.png'}, {image: 'short-fat.png'}, {image: 'short-fat-large.png'}, {image: 'tall-skinny-large.png'}]
+        contents: [{image: 'zapdos.png'}, {caption: 'I love Zapdos in the Morning'}, {image: 'large-square.png'}, {image: 'med-square.png'}, {image: 'small-square.png'}, {image: 'tall-skinny.png'}, {image: 'short-fat.png'}, {image: 'short-fat-large.png'}, {image: 'tall-skinny-large.png'}]
       },
       {topicId: 'red-chamber',
         header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
@@ -90,12 +90,18 @@ var colophonContent = {topics: [
 // NOT a list of topicPages, but rather, a map
 // Mapping because order doesn't matter and we will be accessing this by key, not
 // iterrating through it. 
-var topicPages = {theArgusMag: {
-      topicId: 'the-argus-mag',
-      header: {title: '_imageOverride'},
-      contents: [{text: 'Between 2011 and 2013 I acted as the Artistic Director of the Argus Magazine. In this role, I made a bunch of cool illustrations, sourced art, and did the layout of the whole magazine! It was a ton of fun. Wahoooo test test test'}, 
-        {image: 'cover-spring-2014.jpg'}]
-    }};
+var topicPages = {
+    theArgusMag: 
+      {topicId: 'the-argus-mag',
+        header: {title: '_imageOverride'},
+        contents: [{text: 'Between 2011 and 2013 I acted as the Artistic Director of the Argus Magazine. In this role, I made a bunch of cool illustrations, sourced art, and did the layout of the whole magazine! It was a ton of fun. Wahoooo test test test'}, 
+          {image: 'cover-spring-2014.jpg'}]
+      }, 
+    resume: {topicId: 'resume',
+        header: {title: 'Resume'},
+        contents: [{text: 'This is me'}, 
+          {image: 'resume'}]
+      }};
 
 function loadDefault() {
   var $body = $('body');

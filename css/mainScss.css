@@ -195,6 +195,19 @@ textarea {
       .topic-content-image img {
         margin: auto; } }
 
+.topic-content-caption {
+  margin-top: 10px !important;
+  font-style: italic; }
+  @media (min-width: 0px) and (max-width: 520px) {
+    .topic-content-caption {
+      width: auto; } }
+  @media (min-width: 520px) and (max-width: 840px) {
+    .topic-content-caption {
+      margin: 0 auto; } }
+  @media (min-width: 840px) {
+    .topic-content-caption {
+      width: 480px; } }
+
 .clickable {
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;
