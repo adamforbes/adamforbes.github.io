@@ -204,6 +204,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .topic-header-chronology {
+  color: #DDD;
   margin-bottom: 20px;
 }
 
@@ -225,10 +226,6 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
     width: $main-column-width;
     margin-left: $break-min-margin;
   }
-}
-
-.topic-content-gallery {
-  margin-top: 40px;
 }
 
 .topic-content-image {
@@ -256,7 +253,6 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   }
 }
 
-// TO-DO: tidy up my stylings here. 
 .topic-content-caption {
   margin-top: 10px !important; 
   font-style: italic;
@@ -269,6 +265,9 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   @media (min-width: $break-max) {
     width: $main-column-width;
   }
+}
+
+.topic-content-subheading {
 }
 
 .clickable {
@@ -362,17 +361,6 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 /* ==========================================================================
-   Unique Id styles
-   ========================================================================== */
-
-// #the-argus-mag-title img{
-//   width: 100%;
-//   @media (min-width: $break-max) {
-//     width: 500px;
-//   }
-// }
-
-/* ==========================================================================
    Type Styles designed by Adam
    ========================================================================== */
 
@@ -390,12 +378,11 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 
 .ts-h1 {
   font-family: $main-condensed-font, sans-serif;
-  font-size: 2.2em;
-  line-height: 1.4em;
+  font-size: 4.2em;
+  line-height: 1.2em;
 }
 
 .ts-h2 {
-  color: #DDD;
   font-family: $main-condensed-font, sans-serif;
   font-size: 1.6em;
   line-height: 2.1em;

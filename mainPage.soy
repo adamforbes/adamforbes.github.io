@@ -162,6 +162,10 @@
     <div class='topic-content-caption'>
       {$content.caption}
     </div>
+  {elseif $content.subheading}
+    <div class='ts-h2 topic-content-subheading'>
+      {$content.subheading}
+    </div>
   {/if}
 {/template}
 
@@ -203,14 +207,6 @@
   {elseif $content.image}
     <div class='topic-page-content-image'>
       <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
-    </div>
-  {elseif $content.tripleImage}
-    <div class='topic-page-content-gallery 
-        topic-page-content-gallery-triple clearfix'>
-      {foreach $image in $content.tripleImage}
-        <img src='img/{$topicId}/{$topicId}-{$image}' 
-            alt='{$topicId}-{$image}'  id='{$topicId}-{$image}'>
-      {/foreach}
     </div>
   {/if} 
 {/template}

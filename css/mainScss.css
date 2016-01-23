@@ -159,6 +159,7 @@ textarea {
     width: 500px; } }
 
 .topic-header-chronology {
+  color: #DDD;
   margin-bottom: 20px; }
 
 .topic-content > div:not(:first-child) {
@@ -177,9 +178,6 @@ textarea {
   .topic-content-text {
     width: 480px;
     margin-left: 20px; } }
-
-.topic-content-gallery {
-  margin-top: 40px; }
 
 .topic-content-image {
   width: 100%;
@@ -286,9 +284,6 @@ textarea {
   pointer-events: none; }
 
 /* ==========================================================================
-   Unique Id styles
-   ========================================================================== */
-/* ==========================================================================
    Type Styles designed by Adam
    ========================================================================== */
 .ts-body {
@@ -304,11 +299,10 @@ textarea {
 
 .ts-h1 {
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 2.2em;
-  line-height: 1.4em; }
+  font-size: 4.2em;
+  line-height: 1.2em; }
 
 .ts-h2 {
-  color: #DDD;
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.6em;
   line-height: 2.1em; }

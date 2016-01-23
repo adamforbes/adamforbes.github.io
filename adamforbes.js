@@ -104,7 +104,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.content = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : '');
+  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : (opt_data.content.subheading) ? '<div class=\'ts-h2 topic-content-subheading\'>' + soy.$$escapeHtml(opt_data.content.subheading) + '</div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.content.soyTemplateName = 'adamforbes.mainPage.content';
@@ -113,11 +113,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList98 = opt_data.contents;
-  var contentListLen98 = contentList98.length;
-  for (var contentIndex98 = 0; contentIndex98 < contentListLen98; contentIndex98++) {
-    var contentData98 = contentList98[contentIndex98];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData98.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData98}) + '</div>';
+  var contentList102 = opt_data.contents;
+  var contentListLen102 = contentList102.length;
+  for (var contentIndex102 = 0; contentIndex102 < contentListLen102; contentIndex102++) {
+    var contentData102 = contentList102[contentIndex102];
+    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData102.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData102}) + '</div>';
   }
   output += '</div>';
   return output;
@@ -128,22 +128,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
-  var output = '';
-  if (opt_data.content.text) {
-    output += '<div class=\'ts-body topic-page-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>';
-  } else if (opt_data.content.image) {
-    output += '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>';
-  } else if (opt_data.content.tripleImage) {
-    output += '<div class=\'topic-page-content-gallery topic-page-content-gallery-triple clearfix\'>';
-    var imageList126 = opt_data.content.tripleImage;
-    var imageListLen126 = imageList126.length;
-    for (var imageIndex126 = 0; imageIndex126 < imageListLen126; imageIndex126++) {
-      var imageData126 = imageList126[imageIndex126];
-      output += '<img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData126) + '\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData126) + '\'  id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(imageData126) + '\'>';
-    }
-    output += '</div>';
-  }
-  return output;
+  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-page-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.topicPageContent.soyTemplateName = 'adamforbes.mainPage.topicPageContent';
