@@ -328,6 +328,12 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   }
 }
 
+.wip-page {
+  @extend .ts-h1;
+
+  padding-top: 50vh;
+}
+
 .clickable {
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;

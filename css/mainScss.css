@@ -87,7 +87,7 @@ textarea {
   line-height: 1.6em;
   text-align: justify; }
 
-.ts-h1, .topic-header-title-text {
+.ts-h1, .topic-header-title-text, .wip-page {
   font-family: "Roboto Condensed", sans-serif;
   font-size: 4.2em;
   line-height: 1.2em; }
@@ -241,6 +241,9 @@ textarea {
   @media (min-width: 840px) {
     .topic-content-caption {
       width: 480px; } }
+
+.wip-page {
+  padding-top: 50vh; }
 
 .clickable {
   -webkit-transition: opacity 200ms ease;
