@@ -19,7 +19,7 @@ var topicShorts = {topics: [
       contents: [
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
-          {subheading: 'this is cool'},
+          {subheading: 'This is a subheading! Wow'},
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}
     ]},
     {topicId: 'zapdos', 
@@ -135,21 +135,9 @@ function loadNavBar() {
   $('.nav-bar').on('click', '.nav-link', function(e) {
     var $elem = $(this);
     animatedLoad(function() {
-      var key = getNavIdFromDivId($elem.attr('id'));
       $('.main-page').empty();
-      //emptying the main-page without adding content screws up the css.
-      //need to add dummy content to not mess it up. This is a test anyways...
-      $('.main-page').append("<div>To be continued</div>");
-      // to be filled in with a page load
-      // $('.main-page').append(adamforbes.mainPage.loadTopicPage());
-
+      var key = getNavIdFromDivId($elem.attr('id'));
       var displayObject = {topics: generateNavPageList(key)};
-      console.log(adamforbes.mainPage.loadTopics(displayObject));
-      //THIS IS CORRECt. But the main page remains unchanged. MORE WORK TO DO.
-
-
-      // MORE WORK HERE.
-
       $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
     });
       resetNavLinkPosition();
@@ -172,20 +160,6 @@ function loadMainPageDefaults(firstLoad) {
   console.log('.topic-header');
   console.log($('.topic-header'));
 
-  //This is not working... again :(
-  // Event delegation on the .clickable objects
-  // $('.topic-header').on('click', '.topic-header-title', function(e) {
-  //   var elem = $(this);
-  //   console.log('yes?');  
-  //   animatedLoad(function() {
-  //     console.log($(this));
-  //     var key = getKeyFromTitleId($(this).attr('id'));
-  //     console.log(key);
-  //     console.log(topicPages[key]);
-  //     $('.main-page').empty();
-  //     $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
-  //   });
-  // });
   $(document).ready(function() {
     $('.topic-header').on('click', '.topic-header-title', function(e) {
       var elem = $(this);
@@ -199,27 +173,6 @@ function loadMainPageDefaults(firstLoad) {
       });
     });
   });
-
-  console.log('.topic-header');
-  console.log($('.topic-header'));
-  //This is not working... again :(
-  //Event delegation on the .clickable objects
-  // mainPage.on('click', '.topic-header-title', 
-  //     function(e) {
-  //   var elem = $(this);
-  //   console.log($(this));
-  //   console.log('yes?');
-  //   animatedLoad(function() {
-  //     console.log($(this));
-  //     var key = getKeyFromTitleId($(this).attr('id'));
-  //     console.log(key);
-  //     console.log(topicPages[key]);
-  //     $('.main-page').empty();
-  //     $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
-  //   });
-  // });
-
-  //STILL NOT WORKING :(
 }
 
 function hyphenToCamel(hyphenString) {

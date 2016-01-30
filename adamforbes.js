@@ -33,7 +33,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.overlays = function(opt_data, opt_ignored) {
-  return '<button class=\'menu-button float-right\'>MENU</button><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay ts-h2\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
+  return '<button class=\'menu-button float-right\'>MENU</button><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.overlays.soyTemplateName = 'adamforbes.mainPage.overlays';
@@ -50,11 +50,15 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.loadTopics = function(opt_data, opt_ignored) {
   var output = '';
-  var topicList21 = opt_data.topics;
-  var topicListLen21 = topicList21.length;
-  for (var topicIndex21 = 0; topicIndex21 < topicListLen21; topicIndex21++) {
-    var topicData21 = topicList21[topicIndex21];
-    output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData21.topicId) + '\'>' + adamforbes.mainPage.topic(topicData21) + '</div>';
+  if (opt_data.topics.length > 0) {
+    var topicList23 = opt_data.topics;
+    var topicListLen23 = topicList23.length;
+    for (var topicIndex23 = 0; topicIndex23 < topicListLen23; topicIndex23++) {
+      var topicData23 = topicList23[topicIndex23];
+      output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData23.topicId) + '\'>' + adamforbes.mainPage.topic(topicData23) + '</div>';
+    }
+  } else {
+    output += '<div class=\'wip-page\'>This is a work in progress!</div>';
   }
   return output;
 };
@@ -65,11 +69,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div><div class=\'topic-content\'>';
-  var contentList34 = opt_data.contents;
-  var contentListLen34 = contentList34.length;
-  for (var contentIndex34 = 0; contentIndex34 < contentListLen34; contentIndex34++) {
-    var contentData34 = contentList34[contentIndex34];
-    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData34});
+  var contentList38 = opt_data.contents;
+  var contentListLen38 = contentList38.length;
+  for (var contentIndex38 = 0; contentIndex38 < contentListLen38; contentIndex38++) {
+    var contentData38 = contentList38[contentIndex38];
+    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData38});
   }
   output += '</div>';
   return output;
@@ -80,7 +84,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.header = function(opt_data, opt_ignored) {
-  return '<div class=\'topic-header-title float-left clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'ts-h2 topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
+  return '<div class=\'topic-header-title float-left clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.header.soyTemplateName = 'adamforbes.mainPage.header';
@@ -88,7 +92,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.title = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-header-title-image clickable\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title-image\'></div>' : '<div class=\'ts-h1 topic-header-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  return '' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-header-title-image clickable\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title-image\'></div>' : '<div class=\'topic-header-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.title.soyTemplateName = 'adamforbes.mainPage.title';
@@ -104,32 +108,8 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.content = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : (opt_data.content.subheading) ? '<div class=\'ts-h2 topic-content-subheading\'>' + soy.$$escapeHtml(opt_data.content.subheading) + '</div>' : '');
+  return '' + ((opt_data.content.text) ? '<div class=\'topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : (opt_data.content.subheading) ? '<div class=\'topic-content-subheading\'>' + soy.$$escapeHtml(opt_data.content.subheading) + '</div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.content.soyTemplateName = 'adamforbes.mainPage.content';
-}
-
-
-adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
-  var output = '<div class=\'topic-page\'><div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div>';
-  var contentList102 = opt_data.contents;
-  var contentListLen102 = contentList102.length;
-  for (var contentIndex102 = 0; contentIndex102 < contentListLen102; contentIndex102++) {
-    var contentData102 = contentList102[contentIndex102];
-    output += '<div class=\'topic-page-content-container\' id=\'' + soy.$$escapeHtml(contentData102.topicId) + '\'>' + adamforbes.mainPage.topicPageContent({topicId: opt_data.topicId, content: contentData102}) + '</div>';
-  }
-  output += '</div>';
-  return output;
-};
-if (goog.DEBUG) {
-  adamforbes.mainPage.loadTopicPage.soyTemplateName = 'adamforbes.mainPage.loadTopicPage';
-}
-
-
-adamforbes.mainPage.topicPageContent = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.content.text) ? '<div class=\'ts-body topic-page-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-page-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : '');
-};
-if (goog.DEBUG) {
-  adamforbes.mainPage.topicPageContent.soyTemplateName = 'adamforbes.mainPage.topicPageContent';
 }
