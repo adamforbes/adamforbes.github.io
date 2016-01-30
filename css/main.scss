@@ -86,23 +86,55 @@ textarea {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   SASS Variables
    ========================================================================== */
 
 $nav-bar-width: 230px;
 $main-column-width: 480px;
 $main-font: 'Roboto';
 $main-condensed-font: 'Roboto Condensed';
-$accent1: #eb1d5d;
-$accent2: #18E7F1;
+$main-color: #eb1d5d;
+$text-color1: rgb(33, 33, 33);
+$text-color2: #FFFFFF;
 $break-max: 840px; // Chosen arbitrarily from the design. Mainly from the width topic-content-text
 $break-min: 520px; 
-
 $break-min-margin: 20px;
 $page-width-threshold: 230px; // The threshold set for minimum styling width. 
 
+/* ==========================================================================
+   Type Styles designed by Adam
+   ========================================================================== */
+
+.ts-body {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  color: $text-color1;
+  display: block;
+  font-family: $main-font, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  line-height: 1.6em;
+  text-align: justify;
+}
+
+.ts-h1 {
+  font-family: $main-condensed-font, sans-serif;
+  font-size: 4.2em;
+  line-height: 1.2em;
+}
+
+.ts-h2 {
+  font-family: $main-condensed-font, sans-serif;
+  font-size: 1.6em;
+  line-height: 2.1em;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
 .nav-bar {
-  background-color: $accent1;
+  background-color: $main-color;
   height: 100%;
   position: fixed;
   width: $nav-bar-width;
@@ -127,7 +159,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .nav-title-name {
-  color: #FFFFFF;
+  color: $text-color2;
   font-family: $main-condensed-font, sans-serif;
   font-size: 3em;
   font-style: italic;
@@ -138,7 +170,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .nav-links {
-  color: #FFFFFF;
+  color: $text-color2;
   font-family: $main-font, sans-serif;
   font-size: 1em;
   position: absolute;
@@ -169,6 +201,14 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 
 .topic-container:first-child {
   padding-top: 20px;
+  @media (min-width: 0px) and (max-width: $break-min) {
+  }
+  @media (min-width: $break-min) and (max-width: $break-max) {
+    padding-top: 70px;
+  }
+  @media (min-width: $break-max) {
+    padding-top: 20px;
+  }
 }
 
 .topic-header {
@@ -190,6 +230,10 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   margin-bottom: 10px;
 }
 
+.topic-header-title-text {
+  @extend .ts-h1;
+}
+
 .topic-header-title-image img {
   @media (min-width: 0px) and (max-width: $break-min) {
     width: 100%;
@@ -204,6 +248,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .topic-header-chronology {
+  @extend .ts-h2;
   color: #DDD;
   margin-bottom: 20px;
 }
@@ -236,7 +281,12 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .topic-content-subheading {
+  @extend .ts-h2;
   @extend .responsive-margin;
+}
+
+.topic-content-subheading + div {
+  margin-top: 0px !important;
 }
 
 .topic-content-image {
@@ -295,6 +345,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
    ========================================================================== */
 
 .menu-button {
+
   @media (min-width: 0px) and (max-width: $page-width-threshold) {
     display: none !important;
   }
@@ -310,7 +361,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .animation-overlay {
-  background-color: $accent1;
+  background-color: $main-color;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -334,7 +385,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   text-align: center;
 
   @media (max-width: $page-width-threshold) {
-    background-color: $accent1;
+    background-color: $main-color;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -356,7 +407,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 // Overlay to be applied when the navBar is open for small screens
 // This will create a sense of depth through shadow
 .layering-shadow-overlay {
-  background-color: #CE6887;
+  background-color: $main-color;
   height: 100%;
   margin: 0;
   opacity: 0;
@@ -368,33 +419,6 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   pointer-events: none;
 }
 
-/* ==========================================================================
-   Type Styles designed by Adam
-   ========================================================================== */
-
-.ts-body {
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  color: rgb(33, 33, 33);
-  display: block;
-  font-family: $main-font, sans-serif;
-  font-size: 14px;
-  letter-spacing: 0.1px;
-  line-height: 1.6em;
-  text-align: justify;
-}
-
-.ts-h1 {
-  font-family: $main-condensed-font, sans-serif;
-  font-size: 4.2em;
-  line-height: 1.2em;
-}
-
-.ts-h2 {
-  font-family: $main-condensed-font, sans-serif;
-  font-size: 1.6em;
-  line-height: 2.1em;
-}
 
 /* ==========================================================================
    Helper classes

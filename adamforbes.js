@@ -33,7 +33,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.overlays = function(opt_data, opt_ignored) {
-  return '<button class=\'menu-button float-right\'>MENU</button><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
+  return '<div class=\'menu-button float-right\'>&#9776;</div><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.overlays.soyTemplateName = 'adamforbes.mainPage.overlays';
