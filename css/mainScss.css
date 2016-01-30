@@ -166,18 +166,18 @@ textarea {
   margin-top: 30px; }
 
 @media (min-width: 0px) and (max-width: 520px) {
-  .topic-content-text {
+  .responsive-margin, .topic-content-text, .topic-content-subheading {
     margin-left: 20px;
     margin-right: 20px;
     width: auto; } }
 @media (min-width: 520px) and (max-width: 840px) {
-  .topic-content-text {
+  .responsive-margin, .topic-content-text, .topic-content-subheading {
     margin: 0 auto;
     width: 480px; } }
 @media (min-width: 840px) {
-  .topic-content-text {
-    width: 480px;
-    margin-left: 20px; } }
+  .responsive-margin, .topic-content-text, .topic-content-subheading {
+    margin-left: 20px;
+    width: 480px; } }
 
 .topic-content-image {
   width: 100%;

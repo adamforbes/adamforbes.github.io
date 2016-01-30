@@ -212,7 +212,10 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   margin-top: 30px;
 }
 
-.topic-content-text {
+// This will be used as a parent class to all topic-content objects 
+// that should not be flush when margins change. Images do not have
+// this
+.responsive-margin {
   @media (min-width: 0px) and (max-width: $break-min) {
     margin-left: $break-min-margin;
     margin-right: $break-min-margin;
@@ -223,9 +226,17 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
     width: $main-column-width;
   }
   @media (min-width: $break-max) {
-    width: $main-column-width;
     margin-left: $break-min-margin;
+    width: $main-column-width;
   }
+}
+
+.topic-content-text {
+  @extend .responsive-margin;
+}
+
+.topic-content-subheading {
+  @extend .responsive-margin;
 }
 
 .topic-content-image {
@@ -265,9 +276,6 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   @media (min-width: $break-max) {
     width: $main-column-width;
   }
-}
-
-.topic-content-subheading {
 }
 
 .clickable {
