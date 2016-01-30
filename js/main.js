@@ -110,7 +110,6 @@ to have a list of the Topic blurbs..
 
 function loadDefault() {
   var $body = $('body');
-  var $mainPage = $('.main-page');
 
   // Load Overlays
   $body.append(adamforbes.mainPage.overlays());
@@ -128,8 +127,6 @@ function loadDefault() {
   $('.menu-button').click(function() {
     toggleNavBar();
   });
-
-  console.log(generateNavPageList('graphic-design'));
 }
 
 function loadNavBar() {
@@ -137,17 +134,23 @@ function loadNavBar() {
 
   $('.nav-bar').on('click', '.nav-link', function(e) {
     var $elem = $(this);
-    console.log('inside click event delegation');
-    console.log($elem);
     animatedLoad(function() {
-      var key = getKeyFromTitleId($elem.attr('id'));
+      var key = getNavIdFromDivId($elem.attr('id'));
       $('.main-page').empty();
-
       //emptying the main-page without adding content screws up the css.
       //need to add dummy content to not mess it up. This is a test anyways...
       $('.main-page').append("<div>To be continued</div>");
       // to be filled in with a page load
       // $('.main-page').append(adamforbes.mainPage.loadTopicPage());
+
+      var displayObject = {topics: generateNavPageList(key)};
+      console.log(adamforbes.mainPage.loadTopics(displayObject));
+      //THIS IS CORRECt. But the main page remains unchanged. MORE WORK TO DO.
+
+
+      // MORE WORK HERE.
+
+      $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
     });
       resetNavLinkPosition();
       $elem.animate({
@@ -157,13 +160,12 @@ function loadNavBar() {
 }
 
 function loadMainPageDefaults(firstLoad) {
-  var $mainPage = $('.main-page');
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(topicShorts));
   } else {
     animatedLoad(function() {
-      $mainPage.empty();
-      $mainPage.append(adamforbes.mainPage.loadTopics(topicShorts));
+      $('.main-page').empty();
+      $('.main-page').append(adamforbes.mainPage.loadTopics(topicShorts));
     });
   }
 
@@ -192,8 +194,8 @@ function loadMainPageDefaults(firstLoad) {
       animatedLoad(function() {
         var key = getKeyFromTitleId(elem.attr('id'));
         console.log(topicPages[key]); 
-        $('.main-page').empty();
-        $('.main-page').append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+        $mainPage.empty();
+        $mainPage.append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
       });
     });
   });
@@ -230,6 +232,14 @@ function camelToHyphen(camelString) {
 
 function getKeyFromTitleId(titleId) {
   return hyphenToCamel(titleId.substring(0, titleId.length - "-title".length));
+}
+
+// This needs to be kept up to date with the .loadNavLinks template in soy
+function getNavIdFromDivId(divId) {
+  //Remove "-button$"
+  var retVal = divId.substring(0, divId.length - "-button".length);
+  //Remove "^nav-bar-"
+  return retVal.substring("nav-bar-".length, retVal.length)
 }
 
 function resetNavLinkPosition() {
@@ -273,9 +283,11 @@ function openNavBar() {
 function generateNavPageList(navId) {
   var navPageList = [];
   if (navId == 'resume') {
-
+    //To-do: figure this out. Could just be the same and we don't need to make
+    //special cases. Guess it depends on how different the colophon and resume
+    //pages are from the rest of the site. Could just end up making unique 
+    //resume topics. Or a separate resume section? Not sure.
   } else if (navId == 'colophon') {
-
   } else {
     //linear search! Wahoo i'm a google engineerrrrrr
     for (i = 0; i < topicShorts.topics.length; i++) {
@@ -286,6 +298,8 @@ function generateNavPageList(navId) {
       }
     }
   }
+  console.log("navPageList");
+  console.log(navPageList);
   return navPageList;
 }
 
