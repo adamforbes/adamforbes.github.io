@@ -10,7 +10,7 @@ if (typeof adamforbes.mainPage == 'undefined') { adamforbes.mainPage = {}; }
 
 
 adamforbes.mainPage.navBar = function(opt_data, opt_ignored) {
-  return '<div class=\'nav-bar\'><div class=\'nav-title-name clickable\'>Adam<br>Forbes</div><div class=\'nav-links\'>' + adamforbes.mainPage.loadNavLinks(opt_data) + '</div></div>';
+  return '<div class=\'nav-bar\'><div class=\'nav-title-name\'>Adam<br>Forbes</div><div class=\'nav-links\'>' + adamforbes.mainPage.loadNavLinks(opt_data) + '</div></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.navBar.soyTemplateName = 'adamforbes.mainPage.navBar';
@@ -33,7 +33,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.overlays = function(opt_data, opt_ignored) {
-  return '<div class=\'menu-button float-right\'>&#9776;</div><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
+  return '<div class=\'menu-toggle\'>&#9776;</div><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.overlays.soyTemplateName = 'adamforbes.mainPage.overlays';

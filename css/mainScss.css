@@ -71,7 +71,7 @@ textarea {
   padding: 0.2em 0; }
 
 /* ==========================================================================
-   SASS Variables
+   SASS Variables and Mixins
    ========================================================================== */
 /* ==========================================================================
    Type Styles designed by Adam
@@ -130,7 +130,7 @@ textarea {
   font-weight: 300;
   line-height: 1.3em;
   margin-left: 30px;
-  margin-top: 150px; }
+  margin-top: 20vh; }
 
 .nav-links {
   color: #FFFFFF;
@@ -159,6 +159,9 @@ textarea {
 
 .topic-container:first-child {
   padding-top: 20px; }
+  @media (min-width: 0px) and (max-width: 520px) {
+    .topic-container:first-child {
+      padding-top: 70px; } }
   @media (min-width: 520px) and (max-width: 840px) {
     .topic-container:first-child {
       padding-top: 70px; } }
@@ -199,16 +202,16 @@ textarea {
   margin-top: 30px; }
 
 @media (min-width: 0px) and (max-width: 520px) {
-  .responsive-margin, .topic-content-text, .topic-content-subheading {
+  .responsive-margin, .topic-content-text, .topic-content-subheading, .wip-page {
     margin-left: 20px;
     margin-right: 20px;
     width: auto; } }
 @media (min-width: 520px) and (max-width: 840px) {
-  .responsive-margin, .topic-content-text, .topic-content-subheading {
+  .responsive-margin, .topic-content-text, .topic-content-subheading, .wip-page {
     margin: 0 auto;
     width: 480px; } }
 @media (min-width: 840px) {
-  .responsive-margin, .topic-content-text, .topic-content-subheading {
+  .responsive-margin, .topic-content-text, .topic-content-subheading, .wip-page {
     margin-left: 20px;
     width: 480px; } }
 
@@ -243,33 +246,39 @@ textarea {
       width: 480px; } }
 
 .wip-page {
-  padding-top: 50vh; }
+  padding-top: 20vh; }
 
-.clickable {
+.clickable, .nav-link, .nav-title-name, .topic-header-title, .topic-header-title-text, .topic-header-title-image img {
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;
   -o-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
   opacity: 1.0; }
-  .clickable:hover {
+  .clickable:hover, .nav-link:hover, .nav-title-name:hover, .topic-header-title:hover, .topic-header-title-text:hover, .topic-header-title-image img:hover {
     cursor: pointer;
     opacity: .4; }
 
 /* ==========================================================================
    Overlays
    ========================================================================== */
-@media (min-width: 0px) and (max-width: 230px) {
-  .menu-button {
-    display: none !important; } }
-@media (min-width: 230px) and (max-width: 840px) {
-  .menu-button {
-    left: 20px;
-    top: 10px;
-    position: fixed;
-    z-index: 11; } }
-@media (min-width: 840px) {
-  .menu-button {
-    display: none !important; } }
+.menu-toggle {
+  font-size: 1.3em;
+  margin-top: 7px; }
+  @media (min-width: 0px) and (max-width: 230px) {
+    .menu-toggle {
+      display: none !important; } }
+  @media (min-width: 230px) and (max-width: 840px) {
+    .menu-toggle {
+      left: 20px;
+      top: 10px;
+      position: fixed;
+      z-index: 11; } }
+  @media (min-width: 840px) {
+    .menu-toggle {
+      display: none !important; } }
+
+.menu-toggle:hover {
+  cursor: pointer; }
 
 .animation-overlay {
   background-color: #eb1d5d;

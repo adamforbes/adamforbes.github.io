@@ -124,7 +124,7 @@ function loadDefault() {
   });
 
   // This toggles the nav bar on and off
-  $('.menu-button').click(function() {
+  $('.menu-toggle').click(function() {
     toggleNavBar();
   });
 }
@@ -210,6 +210,9 @@ function toggleNavBar() {
   }
 }
 
+// To-do: animation color insteads of opacity for the menu-toggle. This
+// can only be done after jquery-color
+
 function closeNavBar() {
   var $navBar = $('.nav-bar');
   var leftValue = '-' + $navBar.width();
@@ -218,7 +221,11 @@ function closeNavBar() {
   }, 300, 'swing');
   $('.layering-shadow-overlay').animate({
     opacity: '0'
-  }, 300, 'swing')
+  }, 300, 'swing');
+  console.log(navColor);
+  $('.menu-toggle').animate({
+    opacity: '1'
+  }, 300, 'swing');
 }
 
 function openNavBar() {
@@ -227,6 +234,9 @@ function openNavBar() {
   }, 300, 'swing'); 
   $('.layering-shadow-overlay').animate({
     opacity: '.7'
+  }, 300, 'swing');
+  $('.menu-toggle').animate({
+    opacity: '.2'
   }, 300, 'swing');
 }
 

@@ -86,7 +86,7 @@ textarea {
 }
 
 /* ==========================================================================
-   SASS Variables
+   SASS Variables and Mixins
    ========================================================================== */
 
 $nav-bar-width: 230px;
@@ -100,6 +100,14 @@ $break-max: 840px; // Chosen arbitrarily from the design. Mainly from the width 
 $break-min: 520px; 
 $break-min-margin: 20px;
 $page-width-threshold: 230px; // The threshold set for minimum styling width. 
+$nav-title-top-threshold: 20vh;
+
+@mixin opacity-transition($duration, $timing-function) {
+  -webkit-transition: opacity $duration $timing-function;
+  -moz-transition: opacity $duration $timing-function;
+  -o-transition: opacity $duration $timing-function;
+  transition: opacity $duration $timing-function;
+}
 
 /* ==========================================================================
    Type Styles designed by Adam
@@ -151,6 +159,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .nav-link {
+  @extend .clickable;
   margin-bottom: 6px;
 }
 
@@ -159,6 +168,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .nav-title-name {
+  @extend .clickable;
   color: $text-color2;
   font-family: $main-condensed-font, sans-serif;
   font-size: 3em;
@@ -166,7 +176,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   font-weight: 300;
   line-height: 1.3em;
   margin-left: 30px;
-  margin-top: 150px;
+  margin-top: $nav-title-top-threshold;
 }
 
 .nav-links {
@@ -193,7 +203,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
     margin-left: $nav-bar-width + $h-margin;
     margin-right: $h-margin;
   }
-} 
+}
 
 .topic-container:not(:first-child) {
   margin-top: 70px;
@@ -202,6 +212,7 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 .topic-container:first-child {
   padding-top: 20px;
   @media (min-width: 0px) and (max-width: $break-min) {
+    padding-top: 70px;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
     padding-top: 70px;
@@ -227,14 +238,17 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 }
 
 .topic-header-title {
+  @extend .clickable;
   margin-bottom: 10px;
 }
 
 .topic-header-title-text {
+  @extend .clickable;
   @extend .ts-h1;
 }
 
 .topic-header-title-image img {
+  @extend .clickable;
   @media (min-width: 0px) and (max-width: $break-min) {
     width: 100%;
   }
@@ -330,27 +344,25 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
 
 .wip-page {
   @extend .ts-h1;
-
-  padding-top: 50vh;
+  @extend .responsive-margin;
+  padding-top: $nav-title-top-threshold;
 }
 
 .clickable {
-  -webkit-transition: opacity 200ms ease;
-  -moz-transition: opacity 200ms ease;
-  -o-transition: opacity 200ms ease;
-  transition: opacity 200ms ease;
+  @include opacity-transition(200ms, ease);
   opacity: 1.0;
   &:hover {
     cursor: pointer;
     opacity: .4;
   }
 }
-
 /* ==========================================================================
    Overlays
    ========================================================================== */
 
-.menu-button {
+.menu-toggle {
+  font-size: 1.3em;
+  margin-top: 7px;
 
   @media (min-width: 0px) and (max-width: $page-width-threshold) {
     display: none !important;
@@ -364,6 +376,10 @@ $page-width-threshold: 230px; // The threshold set for minimum styling width.
   @media (min-width: $break-max) {
     display: none !important;
   }
+}
+
+.menu-toggle:hover {
+  cursor: pointer;
 }
 
 .animation-overlay {
