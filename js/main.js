@@ -112,7 +112,6 @@ to have a list of the Topic blurbs..
    Next Steps
    ==========================================================================
 - Add swipe motions for mobile
-- Add a click in open area to close nav bar.
 - Style the nav bar to be smaller for mobile screens. Atm it's
   half of the page
 
@@ -156,6 +155,9 @@ function loadNavBar() {
       var key = getNavIdFromDivId($elem.attr('id'));
       var displayObject = {topics: generateNavPageList(key)};
       $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
+      if ($(window).width() < 840) {
+        toggleNavBar()
+      }
     });
       resetNavLinkPosition();
       $elem.animate({
