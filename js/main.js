@@ -1,5 +1,5 @@
 var navBarContents = {links: [
-    {navId: 'resume', displayName: 'Resume'}, 
+    {navId: 'resume', displayName: 'Resume'},
     {navId: 'graphic-design', displayName: 'Graphic Design'},
     {navId: 'web-design', displayName: 'Web Design'},
     {navId: 'photography', displayName: 'Photography'},
@@ -7,58 +7,58 @@ var navBarContents = {links: [
     {navId: 'colophon', displayName: 'Colophon'}]};
 
 var topicShorts = {topics: [
-    {topicId: 'about-me', 
+    {topicId: 'about-me',
       navIds: ['main-page'],
       header: {title: 'about me', chronology: 'april 12, 2014'},
       contents: [
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
     ]},
-    {topicId: 'the-argus-mag', 
+    {topicId: 'the-argus-mag',
       navIds: ['main-page', 'graphic-design'],
       header: {title: '_imageOverride', chronology: 'created in 2013'},
       contents: [
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
+          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
           {subheading: 'This is a subheading! Wow'},
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}
     ]},
-    {topicId: 'zapdos', 
+    {topicId: 'zapdos',
       navIds: ['main-page', 'graphic-design'],
       header: {title: 'Zapdos!'},
       contents: [
-          {image: 'zapdos.png'}, 
-          {caption: 'I love Zapdos in the Morning'}, 
+          {image: 'zapdos.png'},
+          {caption: 'I love Zapdos in the Morning'},
           {image: 'large-square.png'}
     ]},
     {topicId: 'red-chamber',
       navIds: ['main-page', 'graphic-design'],
       header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
       contents: [
-          {text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'}, 
+          {text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'},
           {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}
     ]}
 ]};
 
 var topicPages = {topics: [
-    {topicId: 'the-argus-mag', 
+    {topicId: 'the-argus-mag',
       header: {title: '_imageOverride', chronology: 'created in 2013'},
       contents: [
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
           {subheading: 'this is not the topicShort'},
-          {text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}, 
+          {text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}
     ]},
     {topicId: 'zapdos',
       header: {title: 'Zapdos!'},
       contents: [
-          {image: 'zapdos.png'}, 
-          {caption: 'I love Zapdos in the Morning'}, 
-          {image: 'large-square.png'}, 
-          {image: 'med-square.png'}, 
-          {image: 'small-square.png'}, 
-          {image: 'tall-skinny.png'}, 
-          {image: 'short-fat.png'}, 
-          {image: 'short-fat-large.png'}, 
+          {image: 'zapdos.png'},
+          {caption: 'I love Zapdos in the Morning'},
+          {image: 'large-square.png'},
+          {image: 'med-square.png'},
+          {image: 'small-square.png'},
+          {image: 'tall-skinny.png'},
+          {image: 'short-fat.png'},
+          {image: 'short-fat-large.png'},
           {image: 'tall-skinny-large.png'}
     ]}
 ]};
@@ -89,7 +89,7 @@ Both TopicPages and MainPage/Topics will have the same datatype. That is...
   - Optional subheading
 - ???? Perhaps include an non-display timestamp for sorting
 
-This will be used by the soy template to generate the content. 
+This will be used by the soy template to generate the content.
 
    ==========================================================================
    TopicShorts
@@ -97,7 +97,7 @@ This will be used by the soy template to generate the content.
 
 These objects will appear on the Homepage on the initial load of the website.
 They are either full topics, or they have "...read more" buttons that will
-appear if there is addition content to cover. 
+appear if there is addition content to cover.
 
 There is a MainPage/Topic for every TopicPage, but not a TopicPage for
 every MainPage/Topic
@@ -105,6 +105,19 @@ every MainPage/Topic
 
 HOWEVER. Now that I think of it. The mainpage isn't the only place we want
 to have a list of the Topic blurbs..
+
+
+
+   ==========================================================================
+   Next Steps
+   ==========================================================================
+- Add swipe motions for mobile
+- Add a click in open area to close nav bar.
+- Style the nav bar to be smaller for mobile screens. Atm it's
+  half of the page
+
+
+
 
 */
 
@@ -125,6 +138,10 @@ function loadDefault() {
 
   // This toggles the nav bar on and off
   $('.menu-toggle').click(function() {
+    toggleNavBar();
+  });
+
+  $('.layering-shadow-overlay').click(function() {
     toggleNavBar();
   });
 }
@@ -167,7 +184,7 @@ function loadMainPageDefaults(firstLoad) {
       console.log(elem);
       animatedLoad(function() {
         var key = getKeyFromTitleId(elem.attr('id'));
-        console.log(topicPages[key]); 
+        console.log(topicPages[key]);
         $mainPage.empty();
         $mainPage.append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
       });
@@ -222,7 +239,7 @@ function closeNavBar() {
   $('.layering-shadow-overlay').animate({
     opacity: '0'
   }, 300, 'swing');
-  console.log(navColor);
+  $('.layering-shadow-overlay').css('pointer-events', 'none');
   $('.menu-toggle').animate({
     opacity: '1'
   }, 300, 'swing');
@@ -231,16 +248,17 @@ function closeNavBar() {
 function openNavBar() {
   $('.nav-bar').animate({
     left: '0px'
-  }, 300, 'swing'); 
+  }, 300, 'swing');
   $('.layering-shadow-overlay').animate({
     opacity: '.7'
   }, 300, 'swing');
+  $('.layering-shadow-overlay').css('pointer-events', 'auto');
   $('.menu-toggle').animate({
     opacity: '.2'
   }, 300, 'swing');
 }
 
-/* This function will take as input a navId and generate a list of 
+/* This function will take as input a navId and generate a list of
    topicShorts to include in the page. Although, for resume and colophon
    we'll do different things */
 function generateNavPageList(navId) {
@@ -248,7 +266,7 @@ function generateNavPageList(navId) {
   if (navId == 'resume') {
     //To-do: figure this out. Could just be the same and we don't need to make
     //special cases. Guess it depends on how different the colophon and resume
-    //pages are from the rest of the site. Could just end up making unique 
+    //pages are from the rest of the site. Could just end up making unique
     //resume topics. Or a separate resume section? Not sure.
   } else if (navId == 'colophon') {
   } else {

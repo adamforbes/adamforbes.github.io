@@ -97,9 +97,9 @@ $main-color: #eb1d5d;
 $text-color1: rgb(33, 33, 33);
 $text-color2: #FFFFFF;
 $break-max: 840px; // Chosen arbitrarily from the design. Mainly from the width topic-content-text
-$break-min: 520px; 
+$break-min: 520px;
 $break-min-margin: 20px;
-$page-width-threshold: 230px; // The threshold set for minimum styling width. 
+$page-width-threshold: 230px; // The threshold set for minimum styling width.
 $nav-title-top-threshold: 20vh;
 
 @mixin opacity-transition($duration, $timing-function) {
@@ -257,7 +257,7 @@ $nav-title-top-threshold: 20vh;
   }
   @media (min-width: $break-max) {
     //Adding break-min-margin to account for the indentation of the content text
-    width: $main-column-width + $break-min-margin; 
+    width: $main-column-width + $break-min-margin;
   }
 }
 
@@ -271,7 +271,7 @@ $nav-title-top-threshold: 20vh;
   margin-top: 30px;
 }
 
-// This will be used as a parent class to all topic-content objects 
+// This will be used as a parent class to all topic-content objects
 // that should not be flush when margins change. Images do not have
 // this
 .responsive-margin {
@@ -329,7 +329,7 @@ $nav-title-top-threshold: 20vh;
 }
 
 .topic-content-caption {
-  margin-top: 10px !important; 
+  margin-top: 10px !important;
   font-style: italic;
   @media (min-width: 0px) and (max-width: $break-min) {
     width: auto;

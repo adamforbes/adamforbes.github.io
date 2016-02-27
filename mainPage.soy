@@ -1,10 +1,10 @@
 {namespace adamforbes.mainPage}
 
  /*
- * talked to . shortly regarding how to 
+ * talked to . shortly regarding how to
  check for a key. If the value is a string or I don't
  expect it to ever be null, you can do {if isNonNull(object.key)}
- however, if you are looking for an object, then if object.key is 
+ however, if you are looking for an object, then if object.key is
  the way to go.
  */
 
@@ -13,7 +13,7 @@
  * @param links a list of navBar items to generate
  */
 {template .navBar}
-  //Inspiration for the ideal nav-bar menu: 
+  //Inspiration for the ideal nav-bar menu:
   //http://tympanus.net/codrops/2015/11/17/multi-level-menu/
   <div class='nav-bar'>
     <div class='nav-title-name'>Adam<br>Forbes</div>
@@ -38,7 +38,7 @@
 /**
  * Create the overlays
  */
-{template .overlays}   
+{template .overlays}
   /* Test button to attach troubleshooting click events  */
   <div class='menu-toggle'>
     &#9776;
@@ -75,7 +75,7 @@
     {/foreach}
   {else}
     <div class='wip-page'>
-      This is a work in progress! 
+      This is a work in progress!
     </div>
   {/if}
 {/template}
