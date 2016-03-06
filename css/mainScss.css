@@ -108,19 +108,19 @@ textarea {
   z-index: 10; }
   @media (min-width: 0px) and (max-width: 520px) {
     .nav-bar {
-      left: -230px; } }
+      left: -230px;
+      width: 161px; } }
   @media (min-width: 520px) and (max-width: 840px) {
     .nav-bar {
-      left: -230px; } }
+      left: -230px;
+      width: 184px; } }
   @media (min-width: 840px) {
     .nav-bar {
-      left: 0px; } }
+      left: 0px;
+      width: 230px; } }
 
 .nav-link {
   margin-bottom: 6px; }
-
-.nav-bar-open {
-  left: -230px; }
 
 .nav-title-name {
   color: #FFFFFF;
@@ -219,8 +219,7 @@ textarea {
   margin-top: 0px !important; }
 
 .topic-content-image {
-  width: 100%;
-  border-style: solid; }
+  width: 100%; }
   .topic-content-image img {
     display: block;
     max-width: 100%;
@@ -262,7 +261,7 @@ textarea {
    Overlays
    ========================================================================== */
 .menu-toggle {
-  font-size: 1.3em;
+  font-size: 1.7em;
   margin-top: 7px; }
   @media (min-width: 0px) and (max-width: 230px) {
     .menu-toggle {
@@ -321,6 +320,7 @@ textarea {
 
 .layering-shadow-overlay {
   background-color: #eb1d5d;
+  cursor: pointer;
   height: 100%;
   margin: 0;
   opacity: 0;
@@ -329,6 +329,12 @@ textarea {
   top: 0;
   width: 100%;
   z-index: 8;
+  pointer-events: none; }
+
+#p5-container {
+  margin: 0;
+  padding: 0;
+  position: fixed;
   pointer-events: none; }
 
 /* ==========================================================================

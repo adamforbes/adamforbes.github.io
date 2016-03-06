@@ -7,6 +7,14 @@ var navBarContents = {links: [
     {navId: 'colophon', displayName: 'Colophon'}]};
 
 var topicShorts = {topics: [
+    {topicId: 'grand-opening',
+      navIds: ['main-page', 'graphic-design'],
+      header: {title: 'grand opening!', chronology: 'feb 26, 2016'},
+      contents: [
+          {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom CRM built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
+          {image: 'source.png'},
+          {text: 'My next improvements will be to the mobile experience (right now desktop is favored) and shifting content to a proper backend.'}
+    ]},
     {topicId: 'about-me',
       navIds: ['main-page'],
       header: {title: 'about me', chronology: 'april 12, 2014'},
@@ -36,7 +44,13 @@ var topicShorts = {topics: [
       contents: [
           {text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'},
           {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}
-    ]}
+    ]},
+    {topicId: 'colophon',
+      navIds: ['colophon'],
+      header: {title: 'Colophon'},
+      contents: [
+          {text: 'This w'}
+    ]},
 ]};
 
 var topicPages = {topics: [
@@ -102,7 +116,6 @@ appear if there is addition content to cover.
 There is a MainPage/Topic for every TopicPage, but not a TopicPage for
 every MainPage/Topic
 
-
 HOWEVER. Now that I think of it. The mainpage isn't the only place we want
 to have a list of the Topic blurbs..
 
@@ -114,8 +127,7 @@ to have a list of the Topic blurbs..
 - Add swipe motions for mobile
 - Style the nav bar to be smaller for mobile screens. Atm it's
   half of the page
-
-
+- Add an animated svg frame around website
 
 
 */
@@ -140,6 +152,7 @@ function loadDefault() {
     toggleNavBar();
   });
 
+  // For mobile.
   $('.layering-shadow-overlay').click(function() {
     toggleNavBar();
   });
@@ -147,7 +160,9 @@ function loadDefault() {
 
 function loadNavBar() {
   $('body').append(adamforbes.mainPage.navBar(navBarContents));
-
+  if (window.innerWidth < 840) {
+    showBorder = true;
+  }
   $('.nav-bar').on('click', '.nav-link', function(e) {
     var $elem = $(this);
     animatedLoad(function() {
@@ -155,8 +170,8 @@ function loadNavBar() {
       var key = getNavIdFromDivId($elem.attr('id'));
       var displayObject = {topics: generateNavPageList(key)};
       $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
-      if ($(window).width() < 840) {
-        toggleNavBar()
+      if (window.innerWidth < 840) {
+        toggleNavBar();
       }
     });
       resetNavLinkPosition();
@@ -222,10 +237,18 @@ function resetNavLinkPosition() {
 
 function toggleNavBar() {
   // True when the nav bar is slide off
-  if ($('.nav-bar').position().left == 0) {
+  if (isNavBarOpen()) {
     closeNavBar();
   } else {
     openNavBar();
+  }
+}
+
+function isNavBarOpen() {
+  if ($('.nav-bar').position().left == 0) {
+    return true;
+  } else {
+    return false;
   }
 }
 
@@ -245,6 +268,7 @@ function closeNavBar() {
   $('.menu-toggle').animate({
     opacity: '1'
   }, 300, 'swing');
+  showBorder = true;
 }
 
 function openNavBar() {
@@ -258,6 +282,7 @@ function openNavBar() {
   $('.menu-toggle').animate({
     opacity: '.2'
   }, 300, 'swing');
+  showBorder = false;
 }
 
 /* This function will take as input a navId and generate a list of

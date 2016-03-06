@@ -23,7 +23,7 @@ adamforbes.mainPage.loadNavLinks = function(opt_data, opt_ignored) {
   var linkListLen7 = linkList7.length;
   for (var linkIndex7 = 0; linkIndex7 < linkListLen7; linkIndex7++) {
     var linkData7 = linkList7[linkIndex7];
-    output += '<div class=\'nav-link clickable\' id=\'nav-bar-' + soy.$$escapeHtml(linkData7.navId) + '-button\'>' + soy.$$escapeHtml(linkData7.displayName) + '</div>';
+    output += '<div class=\'nav-link\' id=\'nav-bar-' + soy.$$escapeHtml(linkData7.navId) + '-button\'>' + soy.$$escapeHtml(linkData7.displayName) + '</div>';
   }
   return output;
 };
@@ -33,7 +33,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.overlays = function(opt_data, opt_ignored) {
-  return '<div class=\'menu-toggle\'>&#9776;</div><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div>';
+  return '<div class=\'menu-toggle\'>&#9776;</div><div class=\'animation-overlay\'></div><div class=\'page-too-small-overlay\'><div class=\'page-too-small-overlay-content\'>\u00AF\\_(\u30C4)_/\u00AF</div></div><div class=\'layering-shadow-overlay\'></div><div id=\'p5-container\'></div>';
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.overlays.soyTemplateName = 'adamforbes.mainPage.overlays';
@@ -84,7 +84,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.header = function(opt_data, opt_ignored) {
-  return '<div class=\'topic-header-title float-left clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
+  return '<div class=\'topic-header-title float-left\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.header.soyTemplateName = 'adamforbes.mainPage.header';
@@ -92,7 +92,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.title = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-header-title-image clickable\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title-image\'></div>' : '<div class=\'topic-header-title-text clickable\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
+  return '' + ((opt_data.title == '_imageOverride') ? '<div class=\'topic-header-title-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.topicId) + '-title.png\' alt=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title-image\'></div>' : '<div class=\'topic-header-title-text\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + soy.$$escapeHtml(opt_data.title) + '</div>');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.title.soyTemplateName = 'adamforbes.mainPage.title';

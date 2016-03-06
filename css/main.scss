@@ -149,22 +149,21 @@ $nav-title-top-threshold: 20vh;
   z-index: 10;
   @media (min-width: 0px) and (max-width: $break-min) {
     left: -$nav-bar-width;
+    width: $nav-bar-width * .7;
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
     left: -$nav-bar-width;
+    width: $nav-bar-width * .8;
   }
   @media (min-width: $break-max) {
     left: 0px;
+    width: $nav-bar-width;
   }
 }
 
 .nav-link {
   @extend .clickable;
   margin-bottom: 6px;
-}
-
-.nav-bar-open {
-  left: -$nav-bar-width;
 }
 
 .nav-title-name {
@@ -305,7 +304,6 @@ $nav-title-top-threshold: 20vh;
 
 .topic-content-image {
   width: 100%;
-  border-style: solid; //REMOVE THIS LATER
   @media (min-width: 0px) and (max-width: $break-min) {
   }
   @media (min-width: $break-min) and (max-width: $break-max) {
@@ -361,7 +359,7 @@ $nav-title-top-threshold: 20vh;
    ========================================================================== */
 
 .menu-toggle {
-  font-size: 1.3em;
+  font-size: 1.7em;
   margin-top: 7px;
 
   @media (min-width: 0px) and (max-width: $page-width-threshold) {
@@ -430,6 +428,7 @@ $nav-title-top-threshold: 20vh;
 // This will create a sense of depth through shadow
 .layering-shadow-overlay {
   background-color: $main-color;
+  cursor: pointer;
   height: 100%;
   margin: 0;
   opacity: 0;
@@ -441,6 +440,12 @@ $nav-title-top-threshold: 20vh;
   pointer-events: none;
 }
 
+#p5-container {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  pointer-events: none;
+}
 
 /* ==========================================================================
    Helper classes
