@@ -13,7 +13,7 @@ var topicShorts = {topics: [
       contents: [
           {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom CRM built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
           {image: 'source.png'},
-          {text: 'My next improvements will be to the mobile experience (right now desktop is favored) and shifting content to a proper backend.'}
+          {text: 'My next improvements will be to upload some work to the site! I guess I find building the personal portfolio site more interesting than actually uploading anything to it. Whoops! After that, I\'d like to polish the mobile experience and then finish my firebase backend.'}
     ]},
     {topicId: 'about-me',
       navIds: ['main-page'],
