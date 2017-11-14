@@ -1,6 +1,7 @@
 var navBarContents = {links: [
     {navId: 'resume', displayName: 'Resume'},
     {navId: 'graphic-design', displayName: 'Graphic Design'},
+    {navId: 'web-sketching', displayName: 'Web Sketching'},
     {navId: 'web-design', displayName: 'Web Design'},
     {navId: 'photography', displayName: 'Photography'},
     {navId: 'misc', displayName: 'Misc.'},
@@ -13,7 +14,8 @@ var topicShorts = {topics: [
       contents: [
           {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom CRM built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
           {image: 'source.png'},
-          {text: 'My next improvements will be to upload some work to the site! I guess I find building the personal portfolio site more interesting than actually uploading anything to it. Whoops! After that, I\'d like to polish the mobile experience and then finish my firebase backend.'}
+          {text: 'My next improvements will be to the mobile experience (right now desktop is favored) and shifting content to a proper backend.'},
+          {blockLink: {text: 'SEE DIRTY CODE', link: 'https://github.com/adamforbes/adamforbes.github.io'}}
     ]},
     {topicId: 'about-me',
       navIds: ['main-page'],
@@ -30,6 +32,14 @@ var topicShorts = {topics: [
           {subheading: 'This is a subheading! Wow'},
           {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}
     ]},
+    {topicId: 'red-chamber',
+      navIds: ['main-page', 'graphic-design'],
+      header: {title: 'The Dream of the Red Chamber'},
+      contents: [
+          {text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'},
+          {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'},
+          {image: 'vol1_the-golden-days.jpg'}
+    ]},
     {topicId: 'zapdos',
       navIds: ['main-page', 'graphic-design'],
       header: {title: 'Zapdos!'},
@@ -38,18 +48,11 @@ var topicShorts = {topics: [
           {caption: 'I love Zapdos in the Morning'},
           {image: 'large-square.png'}
     ]},
-    {topicId: 'red-chamber',
-      navIds: ['main-page', 'graphic-design'],
-      header: {title: 'The Dream of the Red Chamber by Cao XueQin'},
-      contents: [
-          {text: 'The following covers are mockups for Cao XueQin\'s classical masterpiece \"The Dream of the Red Chamber\", otherwise known as the \"The Story of the Stone\". The novel is one of China\'s four great classical novels. The books contain a detailed history of 18th century Chinese culture as well as a intricate narrative including some forty main characters and over five hundred minor characters.'},
-          {text: 'The next five covers are a single set of covers using landscape paintings from the five great masters of Chinese landscape painting and their disciples/derivatives.'}
-    ]},
     {topicId: 'colophon',
       navIds: ['colophon'],
       header: {title: 'Colophon'},
       contents: [
-          {text: 'This w'}
+          {text: 'This is a work in progress'}
     ]},
 ]};
 
@@ -76,6 +79,43 @@ var topicPages = {topics: [
           {image: 'tall-skinny-large.png'}
     ]}
 ]};
+
+/*
+
+To-do: Topics should be it's own object with topicPage and topicShorts under
+
+message Topic {
+  required string topicId
+  required header {
+    required string title
+    required string chronology
+  }
+  required navIdTags {
+    repeated string navId
+  }
+  required shortContent {
+    repeated Content
+  }
+  optional pageContent {
+    repeated Content
+  }
+}
+
+
+
+topics
+- required header
+  - required chronology
+  - required 
+- required navIdTags
+- required shortContent
+  - repeated content
+    - Enum with options text, image, blockLink, subheading, captions, 
+
+
+
+
+*/
 
 /* ==========================================================================
    TopicPage
@@ -140,6 +180,7 @@ function loadDefault() {
 
   loadNavBar();
   loadMainPageDefaults(true /* firstLoad */);
+  addLinksToBlockLinks();
 
   // Adding the click event to the nav-title-name. Essentially the home button
   $('.nav-title-name').click(function() {
@@ -194,19 +235,48 @@ function loadMainPageDefaults(firstLoad) {
   console.log('.topic-header');
   console.log($('.topic-header'));
 
+  // This is an attempt at event propagation for all the header
+  // This does not work unfortunately
+  // To-do: FIX this shiet and also work out a soy function to set this up
   $(document).ready(function() {
     $('.topic-header').on('click', '.topic-header-title', function(e) {
       var elem = $(this);
       console.log('inside click event delegation');
       console.log(elem);
       animatedLoad(function() {
+        $('.main-page').empty();
         var key = getKeyFromTitleId(elem.attr('id'));
-        console.log(topicPages[key]);
-        $mainPage.empty();
-        $mainPage.append(adamforbes.mainPage.loadTopicPage(topicPages[key]));
+
+        console.log('entering stupid function');
+        console.log(topicPages.topics);
+
+        var topic = {};
+
+        for (i = 0; i < topicPages.topics.length; i++) {
+          console.log(i);
+          if (topicPages.topics[i].topicId == key) {
+            topic = topicPages.topics[i];
+          }
+        }
+
+        // TO-DO: create another helper function rather than piggy backing off
+        var displayObject = {topics: topic};
+        $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
+
+        console.log('outputting the topicPage');
+        console.log(topicPages);
       });
     });
   });
+}
+
+// Created this function as a workaround for some of the limitations of soy.
+// We need to run this whenever a new list of items is added to the page.
+// To-do: fix this so that it works with tabs
+function addLinksToBlockLinks() {
+  $('.topic-content-block-link').click(function() {
+    window.open($(this).attr('data-link'),'_blank');
+    });
 }
 
 function hyphenToCamel(hyphenString) {
@@ -297,7 +367,6 @@ function generateNavPageList(navId) {
     //resume topics. Or a separate resume section? Not sure.
   } else if (navId == 'colophon') {
   } else {
-    //linear search! Wahoo i'm a google engineerrrrrr
     for (i = 0; i < topicShorts.topics.length; i++) {
       for (j = 0; j < topicShorts.topics[i].navIds.length; j++) {
         if (topicShorts.topics[i].navIds[j] == navId) {

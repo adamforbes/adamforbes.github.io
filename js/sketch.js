@@ -2,7 +2,7 @@ var windowWidth = window.innerWidth;
 var windowHeight = window.innerHeight;
 var borderWidth = 5;
 
-var v = 1;
+var v = 10;
 var t = 0;
 
 var topBorder;
@@ -14,7 +14,7 @@ var showBorder = false;
 
 function setup() {
   var mainColor = $('.nav-bar').css('background-color');
-  var myCanvas = createCanvas($(window).width(), $(window).height());
+  var myCanvas = createCanvas(windowWidth, windowHeight);
   myCanvas.parent('p5-container');
   frameRate(60);
   stroke(mainColor);
@@ -35,9 +35,22 @@ function draw() {
   clear();
 
   if (showBorder) {
+    topBorder.grow();
     topBorder.display();
+    rightBorder.grow();
     rightBorder.display();
+    bottomBorder.grow();
     bottomBorder.display();
+    leftBorder.grow();
+    leftBorder.display();
+  } else {
+    topBorder.shrink();
+    topBorder.display();
+    rightBorder.shrink();
+    rightBorder.display();
+    bottomBorder.shrink();
+    bottomBorder.display();
+    leftBorder.shrink();
     leftBorder.display();
   }
 
@@ -78,24 +91,63 @@ function Border(edge) {
   this.w = 0;
   this.h = 0;
 
-  this.xMax = 0;
-  this.yMax = 0;
+  this.setMax = function(x, y, w, h) {
+    this.xMax = x;
+    this.yMax = y;
+    this.wMax = w;
+    this.hMax = h;
+  }
 
   this.display = function () {
-    if (edge == 'top') {
-      rect(0, 0, windowWidth, borderWidth);
-    } else if (edge == 'right') {
-      rect(windowWidth - borderWidth, 0, windowWidth, windowHeight);
-    } else if (edge == 'bottom') {
-      rect(0, windowHeight - borderWidth, windowWidth, windowHeight);
-    } else if (edge == 'left') {
-      rect(0, 0, borderWidth, windowHeight);
-    } else {
-      console.log('incorrectly set border edge dooofus');
-    }
+    rect(this.x, this.y, this.w, this.h);
   }
 
   this.grow = function () {
+    if (edge == 'top' || edge == 'bottom') {
+      if (this.w <= this.wMax) {
+        this.w += v;
+      }
+      this.x = this.xMax;
+      this.y = this.yMax;
+      this.h = this.hMax;
+      console.log(this.y);
+    } else if (edge == 'right' || edge == 'left') {
+      if (this.h <= this.hMax) {
+        this.h += v;
+      }
+      this.x = this.xMax;
+      this.y = this.yMax;
+      this.w = this.wMax;
+    }
+  }
 
+  this.shrink = function () {
+    if (edge == 'top' || edge == 'bottom') {
+      if (this.w >= 0) {
+        this.w -= v;
+      }
+      this.x = this.xMax;
+      this.y = this.yMax;
+      this.h = this.hMax;
+    } else if (edge == 'right' || edge == 'left') {
+      if (this.h >= 0) {
+        this.h -= v;
+      }
+      this.x = this.xMax;
+      this.y = this.yMax;
+      this.w = this.wMax;
+    }
+  }
+
+  if (edge == 'top') {
+    this.setMax(0, 0, windowWidth, borderWidth);
+  } else if (edge == 'right') {
+    this.setMax(windowWidth - borderWidth, 0, windowWidth, windowHeight);
+  } else if (edge == 'bottom') {
+    this.setMax(0, windowHeight - borderWidth, windowWidth, windowHeight);
+  } else if (edge == 'left') {
+    this.setMax(0, 0, borderWidth, windowHeight);
+  } else {
+    console.log('incorrectly set border edge dooofus');
   }
 }

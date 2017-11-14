@@ -244,6 +244,14 @@ textarea {
     .topic-content-caption {
       width: 480px; } }
 
+.topic-content-block-link {
+  color: #eb1d5d;
+  display: inline-block;
+  padding-left: 20px; }
+
+.topic-content-block-link:hover {
+  cursor: pointer; }
+
 .wip-page {
   padding-top: 20vh; }
 

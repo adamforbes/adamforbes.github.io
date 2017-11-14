@@ -125,7 +125,7 @@
 {template .title}
   {if $title == '_imageOverride'}
     <div class='topic-header-title-image'>
-      <img src='img/{$topicId}/{$topicId}-title.png' alt='{$topicId}-title-image'>
+      <img src='img/{$topicId}/title.png' alt='{$topicId}-title-image'>
     </div>
   {else}
     <div class='topic-header-title-text' id='{$topicId}-title'>
@@ -155,7 +155,7 @@
     </div>
   {elseif $content.image}
     <div class='topic-content-image'>
-      <img src='img/{$topicId}/{$topicId}-{$content.image}' alt='{$content.image}'>
+      <img src='img/{$topicId}/{$content.image}' alt='{$content.image}'>
     </div>
   {elseif $content.caption}
     <div class='topic-content-caption'>
@@ -164,6 +164,10 @@
   {elseif $content.subheading}
     <div class='topic-content-subheading'>
       {$content.subheading}
+    </div>
+  {elseif $content.blockLink}
+    <div class='topic-content-block-link' data-link='{$content.blockLink.link}'>
+      {$content.blockLink.text}
     </div>
   {/if}
 {/template}
