@@ -27,10 +27,11 @@ var topicShorts = {topics: [
       navIds: ['main-page', 'graphic-design'],
       header: {title: '_imageOverride', chronology: 'created in 2013'},
       contents: [
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
-          {subheading: 'This is a subheading! Wow'},
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}
+          {text: 'A few friends and I founded The Argus Magazine: Wesleyan University\'s first longform nonfiction periodical. We published a new issue once a semester. These issues carried everything from scientific essays comparing methods of combating climate change to photo journalism exploring Christianity in contemporary America.'},
+          {text: 'I acted as the Art Director and Designer; I designed the layout of the magazine in InDesign, sourced all the accompanying art, designed the logo, and created all of the covers.'},
+          {image: 'cover-spring-2012.jpg'},
+          {image: 'cover-spring-2013.jpg'},
+          {image: 'cover-spring-2014.jpg'}
     ]},
     {topicId: 'red-chamber',
       navIds: ['main-page', 'graphic-design'],
@@ -44,6 +45,7 @@ var topicShorts = {topics: [
       navIds: ['main-page', 'graphic-design'],
       header: {title: 'Zapdos!'},
       contents: [
+          {text: 'this is a test'},
           {image: 'zapdos.png'},
           {caption: 'I love Zapdos in the Morning'},
           {image: 'large-square.png'}
