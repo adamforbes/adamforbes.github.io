@@ -79,6 +79,11 @@ var topicPages = {topics: [
           {image: 'short-fat.png'},
           {image: 'short-fat-large.png'},
           {image: 'tall-skinny-large.png'}
+    ]},
+    {topicId: 'error-page',
+      header: {title: 'Error! Missing topic'},
+      contents: [
+          {text: 'This topic page doesn\'t exist!'}
     ]}
 ]};
 
@@ -162,7 +167,6 @@ HOWEVER. Now that I think of it. The mainpage isn't the only place we want
 to have a list of the Topic blurbs..
 
 
-
    ==========================================================================
    Next Steps
    ==========================================================================
@@ -170,7 +174,6 @@ to have a list of the Topic blurbs..
 - Style the nav bar to be smaller for mobile screens. Atm it's
   half of the page
 - Add an animated svg frame around website
-
 
 */
 
@@ -206,69 +209,67 @@ function loadNavBar() {
   if (window.innerWidth < 840) {
     showBorder = true;
   }
-  $('.nav-bar').on('click', '.nav-link', function(e) {
-    var $elem = $(this);
-    animatedLoad(function() {
-      $('.main-page').empty();
-      var key = getNavIdFromDivId($elem.attr('id'));
-      var displayObject = {topics: generateNavPageList(key)};
-      $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
-      if (window.innerWidth < 840) {
-        toggleNavBar();
-      }
-    });
-      resetNavLinkPosition();
-      $elem.animate({
-        marginLeft: '10px'
-      }, { duration: 100, queue: false });
-  });
+  addNavPageListLinkToNavItems();
 }
 
 function loadMainPageDefaults(firstLoad) {
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(topicShorts));
+    addTopicPageLinksToTitles();
   } else {
-    animatedLoad(function() {
-      $('.main-page').empty();
-      $('.main-page').append(adamforbes.mainPage.loadTopics(topicShorts));
-    });
+    loadToMainPage(adamforbes.mainPage.loadTopics(topicShorts));
+  }
+}
+
+function loadTopicPage(topicId) {
+  var topic = getTopic(topicPages, topicId);
+
+  // When there is no matching topic page, show an error page
+  if (topic == -1) {
+    topic = topicPages.topics[topicPages.topics.length - 1];
+    console.log('Error! No topic page found');
   }
 
-  console.log('.topic-header');
-  console.log($('.topic-header'));
+  // the loadTopics template requires an array. Note to self, never use a 
+  // dynamically typed language again....
+  var displayObject = {topics: [topic]};
 
-  // This is an attempt at event propagation for all the header
-  // This does not work unfortunately
-  // To-do: FIX this shiet and also work out a soy function to set this up
-  $(document).ready(function() {
-    $('.topic-header').on('click', '.topic-header-title', function(e) {
-      var elem = $(this);
-      console.log('inside click event delegation');
-      console.log(elem);
-      animatedLoad(function() {
-        $('.main-page').empty();
-        var key = getKeyFromTitleId(elem.attr('id'));
+  animatedLoad(function() {
+    loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
+  });
+}
 
-        console.log('entering stupid function');
-        console.log(topicPages.topics);
+function getTopic(topicsObject, topicId) {
+  var topic = -1;
 
-        var topic = {};
+  for (i = 0; i < topicsObject.topics.length; i++) {
+    if (topicsObject.topics[i].topicId == topicId) {
+      topic = topicsObject.topics[i];
+    }
+  }
+  return topic;
+}
 
-        for (i = 0; i < topicPages.topics.length; i++) {
-          console.log(i);
-          if (topicPages.topics[i].topicId == key) {
-            topic = topicPages.topics[i];
-          }
-        }
+function addNavPageListLinkToNavItems() {
+  $('.nav-bar').on('click', '.nav-link', function(e) {
+    var $elem = $(this);
+    var key = getNavIdFromDivId($elem.attr('id'));
+    var displayObject = {topics: generateNavPageList(key)};
 
-        // TO-DO: create another helper function rather than piggy backing off
-        var displayObject = {topics: topic};
-        $('.main-page').append(adamforbes.mainPage.loadTopics(displayObject));
+    loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
+    resetNavLinkPosition();
 
-        console.log('outputting the topicPage');
-        console.log(topicPages);
-      });
-    });
+    // Highlight the currently selected nav item
+    $elem.animate({
+      marginLeft: '10px'
+    }, { duration: 100, queue: false });
+  });
+}
+
+function addTopicPageLinksToTitles() {
+  $('.topic-header').on('click', '.topic-header-title', function(e) {
+    var key = $(this).attr('id');
+    loadTopicPage(key);
   });
 }
 
@@ -278,7 +279,7 @@ function loadMainPageDefaults(firstLoad) {
 function addLinksToBlockLinks() {
   $('.topic-content-block-link').click(function() {
     window.open($(this).attr('data-link'),'_blank');
-    });
+  });
 }
 
 function hyphenToCamel(hyphenString) {
@@ -377,9 +378,18 @@ function generateNavPageList(navId) {
       }
     }
   }
-  console.log("navPageList");
-  console.log(navPageList);
   return navPageList;
+}
+
+function loadToMainPage(content) {
+  animatedLoad(function() {
+    $('.main-page').empty();
+    $('.main-page').append(content);
+    addTopicPageLinksToTitles();
+    if (window.innerWidth < 840 && isNavBarOpen()) {
+      closeNavBar();
+    }
+  });
 }
 
 //Animation that will draw the passed in function midway

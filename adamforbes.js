@@ -67,21 +67,13 @@ if (goog.DEBUG) {
 }
 
 
-adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
-  return '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(opt_data.topicPage.topicId) + '\'>' + adamforbes.mainPage.topic(opt_data) + '</div>';
-};
-if (goog.DEBUG) {
-  adamforbes.mainPage.loadTopicPage.soyTemplateName = 'adamforbes.mainPage.loadTopicPage';
-}
-
-
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div><div class=\'topic-content\'>';
-  var contentList44 = opt_data.contents;
-  var contentListLen44 = contentList44.length;
-  for (var contentIndex44 = 0; contentIndex44 < contentListLen44; contentIndex44++) {
-    var contentData44 = contentList44[contentIndex44];
-    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData44});
+  var contentList38 = opt_data.contents;
+  var contentListLen38 = contentList38.length;
+  for (var contentIndex38 = 0; contentIndex38 < contentListLen38; contentIndex38++) {
+    var contentData38 = contentList38[contentIndex38];
+    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData38});
   }
   output += '</div>';
   return output;
@@ -92,7 +84,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.header = function(opt_data, opt_ignored) {
-  return '<div class=\'topic-header-title float-left\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '-title\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
+  return '<div class=\'topic-header-title float-left\' id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'>' + adamforbes.mainPage.title({topicId: opt_data.topicId, title: opt_data.header.title}) + '</div>' + ((opt_data.header.chronology) ? '<div class=\'topic-header-chronology float-right\'>' + adamforbes.mainPage.chronology({chronology: opt_data.header.chronology}) + '</div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.header.soyTemplateName = 'adamforbes.mainPage.header';
