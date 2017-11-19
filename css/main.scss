@@ -341,13 +341,9 @@ $nav-title-top-threshold: 20vh;
 }
 
 .topic-content-block-link {
+  @extend .responsive-margin;
+  @extend .clickable;
   color: $main-color;
-  display: inline-block;
-  padding-left: 20px;
-}
-
-.topic-content-block-link:hover {
-  cursor: pointer;
 }
 
 .wip-page {

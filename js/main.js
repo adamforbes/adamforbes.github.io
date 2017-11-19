@@ -207,7 +207,7 @@ function loadDefault() {
 function loadNavBar() {
   $('body').append(adamforbes.mainPage.navBar(navBarContents));
   if (window.innerWidth < 840) {
-    showBorder = true;
+    showBorder = false; //disabling this feature
   }
   addNavPageListLinkToNavItems();
 }
@@ -341,7 +341,7 @@ function closeNavBar() {
   $('.menu-toggle').animate({
     opacity: '1'
   }, 300, 'swing');
-  showBorder = true;
+  showBorder = false; //disabling this feature.
 }
 
 function openNavBar() {
