@@ -15,7 +15,7 @@ var topicShorts = {topics: [
           {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom CRM built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
           {image: 'source.png'},
           {text: 'My next improvements will be to the mobile experience (right now desktop is favored) and shifting content to a proper backend.'},
-          {blockLink: {text: 'SEE DIRTY CODE', link: 'https://github.com/adamforbes/adamforbes.github.io'}}
+          {blockLink: {text: 'SEE CODE', link: 'https://github.com/adamforbes/adamforbes.github.io'}}
     ]},
     {topicId: 'about-me',
       navIds: ['main-page'],
