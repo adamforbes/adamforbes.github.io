@@ -87,46 +87,10 @@ var topicPages = {topics: [
     ]}
 ]};
 
-/*
-
-To-do: Topics should be it's own object with topicPage and topicShorts under
-
-message Topic {
-  required string topicId
-  required header {
-    required string title
-    required string chronology
-  }
-  required navIdTags {
-    repeated string navId
-  }
-  required shortContent {
-    repeated Content
-  }
-  optional pageContent {
-    repeated Content
-  }
-}
-
-
-
-topics
-- required header
-  - required chronology
-  - required 
-- required navIdTags
-- required shortContent
-  - repeated content
-    - Enum with options text, image, blockLink, subheading, captions, 
-
-
-
-
-*/
-
-/* ==========================================================================
-   TopicPage
-   ==========================================================================
+/* 
+==========================================================================
+TopicPage
+==========================================================================
 
 TopicPages will take up the entire main page div. These are the full contents
 of a project. The topic snippet on the mainpage is either an extract of this
@@ -148,13 +112,14 @@ Both TopicPages and MainPage/Topics will have the same datatype. That is...
   - Optional image
   - Optional caption
   - Optional subheading
+  - etc...
 - ???? Perhaps include an non-display timestamp for sorting
 
 This will be used by the soy template to generate the content.
 
-   ==========================================================================
-   TopicShorts
-   ==========================================================================
+==========================================================================
+TopicShorts
+==========================================================================
 
 These objects will appear on the Homepage on the initial load of the website.
 They are either full topics, or they have "...read more" buttons that will
@@ -167,15 +132,40 @@ HOWEVER. Now that I think of it. The mainpage isn't the only place we want
 to have a list of the Topic blurbs..
 
 
-   ==========================================================================
-   Next Steps
-   ==========================================================================
+==========================================================================
+Next Steps
+==========================================================================
+- Add content
+- Split out JS file to easier maintenance
+- Write a simple test suite
 - Add swipe motions for mobile
 - Style the nav bar to be smaller for mobile screens. Atm it's
   half of the page
-- Add an animated svg frame around website
+- Topics should be it's own object with topicPage and topicShorts under
+
+message Topic {
+  required string topicId
+  required header {
+    required string title
+    required string chronology
+  }
+  required navIdTags {
+    repeated string navId
+  }
+  required shortContent {
+    repeated Content
+  }
+  optional pageContent {
+    repeated Content
+  }
+}
 
 */
+
+
+/* ==========================================================================
+   UI Loading
+   ========================================================================== */
 
 function loadDefault() {
   var $body = $('body');
@@ -239,16 +229,35 @@ function loadTopicPage(topicId) {
   });
 }
 
-function getTopic(topicsObject, topicId) {
-  var topic = -1;
-
-  for (i = 0; i < topicsObject.topics.length; i++) {
-    if (topicsObject.topics[i].topicId == topicId) {
-      topic = topicsObject.topics[i];
+function loadToMainPage(content) {
+  animatedLoad(function() {
+    $('.main-page').empty();
+    $('.main-page').append(content);
+    addTopicPageLinksToTitles();
+    if (window.innerWidth < 840 && isNavBarOpen()) {
+      closeNavBar();
     }
-  }
-  return topic;
+  });
 }
+
+//Animation that will draw the passed in function midway
+//through the animation
+function animatedLoad(functionToRunWhileHidden) {
+  $('.animation-overlay').animate({
+    width: '100%'
+  }, 400, 'swing', function() {
+    //it could be really cool to also show/hide a spinner here while we wait
+    //for the functionToRunWhileHidden AKA what content to load
+    functionToRunWhileHidden();
+    $('.animation-overlay').animate({
+      width:'0%'
+    }, 300, 'swing');
+  });
+}
+
+/* ==========================================================================
+   Attaching events to UI component
+   ========================================================================== */
 
 function addNavPageListLinkToNavItems() {
   $('.nav-bar').on('click', '.nav-link', function(e) {
@@ -282,6 +291,10 @@ function addLinksToBlockLinks() {
   });
 }
 
+/* ==========================================================================
+   Utility functions
+   ========================================================================== */
+
 function hyphenToCamel(hyphenString) {
   return hyphenString.replace(/-([a-z])/g, function (a) { return a[1].toUpperCase(); });
 }
@@ -301,6 +314,23 @@ function getNavIdFromDivId(divId) {
   //Remove "^nav-bar-"
   return retVal.substring("nav-bar-".length, retVal.length)
 }
+
+function getTopic(topicsObject, topicId) {
+  var topic = -1;
+
+  for (i = 0; i < topicsObject.topics.length; i++) {
+    if (topicsObject.topics[i].topicId == topicId) {
+      topic = topicsObject.topics[i];
+    }
+  }
+  return topic;
+}
+
+
+
+/* ==========================================================================
+   Nav related functions
+   ========================================================================== */
 
 function resetNavLinkPosition() {
   $('.nav-link').animate({
@@ -379,31 +409,5 @@ function generateNavPageList(navId) {
     }
   }
   return navPageList;
-}
-
-function loadToMainPage(content) {
-  animatedLoad(function() {
-    $('.main-page').empty();
-    $('.main-page').append(content);
-    addTopicPageLinksToTitles();
-    if (window.innerWidth < 840 && isNavBarOpen()) {
-      closeNavBar();
-    }
-  });
-}
-
-//Animation that will draw the passed in function midway
-//through the animation
-function animatedLoad(functionToRunWhileHidden) {
-  $('.animation-overlay').animate({
-    width: '100%'
-  }, 400, 'swing', function() {
-    //it could be really cool to also show/hide a spinner here while we wait
-    //for the functionToRunWhileHidden AKA what content to load
-    functionToRunWhileHidden();
-    $('.animation-overlay').animate({
-      width:'0%'
-    }, 300, 'swing');
-  });
 }
 
