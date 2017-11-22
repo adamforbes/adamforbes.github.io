@@ -12,7 +12,7 @@ var topicShorts = {topics: [
       navIds: ['main-page', 'graphic-design'],
       header: {title: 'grand opening!', chronology: 'feb 26, 2016'},
       contents: [
-          {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom CRM built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
+          {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom content management system built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
           {image: 'source.png'},
           {text: 'My next improvements will be to the mobile experience (right now desktop is favored) and shifting content to a proper backend.'},
           {blockLink: {text: 'SEE CODE', link: 'https://github.com/adamforbes/adamforbes.github.io'}}
@@ -21,7 +21,8 @@ var topicShorts = {topics: [
       navIds: ['main-page'],
       header: {title: 'about me', chronology: 'april 12, 2014'},
       contents: [
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'}
+          {text: 'I\'m Adam Forbes. I like to design stuffs.'},
+          {text: 'This is my eponymous website. Here, I hope to showcase the best of my personal and professional body of work.'}
     ]},
     {topicId: 'the-argus-mag',
       navIds: ['main-page', 'graphic-design'],
@@ -31,7 +32,8 @@ var topicShorts = {topics: [
           {text: 'I acted as the Art Director and Designer; I designed the layout of the magazine in InDesign, sourced all the accompanying art, designed the logo, and created all of the covers.'},
           {image: 'cover-spring-2012.jpg'},
           {image: 'cover-spring-2013.jpg'},
-          {image: 'cover-spring-2014.jpg'}
+          {image: 'cover-spring-2014.jpg'},
+          {topicPageButton: 'read more'}
     ]},
     {topicId: 'red-chamber',
       navIds: ['main-page', 'graphic-design'],
@@ -175,7 +177,6 @@ function loadDefault() {
 
   loadNavBar();
   loadMainPageDefaults(true /* firstLoad */);
-  addLinksToBlockLinks();
 
   // Adding the click event to the nav-title-name. Essentially the home button
   $('.nav-title-name').click(function() {
@@ -205,7 +206,7 @@ function loadNavBar() {
 function loadMainPageDefaults(firstLoad) {
   if (firstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(topicShorts));
-    addTopicPageLinksToTitles();
+    loadBodyInteractiveElements();
   } else {
     loadToMainPage(adamforbes.mainPage.loadTopics(topicShorts));
   }
@@ -233,7 +234,7 @@ function loadToMainPage(content) {
   animatedLoad(function() {
     $('.main-page').empty();
     $('.main-page').append(content);
-    addTopicPageLinksToTitles();
+    loadBodyInteractiveElements();
     if (window.innerWidth < 840 && isNavBarOpen()) {
       closeNavBar();
     }
@@ -253,6 +254,12 @@ function animatedLoad(functionToRunWhileHidden) {
       width:'0%'
     }, 300, 'swing');
   });
+}
+
+function loadBodyInteractiveElements () {
+  addTopicPageLinksToTitles();
+  addLinksToBlockLinks();
+  addLinksToTopicPageButton();
 }
 
 /* ==========================================================================
@@ -288,6 +295,13 @@ function addTopicPageLinksToTitles() {
 function addLinksToBlockLinks() {
   $('.topic-content-block-link').click(function() {
     window.open($(this).attr('data-link'),'_blank');
+  });
+}
+
+function addLinksToTopicPageButton() {
+  $('.topic-content-topic-page-button').click(function() {
+    var key = $(this).attr('data-topic-id');
+    loadTopicPage(key);
   });
 }
 

@@ -166,8 +166,19 @@
       {$content.subheading}
     </div>
   {elseif $content.blockLink}
-    <div class='topic-content-block-link' data-link='{$content.blockLink.link}'>
-      {$content.blockLink.text}
+    <div class='clearfix'>
+      <div class='topic-content-block-link float-left button' data-link='{$content.blockLink.link}'>
+        <div class='button-text'>
+          {$content.blockLink.text}
+        </div>
+      </div>
+      <i class="open-in-new-tab material-icons float-left">launch</i>
+    </div>
+  {elseif $content.topicPageButton}
+    <div class='topic-content-topic-page-button button' data-topic-id='{$topicId}'>
+      <div class='button-text'>
+        {$content.topicPageButton}
+      </div>
     </div>
   {/if}
 {/template}

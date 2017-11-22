@@ -109,6 +109,20 @@ $nav-title-top-threshold: 20vh;
   transition: opacity $duration $timing-function;
 }
 
+@mixin color-transition($duration, $timing-function) {
+  -webkit-transition: color $duration $timing-function;
+  -moz-transition: color $duration $timing-function;
+  -o-transition: color $duration $timing-function;
+  transition: color $duration $timing-function;
+}
+
+@mixin background-color-transition($duration, $timing-function) {
+  -webkit-transition: background-color $duration $timing-function;
+  -moz-transition: background-color $duration $timing-function;
+  -o-transition: background-color $duration $timing-function;
+  transition: background-color $duration $timing-function;
+}
+
 /* ==========================================================================
    Type Styles designed by Adam
    ========================================================================== */
@@ -340,15 +354,53 @@ $nav-title-top-threshold: 20vh;
   }
 }
 
-.topic-content-block-link {
-  @extend .responsive-margin;
-  @extend .clickable;
+.button {
+  @include background-color-transition(200ms, ease);
+  border: 1px solid $main-color;
+  display: inline-block;
+  opacity: 1.0;
+  padding: 10px 24px;
+  &:hover {
+    background-color: $main-color;
+    cursor: pointer;
+    & .button-text {
+      color: white;
+    }
+    & + .open-in-new-tab {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 0px) and (max-width: $break-min) {
+    margin-left: $break-min-margin;
+  }
+  @media (min-width: $break-min) and (max-width: $break-max) {
+    margin: 0 auto;
+  }
+  @media (min-width: $break-max) {
+    margin-left: $break-min-margin;
+  }
+}
+
+.button-text {
+  @include color-transition(200ms, ease);
   color: $main-color;
+  text-transform: lowercase;
+}
+
+.open-in-new-tab {
+  @include opacity-transition(200ms, ease);
+  color: $main-color;
+  cursor: default;
+  font-size: 20px;
+  margin-left: 24px;
+  margin-top: 10px;
+  opacity: 0.0;
 }
 
 .wip-page {
-  @extend .ts-h1;
   @extend .responsive-margin;
+  @extend .ts-h1;
   padding-top: $nav-title-top-threshold;
 }
 
@@ -423,7 +475,6 @@ $nav-title-top-threshold: 20vh;
   @media (min-width: $page-width-threshold) {
     display: none !important;
   }
-
   .page-too-small-overlay-content {
     margin: 90px auto;
     width: 90px;
