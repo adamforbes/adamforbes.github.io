@@ -138,6 +138,11 @@ to have a list of the Topic blurbs..
 Next Steps
 ==========================================================================
 - Add content
+- Visually connect topic pages and nav bar (move name and animate in 'back
+  button')
+- Add a pixel margin at the top of the TOPIC PAGE to allign it with your name.
+  LUXURIOUS page looks way better even if it uses up whitespace. Remove it
+  if not on desktop
 - Split out JS file to easier maintenance
 - Write a simple test suite
 - Add swipe motions for mobile
