@@ -89,7 +89,7 @@ textarea {
 
 .ts-h1, .topic-header-title-text, .wip-page {
   font-family: "Roboto Condensed", sans-serif;
-  font-size: 4.2em;
+  font-size: 3.5em;
   line-height: 1.2em; }
 
 .ts-h2, .topic-header-chronology, .topic-content-subheading {
@@ -101,7 +101,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 .nav-bar {
-  background-color: #eb1d5d;
+  background-color: #212121;
   height: 100%;
   position: fixed;
   width: 230px;
@@ -250,12 +250,12 @@ textarea {
   -moz-transition: background-color 200ms ease;
   -o-transition: background-color 200ms ease;
   transition: background-color 200ms ease;
-  border: 1px solid #eb1d5d;
+  border: 1px solid #212121;
   display: inline-block;
   opacity: 1.0;
   padding: 10px 24px; }
   .button:hover {
-    background-color: #eb1d5d;
+    background-color: #212121;
     cursor: pointer; }
     .button:hover .button-text {
       color: white; }
@@ -267,7 +267,7 @@ textarea {
   -moz-transition: color 200ms ease;
   -o-transition: color 200ms ease;
   transition: color 200ms ease;
-  color: #eb1d5d;
+  color: #212121;
   text-transform: lowercase; }
 
 .open-in-new-tab {
@@ -275,7 +275,7 @@ textarea {
   -moz-transition: opacity 200ms ease;
   -o-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
-  color: #eb1d5d;
+  color: #212121;
   cursor: default;
   font-size: 20px;
   margin-left: 24px;
@@ -285,13 +285,13 @@ textarea {
 .wip-page {
   padding-top: 20vh; }
 
-.clickable, .nav-link, .nav-title-name, .topic-header-title, .topic-header-title-text, .topic-header-title-image img {
+.clickable, .nav-link, .nav-title-name, .topic-header-title-image img {
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;
   -o-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
   opacity: 1.0; }
-  .clickable:hover, .nav-link:hover, .nav-title-name:hover, .topic-header-title:hover, .topic-header-title-text:hover, .topic-header-title-image img:hover {
+  .clickable:hover, .nav-link:hover, .nav-title-name:hover, .topic-header-title-image img:hover {
     cursor: pointer;
     opacity: .4; }
 
@@ -318,7 +318,7 @@ textarea {
   cursor: pointer; }
 
 .animation-overlay {
-  background-color: #eb1d5d;
+  background-color: #212121;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -341,7 +341,7 @@ textarea {
   text-align: center; }
   @media (max-width: 230px) {
     .page-too-small-overlay {
-      background-color: #eb1d5d;
+      background-color: #212121;
       height: 100%;
       margin: 0;
       padding: 0;
@@ -357,7 +357,7 @@ textarea {
     width: 90px; }
 
 .layering-shadow-overlay {
-  background-color: #eb1d5d;
+  background-color: #212121;
   cursor: pointer;
   height: 100%;
   margin: 0;

@@ -93,7 +93,7 @@ $nav-bar-width: 230px;
 $main-column-width: 480px;
 $main-font: 'Roboto';
 $main-condensed-font: 'Roboto Condensed';
-$main-color: #eb1d5d;
+$main-color: #212121;
 $text-color1: rgb(33, 33, 33);
 $text-color2: #FFFFFF;
 $break-max: 840px; // Chosen arbitrarily from the design. Mainly from the width topic-content-text
@@ -141,7 +141,7 @@ $nav-title-top-threshold: 20vh;
 
 .ts-h1 {
   font-family: $main-condensed-font, sans-serif;
-  font-size: 4.2em;
+  font-size: 3.5em;
   line-height: 1.2em;
 }
 
@@ -252,12 +252,12 @@ $nav-title-top-threshold: 20vh;
 }
 
 .topic-header-title {
-  @extend .clickable;
+  // @extend .clickable;
   margin-bottom: 10px;
 }
 
 .topic-header-title-text {
-  @extend .clickable;
+  // @extend .clickable;
   @extend .ts-h1;
 }
 

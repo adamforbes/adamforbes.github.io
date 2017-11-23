@@ -10,7 +10,7 @@ var navBarContents = {links: [
 var topicShorts = {topics: [
     {topicId: 'grand-opening',
       navIds: ['main-page', 'graphic-design'],
-      header: {title: 'grand opening!', chronology: 'feb 26, 2016'},
+      header: {title: 'Grand Opening!', chronology: 'feb 26, 2016'},
       contents: [
           {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom content management system built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
           {image: 'source.png'},
@@ -19,20 +19,18 @@ var topicShorts = {topics: [
     ]},
     {topicId: 'about-me',
       navIds: ['main-page'],
-      header: {title: 'about me', chronology: 'april 12, 2014'},
+      header: {title: 'About Me', chronology: 'april 12, 2014'},
       contents: [
           {text: 'I\'m Adam Forbes. I like to design stuffs.'},
           {text: 'This is my eponymous website. Here, I hope to showcase the best of my personal and professional body of work.'}
     ]},
     {topicId: 'the-argus-mag',
       navIds: ['main-page', 'graphic-design'],
-      header: {title: '_imageOverride', chronology: 'created in 2013'},
+      header: {title: 'The Argus Magazine', chronology: 'created in 2013'},
       contents: [
           {text: 'A few friends and I founded The Argus Magazine: Wesleyan University\'s first longform nonfiction periodical. We published a new issue once a semester. These issues carried everything from scientific essays comparing methods of combating climate change to photo journalism exploring Christianity in contemporary America.'},
           {text: 'I acted as the Art Director and Designer; I designed the layout of the magazine in InDesign, sourced all the accompanying art, designed the logo, and created all of the covers.'},
           {image: 'cover-spring-2012.jpg'},
-          {image: 'cover-spring-2013.jpg'},
-          {image: 'cover-spring-2014.jpg'},
           {topicPageButton: 'read more'}
     ]},
     {topicId: 'red-chamber',
@@ -66,9 +64,12 @@ var topicPages = {topics: [
       contents: [
           {text: 'A few friends and I founded The Argus Magazine: Wesleyan University\'s first longform nonfiction periodical. We published a new issue once a semester. These issues carried everything from scientific essays comparing methods of combating climate change to photo journalism exploring Christianity in contemporary America.'},
           {text: 'I acted as the Art Director and Designer; I designed the layout of the magazine in InDesign, sourced all the accompanying art, designed the logo, and created all of the covers.'},
+          {subheading: 'Cover art'},
           {image: 'cover-spring-2012.jpg'},
           {image: 'cover-spring-2013.jpg'},
-          {image: 'cover-spring-2014.jpg'}
+          {image: 'cover-spring-2014.jpg'},
+          {subheading: 'Layout design'},
+          {subheading: 'Logo design'}
     ]},
     {topicId: 'zapdos',
       header: {title: 'Zapdos!'},
@@ -268,7 +269,7 @@ function animatedLoad(functionToRunWhileHidden) {
 }
 
 function loadBodyInteractiveElements () {
-  addTopicPageLinksToTitles();
+  // addTopicPageLinksToTitles();
   addLinksToBlockLinks();
   addLinksToTopicPageButton();
 }
