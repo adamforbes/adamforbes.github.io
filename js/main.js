@@ -64,10 +64,11 @@ var topicPages = {topics: [
     {topicId: 'the-argus-mag',
       header: {title: '_imageOverride', chronology: 'created in 2013'},
       contents: [
-          {text: 'Lorem ipsumf dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
-          {subheading: 'this is not the topicShort'},
-          {text: 'sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'},
-          {text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.'}
+          {text: 'A few friends and I founded The Argus Magazine: Wesleyan University\'s first longform nonfiction periodical. We published a new issue once a semester. These issues carried everything from scientific essays comparing methods of combating climate change to photo journalism exploring Christianity in contemporary America.'},
+          {text: 'I acted as the Art Director and Designer; I designed the layout of the magazine in InDesign, sourced all the accompanying art, designed the logo, and created all of the covers.'},
+          {image: 'cover-spring-2012.jpg'},
+          {image: 'cover-spring-2013.jpg'},
+          {image: 'cover-spring-2014.jpg'}
     ]},
     {topicId: 'zapdos',
       header: {title: 'Zapdos!'},
@@ -218,27 +219,32 @@ function loadMainPageDefaults(firstLoad) {
 }
 
 function loadTopicPage(topicId) {
-  var topic = getTopic(topicPages, topicId);
+  var topicPage = getTopic(topicPages, topicId);
+  console.log(topicPage);
+
+  console.log(topicPage.topicId);
 
   // When there is no matching topic page, show an error page
-  if (topic == -1) {
-    topic = topicPages.topics[topicPages.topics.length - 1];
+  if (topicPage == -1) {
+    topicPage = topicPages.topics[topicPages.topics.length - 1];
     console.log('Error! No topic page found');
   }
 
   // the loadTopics template requires an array. Note to self, never use a 
   // dynamically typed language again....
-  var displayObject = {topics: [topic]};
+  var displayObject = {topics: [topicPage]};
 
   animatedLoad(function() {
     loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
   });
+
 }
 
 function loadToMainPage(content) {
   animatedLoad(function() {
     $('.main-page').empty();
     $('.main-page').append(content);
+    document.documentElement.scrollTop = document.body.scrollTop = 0;
     loadBodyInteractiveElements();
     if (window.innerWidth < 840 && isNavBarOpen()) {
       closeNavBar();

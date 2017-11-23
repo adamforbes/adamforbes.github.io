@@ -67,13 +67,21 @@ if (goog.DEBUG) {
 }
 
 
+adamforbes.mainPage.loadTopicPage = function(opt_data, opt_ignored) {
+  return '<div class=\'topic-page-container\' id=\'' + soy.$$escapeHtml(opt_data.topicPage.topicId) + '\'>' + adamforbes.mainPage.topic(opt_data.topicPage) + '</div>';
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.loadTopicPage.soyTemplateName = 'adamforbes.mainPage.loadTopicPage';
+}
+
+
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div><div class=\'topic-content\'>';
-  var contentList38 = opt_data.contents;
-  var contentListLen38 = contentList38.length;
-  for (var contentIndex38 = 0; contentIndex38 < contentListLen38; contentIndex38++) {
-    var contentData38 = contentList38[contentIndex38];
-    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData38});
+  var contentList44 = opt_data.contents;
+  var contentListLen44 = contentList44.length;
+  for (var contentIndex44 = 0; contentIndex44 < contentListLen44; contentIndex44++) {
+    var contentData44 = contentList44[contentIndex44];
+    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData44});
   }
   output += '</div>';
   return output;
@@ -108,7 +116,7 @@ if (goog.DEBUG) {
 
 
 adamforbes.mainPage.content = function(opt_data, opt_ignored) {
-  return '' + ((opt_data.content.text) ? '<div class=\'topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : (opt_data.content.subheading) ? '<div class=\'topic-content-subheading\'>' + soy.$$escapeHtml(opt_data.content.subheading) + '</div>' : (opt_data.content.blockLink) ? '<div class=\'clearfix\'><div class=\'topic-content-block-link float-left button\' data-link=\'' + soy.$$escapeHtml(opt_data.content.blockLink.link) + '\'><div class=\'button-text\'>' + soy.$$escapeHtml(opt_data.content.blockLink.text) + '</div></div><i class="open-in-new-tab material-icons float-left">launch</i></div>' : (opt_data.content.topicPageButton) ? '<div class=\'topic-content-topic-page-button button\' data-topic-id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'><div class=\'button-text\'>' + soy.$$escapeHtml(opt_data.content.topicPageButton) + '</div></div>' : '');
+  return '' + ((opt_data.content.text) ? '<div class=\'topic-content-text\'>' + soy.$$escapeHtml(opt_data.content.text) + '</div>' : (opt_data.content.image) ? '<div class=\'topic-content-image\'><img src=\'img/' + soy.$$escapeHtml(opt_data.topicId) + '/' + soy.$$escapeHtml(opt_data.content.image) + '\' alt=\'' + soy.$$escapeHtml(opt_data.content.image) + '\'></div>' : (opt_data.content.caption) ? '<div class=\'topic-content-caption\'>' + soy.$$escapeHtml(opt_data.content.caption) + '</div>' : (opt_data.content.subheading) ? '<div class=\'topic-content-subheading\'>' + soy.$$escapeHtml(opt_data.content.subheading) + '</div>' : (opt_data.content.blockLink) ? '<div class=\'clearfix\'><div class=\'button-container\'><div class=\'topic-content-block-link float-left button\' data-link=\'' + soy.$$escapeHtml(opt_data.content.blockLink.link) + '\'><div class=\'button-text\'>' + soy.$$escapeHtml(opt_data.content.blockLink.text) + '</div></div><i class="open-in-new-tab material-icons float-left">launch</i></div></div>' : (opt_data.content.topicPageButton) ? '<div class=\'button-container\'><div class=\'topic-content-topic-page-button button\' data-topic-id=\'' + soy.$$escapeHtml(opt_data.topicId) + '\'><div class=\'button-text\'>' + soy.$$escapeHtml(opt_data.content.topicPageButton) + '</div></div></div>' : '');
 };
 if (goog.DEBUG) {
   adamforbes.mainPage.content.soyTemplateName = 'adamforbes.mainPage.content';

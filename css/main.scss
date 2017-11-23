@@ -215,6 +215,7 @@ $nav-title-top-threshold: 20vh;
     margin-bottom: 30px;
     margin-left: $nav-bar-width + $h-margin;
     margin-right: $h-margin;
+    padding-top: $nav-title-top-threshold;
   }
 }
 
@@ -318,12 +319,6 @@ $nav-title-top-threshold: 20vh;
 
 .topic-content-image {
   width: 100%;
-  @media (min-width: 0px) and (max-width: $break-min) {
-  }
-  @media (min-width: $break-min) and (max-width: $break-max) {
-  }
-  @media (min-width: $break-max) {
-  }
 
   img {
     display:block;
@@ -370,22 +365,16 @@ $nav-title-top-threshold: 20vh;
       opacity: 1;
     }
   }
-
-  @media (min-width: 0px) and (max-width: $break-min) {
-    margin-left: $break-min-margin;
-  }
-  @media (min-width: $break-min) and (max-width: $break-max) {
-    margin: 0 auto;
-  }
-  @media (min-width: $break-max) {
-    margin-left: $break-min-margin;
-  }
 }
 
 .button-text {
   @include color-transition(200ms, ease);
   color: $main-color;
   text-transform: lowercase;
+}
+
+.button-container {
+  @extend .responsive-margin;
 }
 
 .open-in-new-tab {

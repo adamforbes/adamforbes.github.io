@@ -152,7 +152,8 @@ textarea {
   .main-page {
     margin-bottom: 30px;
     margin-left: 270px;
-    margin-right: 40px; } }
+    margin-right: 40px;
+    padding-top: 20vh; } }
 
 .topic-container:not(:first-child) {
   margin-top: 70px; }
@@ -202,16 +203,16 @@ textarea {
   margin-top: 30px; }
 
 @media (min-width: 0px) and (max-width: 520px) {
-  .responsive-margin, .topic-content-text, .topic-content-subheading, .wip-page {
+  .responsive-margin, .topic-content-text, .topic-content-subheading, .button-container, .wip-page {
     margin-left: 20px;
     margin-right: 20px;
     width: auto; } }
 @media (min-width: 520px) and (max-width: 840px) {
-  .responsive-margin, .topic-content-text, .topic-content-subheading, .wip-page {
+  .responsive-margin, .topic-content-text, .topic-content-subheading, .button-container, .wip-page {
     margin: 0 auto;
     width: 480px; } }
 @media (min-width: 840px) {
-  .responsive-margin, .topic-content-text, .topic-content-subheading, .wip-page {
+  .responsive-margin, .topic-content-text, .topic-content-subheading, .button-container, .wip-page {
     margin-left: 20px;
     width: 480px; } }
 
@@ -260,15 +261,6 @@ textarea {
       color: white; }
     .button:hover + .open-in-new-tab {
       opacity: 1; }
-  @media (min-width: 0px) and (max-width: 520px) {
-    .button {
-      margin-left: 20px; } }
-  @media (min-width: 520px) and (max-width: 840px) {
-    .button {
-      margin: 0 auto; } }
-  @media (min-width: 840px) {
-    .button {
-      margin-left: 20px; } }
 
 .button-text {
   -webkit-transition: color 200ms ease;

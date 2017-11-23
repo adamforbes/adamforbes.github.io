@@ -74,6 +74,16 @@
 {/template}
 
 /**
+ * Helper class for loading the topic pages
+ * @param topicPage a list of topics to generate
+ */
+{template .loadTopicPage}
+  <div class='topic-page-container' id='{$topicPage.topicId}'>
+    {call .topic data="$topicPage" /}
+  </div>
+{/template}
+
+/**
  * Generates a topic within the main page
  * @param topicId a unique Id for each topic, to be used in naming and style override
  * @param contents the contents of this topic
@@ -167,17 +177,21 @@
     </div>
   {elseif $content.blockLink}
     <div class='clearfix'>
-      <div class='topic-content-block-link float-left button' data-link='{$content.blockLink.link}'>
-        <div class='button-text'>
-          {$content.blockLink.text}
+    <div class='button-container'>
+        <div class='topic-content-block-link float-left button' data-link='{$content.blockLink.link}'>
+          <div class='button-text'>
+            {$content.blockLink.text}
+          </div>
         </div>
+        <i class="open-in-new-tab material-icons float-left">launch</i>
       </div>
-      <i class="open-in-new-tab material-icons float-left">launch</i>
     </div>
   {elseif $content.topicPageButton}
-    <div class='topic-content-topic-page-button button' data-topic-id='{$topicId}'>
-      <div class='button-text'>
-        {$content.topicPageButton}
+    <div class='button-container'>
+      <div class='topic-content-topic-page-button button' data-topic-id='{$topicId}'>
+        <div class='button-text'>
+          {$content.topicPageButton}
+        </div>
       </div>
     </div>
   {/if}
