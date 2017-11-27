@@ -1,16 +1,23 @@
 var navBarContents = {links: [
     {navId: 'resume', displayName: 'Resume'},
     {navId: 'graphic-design', displayName: 'Graphic Design'},
-    {navId: 'web-sketching', displayName: 'Web Sketching'},
+    // {navId: 'web-sketching', displayName: 'Web Sketching'},
     {navId: 'web-design', displayName: 'Web Design'},
-    {navId: 'photography', displayName: 'Photography'},
+    // {navId: 'photography', displayName: 'Photography'},
     {navId: 'misc', displayName: 'Misc.'},
     {navId: 'colophon', displayName: 'Colophon'}]};
 
 var topicShorts = {topics: [
+    {topicId: 'known-issues',
+      navIds: ['main-page', 'misc'],
+      header: {title: 'Known Issues', chronology: 'nov 26, 2017'},
+      contents: [
+          {text: 'Despite the many pleasures of working on a fully customized website that loads fully from JS, there are many major headaches that are part of the bargain. Page navigation, history, and responsive design are just a few of the topics that become significantly more difficult because of my choices in platform. C\'Est la Vie! Hopefully the design and content are enough to distract you from these issues.'},
+          {topicPageButton: 'read more'}
+    ]},
     {topicId: 'grand-opening',
       navIds: ['main-page', 'graphic-design'],
-      header: {title: 'Grand Opening!', chronology: 'feb 26, 2016'},
+      header: {title: 'Grand Opening!!!', chronology: 'feb 26, 2016'},
       contents: [
           {text: 'Hello! Welcome to my personal website. If you haven\'t noticed already, there\'s not a lot of content yet. However! Underneath the bare-bones exterior is a custom content management system built on top of js closure templates (soy), sass, and js. My heavy usage of templates allows me to have a very brief html file. How brief? Take a look at this page\'s source.'},
           {image: 'source.png'},
@@ -85,6 +92,20 @@ var topicPages = {topics: [
           {image: 'short-fat-large.png'},
           {image: 'tall-skinny-large.png'}
     ]},
+    {topicId: 'known-issues',
+      navIds: ['main-page'],
+      header: {title: 'Known Issues', chronology: 'nov 26, 2017'},
+      contents: [
+          {text: 'Bugs bugs bugs! Hopefully your experience with the site is satisfactory despite these. I am working to fix these when I have free time.'},
+          {subheading: 'Page navigation'},
+          {text: 'I made the early decision to forgo traditional usage of html files that serve as resources in order to maximize page efficiency, have some cool transitions, and challenge myself to make a modern site as many of the more advanced web apps no longer use URLs to point to specific unique resources. However, this comes at a high cost because manually manipulating the browser location breaks refresh, forward, and back. These challenges are not impossible to overcome, but are a bit tricky with how the site currently works, as such expect some wonkiness.'},
+          {subheading: 'Lack of a clear return home action in UI'},
+          {text: 'You\'re currently reading a subpage of this site which is one level below that of home. There is currently no clear visual indication that you are a level below where you started nor is it clear that you can return by clicking my name in the top left of the nav bar.'},
+          {text: 'This issue is made worse due to the buggy page navigation behavior. Sorry!'},
+          {subheading: 'Lack of content'},
+          {text: 'Although not a technical issue, the site lacks in content. I have a tendency to strive for perfection on the platform before quantity in content. This website is primarily a display of my work, but also serves as a fun programming project. So once I fix all the bugs and am happy with the reliability and usability of the site to both host my work and serve as a project in itself, I will return to polishing up the content.'}
+    ]},
+    //DO NOT PLACE ANYTHING BELOW THIS. The ordering of this page as the last does count. 
     {topicId: 'error-page',
       header: {title: 'Error! Missing topic'},
       contents: [
@@ -170,6 +191,13 @@ message Topic {
   }
 }
 
+==========================================================================
+Dev notes
+==========================================================================
+sass --watch main.scss:mainScss.css
+java -jar SoyToJsSrcCompiler.jar --outputPathFormat adamforbes.js --srcs mainPage.soy
+python -m SimpleHTTPServer
+
 */
 
 
@@ -179,16 +207,18 @@ message Topic {
 
 function loadDefault() {
   var $body = $('body');
+  var isFirstLoad = true;
 
   // Load Overlays
   $body.append(adamforbes.mainPage.overlays());
 
   loadNavBar();
-  loadMainPageDefaults(true /* firstLoad */);
+  loadMainPageDefaults(isFirstLoad);
+  isFirstLoad = false;
 
   // Adding the click event to the nav-title-name. Essentially the home button
   $('.nav-title-name').click(function() {
-    loadMainPageDefaults(false /* !firstLoad */);
+    loadMainPageDefaults(isFirstLoad);
     resetNavLinkPosition();
   });
 
@@ -201,6 +231,11 @@ function loadDefault() {
   $('.layering-shadow-overlay').click(function() {
     toggleNavBar();
   });
+
+  window.addEventListener("popstate", function(e) {
+    console.log("back");
+    loadMainPageDefaults(isFirstLoad);
+  });
 }
 
 function loadNavBar() {
@@ -211,12 +246,12 @@ function loadNavBar() {
   addNavPageListLinkToNavItems();
 }
 
-function loadMainPageDefaults(firstLoad) {
-  if (firstLoad) {
+function loadMainPageDefaults(isFirstLoad) {
+  if (isFirstLoad) {
     $('body').append(adamforbes.mainPage.mainPage(topicShorts));
     loadBodyInteractiveElements();
   } else {
-    loadToMainPage(adamforbes.mainPage.loadTopics(topicShorts));
+    loadToMainPage(adamforbes.mainPage.loadTopics(topicShorts), 'index.html');
   }
 }
 
@@ -233,14 +268,15 @@ function loadTopicPage(topicId) {
   // dynamically typed language again....
   var displayObject = {topics: [topicPage]};
 
-  history.pushState(null, null, topicId);
-  loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
+  // following this guide: http://diveintohtml5.info/history.html
+  loadToMainPage(adamforbes.mainPage.loadTopics(displayObject), topicId);
 }
 
-function loadToMainPage(content) {
+function loadToMainPage(content, pushUrl) {
   animatedLoad(function() {
     $('.main-page').empty();
     $('.main-page').append(content);
+    history.pushState(null, null, pushUrl);
     document.documentElement.scrollTop = document.body.scrollTop = 0;
     loadBodyInteractiveElements();
     if (window.innerWidth < 840 && isNavBarOpen()) {
@@ -279,7 +315,7 @@ function addNavPageListLinkToNavItems() {
     var key = getNavIdFromDivId($elem.attr('id'));
     var displayObject = {topics: generateNavPageList(key)};
 
-    loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
+    loadToMainPage(adamforbes.mainPage.loadTopics(displayObject), key);
     resetNavLinkPosition();
 
     // Highlight the currently selected nav item

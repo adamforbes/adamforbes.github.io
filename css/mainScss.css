@@ -216,7 +216,6 @@ textarea {
     width: 480px; } }
 @media (min-width: 840px) {
   .responsive-margin, .topic-content-text, .topic-content-subheading, .button-container, .wip-page {
-    margin-left: 20px;
     width: 480px; } }
 
 .topic-content-subheading + div {
@@ -356,6 +355,7 @@ textarea {
     .page-too-small-overlay {
       display: none !important; } }
   .page-too-small-overlay .page-too-small-overlay-content {
+    color: #FFFFFF;
     margin: 90px auto;
     width: 90px; }
 

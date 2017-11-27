@@ -302,7 +302,7 @@ $nav-title-top-threshold: 20vh;
     width: $main-column-width;
   }
   @media (min-width: $break-max) {
-    margin-left: $break-min-margin;
+    // margin-left: $break-min-margin;
     width: $main-column-width;
   }
 }
@@ -468,6 +468,7 @@ $nav-title-top-threshold: 20vh;
     display: none !important;
   }
   .page-too-small-overlay-content {
+    color: $text-color2;
     margin: 90px auto;
     width: 90px;
   }
