@@ -102,6 +102,8 @@ var topicPages = {topics: [
           {subheading: 'Lack of a clear return home action in UI'},
           {text: 'You\'re currently reading a subpage of this site which is one level below that of home. There is currently no clear visual indication that you are a level below where you started nor is it clear that you can return by clicking my name in the top left of the nav bar.'},
           {text: 'This issue is made worse due to the buggy page navigation behavior. Sorry!'},
+          {subheading: 'Missing fixed header for Mobile'},
+          {text: 'When viewing the site on small screen widths a fixed header with navigation controls is an expected ui element.'},
           {subheading: 'Lack of content'},
           {text: 'Although not a technical issue, the site lacks in content. I have a tendency to strive for perfection on the platform before quantity in content. This website is primarily a display of my work, but also serves as a fun programming project. So once I fix all the bugs and am happy with the reliability and usability of the site to both host my work and serve as a project in itself, I will return to polishing up the content.'}
     ]},
