@@ -9,10 +9,31 @@
   //http://tympanus.net/codrops/2015/11/17/multi-level-menu/
   <div class='nav-bar'>
     <div class='nav-title-name'>Adam<br>Forbes</div>
+    //TODO add breadcrumbs underneath title. All caps. Smaller font
+    // <div class='nav-breadcrumbs'>
+    //   {call .navBreadcrumbs/}
+    // </div>
     <div class='nav-links'>
       {call .loadNavLinks data="all" /}
     </div>
   </div>
+{/template}
+
+// TODO finish the work on breadcrumbs
+
+/**
+ * Generate the breadcrumb to show the user where they are in the site.
+ * @param locations a list of locations. This function should work for deeper site hierarchies eventually. 
+ */
+{template .navBreadcrumbs}
+  <div class="nav-breadcrumb">
+    Home
+  </div>
+  {foreach $location in $locations}
+    <i class="material-icons float-left">chevron_right</i>
+    <div class="nav-breadcrumb">
+    </div>
+  {/foreach}
 {/template}
 
 /**

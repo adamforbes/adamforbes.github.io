@@ -17,13 +17,28 @@ if (goog.DEBUG) {
 }
 
 
+adamforbes.mainPage.navBreadcrumbs = function(opt_data, opt_ignored) {
+  var output = '<div class="nav-breadcrumb">Home</div>';
+  var locationList8 = opt_data.locations;
+  var locationListLen8 = locationList8.length;
+  for (var locationIndex8 = 0; locationIndex8 < locationListLen8; locationIndex8++) {
+    var locationData8 = locationList8[locationIndex8];
+    output += '<i class="material-icons float-left">chevron_right</i><div class="nav-breadcrumb"></div>';
+  }
+  return output;
+};
+if (goog.DEBUG) {
+  adamforbes.mainPage.navBreadcrumbs.soyTemplateName = 'adamforbes.mainPage.navBreadcrumbs';
+}
+
+
 adamforbes.mainPage.loadNavLinks = function(opt_data, opt_ignored) {
   var output = '';
-  var linkList7 = opt_data.links;
-  var linkListLen7 = linkList7.length;
-  for (var linkIndex7 = 0; linkIndex7 < linkListLen7; linkIndex7++) {
-    var linkData7 = linkList7[linkIndex7];
-    output += '<div class=\'nav-link\' id=\'nav-bar-' + soy.$$escapeHtml(linkData7.navId) + '-button\'>' + soy.$$escapeHtml(linkData7.displayName) + '</div>';
+  var linkList12 = opt_data.links;
+  var linkListLen12 = linkList12.length;
+  for (var linkIndex12 = 0; linkIndex12 < linkListLen12; linkIndex12++) {
+    var linkData12 = linkList12[linkIndex12];
+    output += '<div class=\'nav-link\' id=\'nav-bar-' + soy.$$escapeHtml(linkData12.navId) + '-button\'>' + soy.$$escapeHtml(linkData12.displayName) + '</div>';
   }
   return output;
 };
@@ -51,11 +66,11 @@ if (goog.DEBUG) {
 adamforbes.mainPage.loadTopics = function(opt_data, opt_ignored) {
   var output = '';
   if (opt_data.topics.length > 0) {
-    var topicList23 = opt_data.topics;
-    var topicListLen23 = topicList23.length;
-    for (var topicIndex23 = 0; topicIndex23 < topicListLen23; topicIndex23++) {
-      var topicData23 = topicList23[topicIndex23];
-      output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData23.topicId) + '\'>' + adamforbes.mainPage.topic(topicData23) + '</div>';
+    var topicList28 = opt_data.topics;
+    var topicListLen28 = topicList28.length;
+    for (var topicIndex28 = 0; topicIndex28 < topicListLen28; topicIndex28++) {
+      var topicData28 = topicList28[topicIndex28];
+      output += '<div class=\'topic-container\' id=\'' + soy.$$escapeHtml(topicData28.topicId) + '\'>' + adamforbes.mainPage.topic(topicData28) + '</div>';
     }
   } else {
     output += '<div class=\'wip-page\'>This is a work in progress!</div>';
@@ -77,11 +92,11 @@ if (goog.DEBUG) {
 
 adamforbes.mainPage.topic = function(opt_data, opt_ignored) {
   var output = '<div class=\'topic-header clearfix\'>' + adamforbes.mainPage.header(opt_data) + '</div><div class=\'topic-content\'>';
-  var contentList44 = opt_data.contents;
-  var contentListLen44 = contentList44.length;
-  for (var contentIndex44 = 0; contentIndex44 < contentListLen44; contentIndex44++) {
-    var contentData44 = contentList44[contentIndex44];
-    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData44});
+  var contentList49 = opt_data.contents;
+  var contentListLen49 = contentList49.length;
+  for (var contentIndex49 = 0; contentIndex49 < contentListLen49; contentIndex49++) {
+    var contentData49 = contentList49[contentIndex49];
+    output += adamforbes.mainPage.content({topicId: opt_data.topicId, content: contentData49});
   }
   output += '</div>';
   return output;

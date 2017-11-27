@@ -196,10 +196,14 @@ $nav-title-top-threshold: 20vh;
   color: $text-color2;
   font-family: $main-font, sans-serif;
   font-size: 1em;
-  position: absolute;
-  text-align: left;
   margin-left: 30px;
   margin-top: 30px;
+  position: absolute;
+  text-align: left;
+}
+
+.nav-breadcrumb {
+  color: $text-color2;
 }
 
 .main-page {
@@ -262,7 +266,6 @@ $nav-title-top-threshold: 20vh;
 }
 
 .topic-header-title-image img {
-  @extend .clickable;
   @media (min-width: 0px) and (max-width: $break-min) {
     width: 100%;
   }

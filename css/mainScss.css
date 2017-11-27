@@ -136,10 +136,13 @@ textarea {
   color: #FFFFFF;
   font-family: "Roboto", sans-serif;
   font-size: 1em;
-  position: absolute;
-  text-align: left;
   margin-left: 30px;
-  margin-top: 30px; }
+  margin-top: 30px;
+  position: absolute;
+  text-align: left; }
+
+.nav-breadcrumb {
+  color: #FFFFFF; }
 
 @media (min-width: 0px) and (max-width: 520px) {
   .main-page {
@@ -285,13 +288,13 @@ textarea {
 .wip-page {
   padding-top: 20vh; }
 
-.clickable, .nav-link, .nav-title-name, .topic-header-title-image img {
+.clickable, .nav-link, .nav-title-name {
   -webkit-transition: opacity 200ms ease;
   -moz-transition: opacity 200ms ease;
   -o-transition: opacity 200ms ease;
   transition: opacity 200ms ease;
   opacity: 1.0; }
-  .clickable:hover, .nav-link:hover, .nav-title-name:hover, .topic-header-title-image img:hover {
+  .clickable:hover, .nav-link:hover, .nav-title-name:hover {
     cursor: pointer;
     opacity: .4; }
 

@@ -22,7 +22,7 @@ var topicShorts = {topics: [
       header: {title: 'About Me', chronology: 'april 12, 2014'},
       contents: [
           {text: 'I\'m Adam Forbes. I like to design stuffs.'},
-          {text: 'This is my eponymous website. Here, I hope to showcase the best of my personal and professional body of work.'}
+          {text: 'This is my eponymous website. I hope it showcases the best of my personal and professional body of work in art and design.'}
     ]},
     {topicId: 'the-argus-mag',
       navIds: ['main-page', 'graphic-design'],
@@ -69,7 +69,8 @@ var topicPages = {topics: [
           {image: 'cover-spring-2013.jpg'},
           {image: 'cover-spring-2014.jpg'},
           {subheading: 'Layout design'},
-          {subheading: 'Logo design'}
+          {subheading: 'Logo design'},
+          {image: 'logo.png'}
     ]},
     {topicId: 'zapdos',
       header: {title: 'Zapdos!'},
@@ -221,9 +222,6 @@ function loadMainPageDefaults(firstLoad) {
 
 function loadTopicPage(topicId) {
   var topicPage = getTopic(topicPages, topicId);
-  console.log(topicPage);
-
-  console.log(topicPage.topicId);
 
   // When there is no matching topic page, show an error page
   if (topicPage == -1) {
@@ -235,10 +233,8 @@ function loadTopicPage(topicId) {
   // dynamically typed language again....
   var displayObject = {topics: [topicPage]};
 
-  animatedLoad(function() {
-    loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
-  });
-
+  history.pushState(null, null, topicId);
+  loadToMainPage(adamforbes.mainPage.loadTopics(displayObject));
 }
 
 function loadToMainPage(content) {
@@ -269,7 +265,6 @@ function animatedLoad(functionToRunWhileHidden) {
 }
 
 function loadBodyInteractiveElements () {
-  // addTopicPageLinksToTitles();
   addLinksToBlockLinks();
   addLinksToTopicPageButton();
 }
@@ -291,13 +286,6 @@ function addNavPageListLinkToNavItems() {
     $elem.animate({
       marginLeft: '10px'
     }, { duration: 100, queue: false });
-  });
-}
-
-function addTopicPageLinksToTitles() {
-  $('.topic-header').on('click', '.topic-header-title', function(e) {
-    var key = $(this).attr('id');
-    loadTopicPage(key);
   });
 }
 
@@ -351,8 +339,6 @@ function getTopic(topicsObject, topicId) {
   }
   return topic;
 }
-
-
 
 /* ==========================================================================
    Nav related functions
